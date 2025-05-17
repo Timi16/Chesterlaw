@@ -1,20 +1,18 @@
 $imageUrls = @{
-    "images/legal-books.jpg" = "https://source.unsplash.com/random/800x600?law,books"
-    "images/lawyer1.jpg" = "https://source.unsplash.com/random/600x800?lawyer,man,suit"
-    "images/lawyer2.jpg" = "https://source.unsplash.com/random/600x800?lawyer,man,professional"
-    "images/news1.jpg" = "https://source.unsplash.com/random/800x600?conference,business"
-    "images/news2.jpg" = "https://source.unsplash.com/random/800x600?flag,ceremony"
-    "images/news3.jpg" = "https://source.unsplash.com/random/800x600?business,forum"
-    "images/recognition1.png" = "https://placehold.co/200x100/143d61/ffffff.png?text=Award+2025"
-    "images/recognition2.png" = "https://placehold.co/200x100/143d61/ffffff.png?text=Best+Law+Firm"
-    "images/recognition3.png" = "https://placehold.co/200x100/143d61/ffffff.png?text=Legal+500"
-    "images/recognition4.png" = "https://placehold.co/200x100/143d61/ffffff.png?text=Chambers"
-    "images/recognition5.png" = "https://placehold.co/200x100/143d61/ffffff.png?text=IFLR1000"
-    "images/partner1.png" = "https://placehold.co/200x100/7c694a/ffffff.png?text=Partner+1"
-    "images/partner2.png" = "https://placehold.co/200x100/7c694a/ffffff.png?text=Partner+2"
-    "images/partner3.png" = "https://placehold.co/200x100/7c694a/ffffff.png?text=Partner+3"
-    "images/partner4.png" = "https://placehold.co/200x100/7c694a/ffffff.png?text=Partner+4"
-    "images/partner5.png" = "https://placehold.co/200x100/7c694a/ffffff.png?text=Partner+5"
+    # Recognition logos
+    "images/chambers.png" = "https://placehold.co/320x80/1C352D/ffffff?text=Chambers+and+Partners"
+    "images/legal500.png" = "https://placehold.co/320x80/1C352D/ffffff?text=Legal+500"
+    "images/iflr1000.png" = "https://placehold.co/320x80/1C352D/ffffff?text=IFLR1000"
+    "images/bestlawyers.png" = "https://placehold.co/320x80/1C352D/ffffff?text=Best+Lawyers"
+    "images/whoswho.png" = "https://placehold.co/320x80/1C352D/ffffff?text=Who's+Who+Legal"
+    
+    # Other images
+    "images/legal-books.jpg" = "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&q=80"
+    "images/lawyer1.jpg" = "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&h=800&q=80"
+    "images/lawyer2.jpg" = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&q=80"
+    "images/news1.jpg" = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&q=80"
+    "images/news2.jpg" = "https://placehold.co/800x600/1C352D/ffffff?text=Corporate+Law+Changes"
+    "images/news3.jpg" = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&q=80"
 }
 
 foreach ($path in $imageUrls.Keys) {

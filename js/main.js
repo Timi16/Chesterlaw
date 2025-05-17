@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Corporate Law Changes',
             date: '2025-05-15',
-            image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&q=80',
+            image: 'https://placehold.co/800x600/1C352D/ffffff?text=Corporate+Law+Changes',
             description: 'Updates to corporate law regulations affecting businesses.'
         },
         {
@@ -143,20 +143,30 @@ document.addEventListener('DOMContentLoaded', () => {
         
         newsSlider.innerHTML = ''; // Clear existing content
         
-        newsData.forEach(item => {
+        // Create and add all news items
+        newsData.forEach((item, index) => {
             const newsItem = document.createElement('div');
-            newsItem.className = 'news-item fade-in';
+            newsItem.className = 'news-item';
+            newsItem.style.opacity = '1';
+            newsItem.style.transform = `translateX(${index * 100}%)`;
             
-            // Create image with loading state
+            // Use a guaranteed working image for the second position
             const img = new Image();
             img.src = item.image;
             img.alt = item.title;
             img.style.opacity = '0';
+            
+            // Make sure images load properly
             img.onload = () => {
                 img.style.opacity = '1';
+                console.log(`Image ${index + 1} loaded:`, item.image);
             };
+            
+            // Handle failed image loads with a backup
             img.onerror = () => {
-                img.src = 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&q=80';
+                console.log(`Image ${index + 1} failed to load:`, item.image);
+                // Always use working placeholder as fallback
+                img.src = `https://placehold.co/800x600/1C352D/ffffff?text=${encodeURIComponent(item.title)}`;
             };
             
             newsItem.appendChild(img);
@@ -172,6 +182,15 @@ document.addEventListener('DOMContentLoaded', () => {
             newsItem.appendChild(content);
             newsSlider.appendChild(newsItem);
         });
+
+        // Force the second image to load if it hasn't already
+        if (newsData.length >= 2) {
+            const secondImg = newsSlider.querySelectorAll('img')[1];
+            if (secondImg) {
+                secondImg.src = newsData[1].image;
+                console.log('Forcing second image to load:', newsData[1].image);
+            }
+        }
 
         // Initialize the first slide
         showSlide(0);

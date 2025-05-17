@@ -373,6 +373,39 @@ h4 {
 }
 
 /* Leading Lawyers Section */
+.recognition-section {
+    padding: 6rem 10%;
+    background-color: var(--white);
+}
+
+.recognition-logos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.recognition-logos img {
+    height: 80px;
+    width: 320px;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.recognition-logos img:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: translateY(-5px);
+    background-color: rgba(28, 53, 45, 0.05);
+}
+
 .leading-lawyers {
     padding: 6rem 10%;
     background-color: var(--white);
@@ -446,7 +479,6 @@ h4 {
     margin-top: 2rem;
 }
 
-.recognition-logos img,
 .partners-logos img {
     height: 60px;
     object-fit: contain;
@@ -456,7 +488,6 @@ h4 {
     transform: translateY(0);
 }
 
-.recognition-logos img:hover,
 .partners-logos img:hover {
     filter: grayscale(0);
     opacity: 1;
