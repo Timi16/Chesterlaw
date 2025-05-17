@@ -162,16 +162,15 @@ h4 {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(rgba(28, 53, 45, 0.7), rgba(28, 53, 45, 0.7)),
                 url('https://images.unsplash.com/photo-1542189673-6052465c4c8d') center/cover;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 10%;
+    padding: 100px 10% 60px;
     position: relative;
     color: var(--white);
-    margin-top: -80px;
     animation: gradientFade 1.5s ease-out forwards;
 }
 
