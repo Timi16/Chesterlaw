@@ -154,26 +154,47 @@ document.addEventListener('DOMContentLoaded', () => {
         const menuButton = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         const body = document.body;
-        const html = document.documentElement;
+        let scrollPosition = 0;
 
         if (menuButton && navLinks) {
+            // Toggle menu function
+            const toggleMenu = (open) => {
+                const isOpen = open !== undefined ? open : !menuButton.classList.contains('active');
+                
+                if (isOpen) {
+                    // Save current scroll position
+                    scrollPosition = window.pageYOffset;
+                    // Add menu-open class to body
+                    body.classList.add('menu-open');
+                    // Prevent body from scrolling
+                    body.style.top = `-${scrollPosition}px`;
+                    body.style.position = 'fixed';
+                } else {
+                    // Remove menu-open class
+                    body.classList.remove('menu-open');
+                    // Restore scrolling and position
+                    body.style.position = '';
+                    body.style.top = '';
+                    window.scrollTo(0, scrollPosition);
+                }
+                
+                // Toggle menu button and navigation
+                menuButton.setAttribute('aria-expanded', isOpen);
+                menuButton.classList.toggle('active', isOpen);
+                navLinks.classList.toggle('active', isOpen);
+            };
+
             // Toggle menu on button click
             menuButton.addEventListener('click', (e) => {
+                e.preventDefault();
                 e.stopPropagation();
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-                menuButton.setAttribute('aria-expanded', !isExpanded);
-                navLinks.classList.toggle('active');
-                body.classList.toggle('menu-open');
-                html.classList.toggle('no-scroll');
+                toggleMenu();
             });
 
             // Close menu when clicking on a link
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    menuButton.setAttribute('aria-expanded', 'false');
-                    body.classList.remove('menu-open');
-                    html.classList.remove('no-scroll');
+                    toggleMenu(false);
                 });
             });
 
@@ -181,12 +202,31 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('click', (e) => {
                 const isClickInside = navLinks.contains(e.target) || menuButton.contains(e.target);
                 if (!isClickInside && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    menuButton.setAttribute('aria-expanded', 'false');
-                    body.classList.remove('menu-open');
-                    html.classList.remove('no-scroll');
+                    toggleMenu(false);
                 }
             });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Close menu on window resize if it becomes desktop
+            const handleResize = () => {
+                if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                    toggleMenu(false);
+                }
+            };
+
+            window.addEventListener('resize', handleResize);
+            
+            // Clean up event listeners when component unmounts
+            return () => {
+                window.removeEventListener('resize', handleResize);
+                document.removeEventListener('keydown', handleResize);
+            };
         }
     };
     
