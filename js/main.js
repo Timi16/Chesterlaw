@@ -86,9 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Initialize components
+    // Initialize smooth scrolling
     initSmoothScrolling();
-    initMobileMenu();
 
     // Sample news data
     const newsData = [
@@ -149,6 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call populateNews function
     populateNews();
     
+    // Ensure page scrolls to top on load
+    window.scrollTo(0, 0);
+    
     // Mobile menu functionality
     const initMobileMenu = () => {
         const menuButton = document.querySelector('.mobile-menu-btn');
@@ -158,6 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(navOverlay);
         
         if (!menuButton || !navLinks) return;
+        
+        // Ensure page is at top when menu is opened
+        let scrollPosition = 0;
         
         // Toggle menu function
         const toggleMenu = (show) => {
@@ -171,14 +176,25 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active', isOpen);
             navOverlay.classList.toggle('active', isOpen);
             
-            // Toggle body scroll
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-            
-            // Add/remove event listeners
+            // Handle body scroll and position
             if (isOpen) {
+                // Save current scroll position
+                scrollPosition = window.pageYOffset;
+                // Add menu-open class to body
+                document.body.classList.add('menu-open');
+                document.body.style.top = `-${scrollPosition}px`;
+                
+                // Add event listeners
                 navOverlay.addEventListener('click', closeMenu);
                 document.addEventListener('keydown', handleEscape);
             } else {
+                // Remove menu-open class and restore scroll position
+                const scrollY = Math.abs(parseInt(document.body.style.top || '0'));
+                document.body.classList.remove('menu-open');
+                document.body.style.top = '';
+                window.scrollTo(0, scrollY);
+                
+                // Remove event listeners
                 navOverlay.removeEventListener('click', closeMenu);
                 document.removeEventListener('keydown', handleEscape);
             }
