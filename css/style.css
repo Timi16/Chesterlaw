@@ -789,6 +789,23 @@ footer {
     margin-bottom: 1rem;
 }
 
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem;
+    z-index: 1000;
+    transition: top 0.3s;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* Mobile Menu Styles */
 .mobile-menu-btn {
     display: none;
@@ -796,57 +813,309 @@ footer {
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    position: relative;
+    z-index: 1001;
 }
 
-.mobile-menu-btn span {
+.mobile-menu-btn .bar {
     display: block;
     width: 25px;
     height: 3px;
     background-color: var(--white);
     margin: 5px 0;
     transition: 0.3s;
+    transform-origin: center;
+}
+
+.mobile-menu-btn[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-btn[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* No scroll when menu is open */
+html.no-scroll,
+body.no-scroll {
+    overflow: hidden;
+    height: 100%;
+    position: fixed;
+    width: 100%;
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .experience-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 4rem 5%;
+    }
+
+    .news-slider {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .recognition-logos img {
+        width: 250px;
+        height: 60px;
+    }
+}
+
 @media (max-width: 1024px) {
     .service-grid,
     .news-grid {
         grid-template-columns: repeat(2, 1fr);
         padding: 0 1rem;
     }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero {
+        height: auto;
+        padding: 120px 5% 60px;
+    }
+    
+    .hero-content {
+        margin-top: 0;
+        max-width: 100%;
+    }
+    
+    .experience-image img {
+        height: 400px;
+    }
 }
 
 @media (max-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
     .navbar {
-        flex-direction: row;
+        padding: 1rem;
+        display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
-
+    
     .mobile-menu-btn {
-        display: block;
-        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
     }
 
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
+        width: 80%;
+        max-width: 320px;
         height: 100vh;
-        width: 70%;
         background-color: var(--primary-color);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.3s ease;
-        gap: 2rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        gap: 1.5rem;
+        padding: 6rem 2rem 2rem;
+        z-index: 1000;
+        margin: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-links.active {
         right: 0;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        color: var(--white);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a:focus {
+        color: var(--secondary-color);
+    }
+    
+    .nav-links a[aria-current="page"] {
+        color: var(--secondary-color);
+        font-weight: 600;
+    }
+    
+    /* Overlay when menu is open */
+    .nav-overlay {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
     }
 
+    .hero {
+        text-align: center;
+        padding: 100px 5% 60px;
+    }
+    
     .hero-content h1 {
         font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        margin: 1.5rem auto 0;
+    }
+    
+    .news-slider,
+    .lawyers-grid,
+    .practice-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .recognition-logos,
+    .partners-logos {
+        gap: 1.5rem;
+        justify-content: center;
+    }
+    
+    .recognition-logos img,
+    .partners-logos img {
+        width: 200px;
+        height: 50px;
+    }
+    
+    .services-header,
+    .news-header,
+    .lawyers-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .experience-image img {
+        height: 300px;
+    }
+    
+    .news-item img {
+        height: 200px;
+    }
+    
+    .lawyer-card img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .hero {
+        padding: 80px 4% 40px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .recognition-logos img,
+    .partners-logos img {
+        width: 130px;
+        height: 35px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .news-item {
+        padding: 0.5rem;
+    }
+    
+    .news-item img {
+        height: 180px;
+    }
+    
+    .lawyer-card img {
+        height: 280px;
+    }
+    
+    .experience-image img {
+        height: 250px;
+    }
+    
+    /* Make sure buttons and interactive elements have enough touch target size */
+    button, 
+    .button, 
+    [role="button"],
+    a[role="button"] {
+        min-height: 44px;
+        min-width: 44px;
     }
 }

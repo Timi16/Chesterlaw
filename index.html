@@ -2,31 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="ALARIUS - Your trusted legal partner providing expert legal services and representation.">
     <title>ALARIUS - Legal Excellence</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+    <meta name="theme-color" content="#143d61">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="header">
-        <nav class="navbar">
-            <div class="logo slide-in">ALARIUS</div>
-            <button class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="practice-areas.html">Practice Areas</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Main navigation">
+                <a href="/" class="logo slide-in" aria-label="ALARIUS Home">ALARIUS</a>
+                <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
+                    <span class="sr-only">Menu</span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul id="primary-navigation" class="nav-links" role="menubar">
+                    <li role="none"><a href="index.html" class="active" role="menuitem" aria-current="page">Home</a></li>
+                    <li role="none"><a href="practice-areas.html" role="menuitem">Practice Areas</a></li>
+                    <li role="none"><a href="team.html" role="menuitem">Our Team</a></li>
+                    <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         <section class="hero">
             <div class="hero-content fade-in">
                 <h1>YOUR LEGAL PARTNERS</h1>
@@ -162,6 +169,47 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            const body = document.body;
+            const html = document.documentElement;
+
+            if (menuButton && navLinks) {
+                menuButton.addEventListener('click', function() {
+                    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                    menuButton.setAttribute('aria-expanded', !isExpanded);
+                    navLinks.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    html.classList.toggle('no-scroll');
+                });
+
+                // Close menu when clicking on a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        menuButton.setAttribute('aria-expanded', 'false');
+                        body.classList.remove('menu-open');
+                        html.classList.remove('no-scroll');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    const isClickInside = navLinks.contains(e.target) || menuButton.contains(e.target);
+                    if (!isClickInside && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuButton.setAttribute('aria-expanded', 'false');
+                        body.classList.remove('menu-open');
+                        html.classList.remove('no-scroll');
+                    }
+                });
+            }
+
+        });
+    </script>
 </body>
 </html>
