@@ -103,19 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Latest Legal Updates',
             date: '2025-05-16',
-            image: 'https://source.unsplash.com/random/800x600?law,court',
+            image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&q=80',
             description: 'Recent changes in legal regulations and their impact on businesses.'
         },
         {
             title: 'Corporate Law Changes',
             date: '2025-05-15',
-            image: 'https://source.unsplash.com/random/800x600?business,corporate',
+            image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&q=80',
             description: 'Updates to corporate law regulations affecting businesses.'
         },
         {
             title: 'New Partner Announcement',
             date: '2025-05-14',
-            image: 'https://source.unsplash.com/random/800x600?lawyer,office',
+            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&q=80',
             description: 'Welcoming our newest partner to the firm.'
         }
     ];
@@ -146,12 +146,30 @@ document.addEventListener('DOMContentLoaded', () => {
         newsData.forEach(item => {
             const newsItem = document.createElement('div');
             newsItem.className = 'news-item fade-in';
-            newsItem.innerHTML = `
-                <img src="${item.image}" alt="${item.title}">
+            
+            // Create image with loading state
+            const img = new Image();
+            img.src = item.image;
+            img.alt = item.title;
+            img.style.opacity = '0';
+            img.onload = () => {
+                img.style.opacity = '1';
+            };
+            img.onerror = () => {
+                img.src = 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&q=80';
+            };
+            
+            newsItem.appendChild(img);
+            
+            const content = document.createElement('div');
+            content.className = 'news-content';
+            content.innerHTML = `
                 <div class="news-date">${new Date(item.date).toLocaleDateString()}</div>
                 <h3>${item.title}</h3>
                 <p>${item.description}</p>
             `;
+            
+            newsItem.appendChild(content);
             newsSlider.appendChild(newsItem);
         });
 
