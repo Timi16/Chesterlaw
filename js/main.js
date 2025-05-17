@@ -149,53 +149,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call populateNews function
     populateNews();
     
-    // Simple mobile menu toggle
+    // Mobile menu functionality
     const initMobileMenu = () => {
         const menuButton = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
+        const navOverlay = document.createElement('div');
+        navOverlay.className = 'nav-overlay';
+        document.body.appendChild(navOverlay);
         
         if (!menuButton || !navLinks) return;
         
         // Toggle menu function
         const toggleMenu = (show) => {
             const isOpen = show !== undefined ? show : !menuButton.classList.contains('active');
+            
+            // Toggle button state
+            menuButton.setAttribute('aria-expanded', isOpen);
             menuButton.classList.toggle('active', isOpen);
+            
+            // Toggle menu and overlay
             navLinks.classList.toggle('active', isOpen);
+            navOverlay.classList.toggle('active', isOpen);
+            
+            // Toggle body scroll
             document.body.style.overflow = isOpen ? 'hidden' : '';
+            
+            // Add/remove event listeners
+            if (isOpen) {
+                navOverlay.addEventListener('click', closeMenu);
+                document.addEventListener('keydown', handleEscape);
+            } else {
+                navOverlay.removeEventListener('click', closeMenu);
+                document.removeEventListener('keydown', handleEscape);
+            }
         };
         
-        // Toggle on button click
+        // Close menu function
+        const closeMenu = () => toggleMenu(false);
+        
+        // Handle escape key
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') closeMenu();
+        };
+        
+        // Toggle menu on button click
         menuButton.addEventListener('click', (e) => {
-            e.preventDefault();
+            e.stopPropagation();
             toggleMenu();
         });
         
-        // Close when clicking a link
+        // Close when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => toggleMenu(false));
+            link.addEventListener('click', closeMenu);
         });
         
-        // Close when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !menuButton.contains(e.target)) {
-                toggleMenu(false);
-            }
-        });
-        
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && menuButton.classList.contains('active')) {
-                toggleMenu(false);
-            }
-        });
-        
-        // Close on resize to desktop
+        // Close on window resize to desktop
         let resizeTimer;
         const handleResize = () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
                 if (window.innerWidth > 768 && menuButton.classList.contains('active')) {
-                    toggleMenu(false);
+                    closeMenu();
                 }
             }, 100);
         };
@@ -205,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cleanup
         return () => {
             window.removeEventListener('resize', handleResize);
+            navOverlay.remove();
             document.body.style.overflow = '';
         };
     };
