@@ -149,74 +149,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call populateNews function
     populateNews();
     
-    // Mobile menu toggle functionality - Simplified version
+    // Simple mobile menu toggle
     const initMobileMenu = () => {
         const menuButton = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-        const html = document.documentElement;
-        const body = document.body;
-
+        
         if (!menuButton || !navLinks) return;
-
+        
         // Toggle menu function
-        const toggleMenu = (isOpen) => {
-            menuButton.setAttribute('aria-expanded', isOpen);
+        const toggleMenu = (show) => {
+            const isOpen = show !== undefined ? show : !menuButton.classList.contains('active');
             menuButton.classList.toggle('active', isOpen);
             navLinks.classList.toggle('active', isOpen);
-            
-            if (isOpen) {
-                // Disable body scroll when menu is open
-                html.style.overflow = 'hidden';
-                body.style.overflow = 'hidden';
-            } else {
-                // Re-enable body scroll when menu is closed
-                html.style.overflow = '';
-                body.style.overflow = '';
-            }
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         };
-
-        // Toggle menu on button click
+        
+        // Toggle on button click
         menuButton.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
-            const isOpen = !menuButton.classList.contains('active');
-            toggleMenu(isOpen);
+            toggleMenu();
         });
-
-        // Close menu when clicking on a link
+        
+        // Close when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => toggleMenu(false));
         });
-
-        // Close menu when clicking outside
+        
+        // Close when clicking outside
         document.addEventListener('click', (e) => {
             if (!navLinks.contains(e.target) && !menuButton.contains(e.target)) {
                 toggleMenu(false);
             }
         });
-
-        // Close menu on escape key
+        
+        // Close on escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            if (e.key === 'Escape' && menuButton.classList.contains('active')) {
                 toggleMenu(false);
             }
         });
-
-        // Close menu on window resize if it becomes desktop
+        
+        // Close on resize to desktop
+        let resizeTimer;
         const handleResize = () => {
-            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-                toggleMenu(false);
-            }
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 768 && menuButton.classList.contains('active')) {
+                    toggleMenu(false);
+                }
+            }, 100);
         };
-
+        
         window.addEventListener('resize', handleResize);
         
-        // Clean up
+        // Cleanup
         return () => {
             window.removeEventListener('resize', handleResize);
-            document.removeEventListener('keydown', handleResize);
-            html.style.overflow = '';
-            body.style.overflow = '';
+            document.body.style.overflow = '';
         };
     };
     
