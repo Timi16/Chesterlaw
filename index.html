@@ -2,209 +2,727 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="ALARIUS - Your trusted legal partner providing expert legal services and representation.">
-    <title>ALARIUS - Legal Excellence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestige Law Partners | Premium Legal Services</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
-    <meta name="theme-color" content="#143d61">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header class="header">
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <div class="noise-overlay"></div>
+    
+    <header>
         <div class="container">
-            <nav class="navbar" role="navigation" aria-label="Main navigation">
-                <a href="/" class="logo slide-in" aria-label="ALARIUS Home">ALARIUS</a>
-                <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
-                    <span class="sr-only">Menu</span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-                <ul id="primary-navigation" class="nav-links" role="menubar">
-                    <li role="none"><a href="index.html" class="active" role="menuitem" aria-current="page">Home</a></li>
-                    <li role="none"><a href="practice-areas.html" role="menuitem">Practice Areas</a></li>
-                    <li role="none"><a href="team.html" role="menuitem">Our Team</a></li>
-                    <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
-                    <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+            <div class="logo">
+                <a href="#" class="logo-text">Prestige<span>Law</span></a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#expertise" class="nav-link">Expertise</a></li>
+                    <li><a href="#team" class="nav-link">Our Team</a></li>
+                    <li><a href="#news" class="nav-link">Insights</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+            
+            <div class="nav-right">
+                <div class="language-selector">
+                    <span class="current-language">EN</span>
+                    <div class="language-options">
+                        <a href="#" class="active">EN</a>
+                        <a href="#">FR</a>
+                        <a href="#">DE</a>
+                    </div>
+                </div>
+                
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
-
-    <main id="main-content" tabindex="-1">
-        <section class="hero">
-            <div class="hero-content fade-in">
-                <h1>YOUR LEGAL PARTNERS</h1>
-                <p>Experience. Reliability. Result.</p>
-                <a href="#about" class="cta-button">MORE ABOUT US <i class="fas fa-arrow-right"></i></a>
+    
+    <div class="mobile-menu">
+        <div class="container">
+            <div class="mobile-menu-content">
+                <nav>
+                    <ul class="mobile-nav-links">
+                        <li class="fade-in-item"><a href="#hero">Home</a></li>
+                        <li class="fade-in-item"><a href="#expertise">Expertise</a></li>
+                        <li class="fade-in-item"><a href="#team">Our Team</a></li>
+                        <li class="fade-in-item"><a href="#news">Insights</a></li>
+                        <li class="fade-in-item"><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-contact fade-in-item">
+                    <h3>Get in touch</h3>
+                    <p>info@prestigelaw.com</p>
+                    <p>+1 (800) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-slider">
+                <div class="hero-slide active">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80" alt="Modern law firm office">
+                    </div>
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="animate-in">We protect your rights and secure your future.</h1>
+                            <p class="animate-in">Sophisticated legal counsel for complex matters. Bringing clarity to challenging situations.</p>
+                            <div class="hero-cta animate-in">
+                                <a href="#expertise" class="btn btn-primary">Our Expertise</a>
+                                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-slide">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80" alt="Executive boardroom">
+                    </div>
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1>Strategic legal counsel for industry leaders.</h1>
+                            <p>Bringing decades of experience and insight to complex legal matters.</p>
+                            <div class="hero-cta">
+                                <a href="#expertise" class="btn btn-primary">Our Expertise</a>
+                                <a href="#team" class="btn btn-outline">Meet Our Team</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-controls">
+                <button class="hero-prev" aria-label="Previous slide"><i class="fas fa-arrow-left"></i></button>
+                <div class="hero-dots">
+                    <button class="hero-dot active" aria-label="Slide 1"></button>
+                    <button class="hero-dot" aria-label="Slide 2"></button>
+                </div>
+                <button class="hero-next" aria-label="Next slide"><i class="fas fa-arrow-right"></i></button>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <i class="fas fa-arrow-down"></i>
             </div>
         </section>
-
-        <section class="experience-section fade-in">
-            <div class="experience-content">
-                <h2>EXPERIENCE. RELIABILITY. RESULT.</h2>
-                <p>For more than 10 years, our team has been consistently climbing in the development and growth of their business and solving the most difficult tasks. We have gained experience in supporting projects in the field of corporate, contractual, real estate, labor, tax and procedural analytics.</p>
-                <p>We believe that each case should be an individual approach that takes into account all the nuances of the client and the results of the case. We are dedicated to our work and strive to achieve the best possible results.</p>
-            </div>
-            <div class="experience-image scale-in">
-                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&q=80" alt="Legal Experience">
+        
+        <section id="expertise" class="expertise">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">Our Expertise</span>
+                    <h2 class="animate-in">Specialized practice areas where we excel</h2>
+                </div>
+                
+                <div class="expertise-tabs">
+                    <div class="tab-nav animate-in">
+                        <button class="tab-button active" data-tab="corporate">
+                            <span class="tab-number">01</span>
+                            <span class="tab-title">Corporate Law</span>
+                        </button>
+                        <button class="tab-button" data-tab="litigation">
+                            <span class="tab-number">02</span>
+                            <span class="tab-title">Litigation</span>
+                        </button>
+                        <button class="tab-button" data-tab="bankruptcy">
+                            <span class="tab-number">03</span>
+                            <span class="tab-title">Bankruptcy & Restructuring</span>
+                        </button>
+                        <button class="tab-button" data-tab="intellectual">
+                            <span class="tab-number">04</span>
+                            <span class="tab-title">Intellectual Property</span>
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="corporate">
+                            <div class="tab-flex">
+                                <div class="tab-text animate-in">
+                                    <h3>Corporate Law</h3>
+                                    <p>We advise on all aspects of corporate law, including mergers and acquisitions, joint ventures, corporate governance, and compliance matters. Our team has extensive experience working with businesses of all sizes, from startups to multinational corporations.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i> Mergers & Acquisitions</li>
+                                        <li><i class="fas fa-check"></i> Corporate Governance</li>
+                                        <li><i class="fas fa-check"></i> Commercial Contracts</li>
+                                        <li><i class="fas fa-check"></i> Regulatory Compliance</li>
+                                    </ul>
+                                    <a href="#" class="btn btn-secondary">Learn More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="tab-image animate-in">
+                                    <img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Corporate law meeting">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="litigation">
+                            <div class="tab-flex">
+                                <div class="tab-text">
+                                    <h3>Litigation</h3>
+                                    <p>Our litigation team represents clients in complex disputes across a wide range of industries. We develop strategic approaches to litigation that align with our clients' business objectives and work diligently to achieve favorable outcomes.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i> Commercial Disputes</li>
+                                        <li><i class="fas fa-check"></i> Class Actions</li>
+                                        <li><i class="fas fa-check"></i> Arbitration</li>
+                                        <li><i class="fas fa-check"></i> Alternative Dispute Resolution</li>
+                                    </ul>
+                                    <a href="#" class="btn btn-secondary">Learn More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="tab-image">
+                                    <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Litigation team">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="bankruptcy">
+                            <div class="tab-flex">
+                                <div class="tab-text">
+                                    <h3>Bankruptcy & Restructuring</h3>
+                                    <p>We provide comprehensive advice on bankruptcy and restructuring matters, representing debtors, creditors, and other stakeholders in complex proceedings. Our team helps clients navigate financial distress and achieve optimal outcomes.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i> Chapter 11 Restructurings</li>
+                                        <li><i class="fas fa-check"></i> Creditor Representation</li>
+                                        <li><i class="fas fa-check"></i> Distressed Asset Sales</li>
+                                        <li><i class="fas fa-check"></i> Financial Reorganization</li>
+                                    </ul>
+                                    <a href="#" class="btn btn-secondary">Learn More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="tab-image">
+                                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Financial restructuring">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="intellectual">
+                            <div class="tab-flex">
+                                <div class="tab-text">
+                                    <h3>Intellectual Property</h3>
+                                    <p>Our intellectual property practice helps clients protect, manage, and optimize their IP assets. We provide strategic counsel on patents, trademarks, copyrights, and trade secrets across various industries and technologies.</p>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i> Patent Prosecution</li>
+                                        <li><i class="fas fa-check"></i> Trademark Registration</li>
+                                        <li><i class="fas fa-check"></i> IP Litigation</li>
+                                        <li><i class="fas fa-check"></i> Licensing Agreements</li>
+                                    </ul>
+                                    <a href="#" class="btn btn-secondary">Learn More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="tab-image">
+                                    <img src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Intellectual property">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <section class="services">
-            <div class="services-header">
-                <h2>OUR EXPERTISE</h2>
-                <a href="practice-areas.html" class="view-all-btn">FULL EXPERTISE <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="service-grid">
-                <div class="service-card scale-in">
-                    <h3>Business Protection</h3>
-                    <p>Comprehensive legal solutions for your business</p>
-                </div>
-                <div class="service-card scale-in">
-                    <h3>Corporate Law</h3>
-                    <p>Expert guidance in corporate matters</p>
-                </div>
-                <div class="service-card scale-in">
-                    <h3>Judicial Practice</h3>
-                    <p>Professional representation in court</p>
-                </div>
-                <div class="service-card scale-in">
-                    <h3>Bankruptcy Services</h3>
-                    <p>Debt restructuring and financial solutions</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="company-news">
-            <div class="news-header">
-                <h2>COMPANY NEWS</h2>
-                <a href="news.html" class="more-news-btn">MORE NEWS <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="news-slider fade-in">
-                <div class="news-item">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&q=80" alt="Team News">
-                    <div class="news-date">15.03.2024</div>
-                    <p>Viktor Surnyk joined the Round Table "Justice of the Future"</p>
-                </div>
-                <div class="news-item">
-                    <img src="https://images.unsplash.com/photo-1526470498-9ae73c665de8?w=800&h=600&q=80" alt="Flag Day">
-                    <div class="news-date">14.03.2024</div>
-                    <p>Happy National Flag Day of Ukraine!</p>
-                </div>
-                <div class="news-item">
-                    <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&h=600&q=80" alt="Business Forum">
-                    <div class="news-date">13.03.2024</div>
-                    <p>Vitaliy Nestor took part in the VII Business & Legal Real Estate Forum</p>
+        
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item animate-in">
+                        <div class="stat-number" data-count="25">0</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    
+                    <div class="stat-item animate-in">
+                        <div class="stat-number" data-count="500">0</div>
+                        <div class="stat-label">Cases Won</div>
+                    </div>
+                    
+                    <div class="stat-item animate-in">
+                        <div class="stat-number" data-count="45">0</div>
+                        <div class="stat-label">Expert Attorneys</div>
+                    </div>
+                    
+                    <div class="stat-item animate-in">
+                        <div class="stat-number" data-count="94">0</div>
+                        <div class="stat-label">Success Rate (%)</div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section class="leading-lawyers">
-            <div class="lawyers-header">
-                <h2>LEADING LAWYERS</h2>
-                <a href="team.html" class="view-team-btn">THE WHOLE TEAM <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="lawyers-grid">
-                <div class="lawyer-card scale-in">
-                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&h=800&q=80" alt="Vitaliy Nestor">
-                    <h3>VITALIY NESTOR</h3>
-                    <p>Managing Partner</p>
-                    <a href="#" class="vcard-btn">VCARD <i class="fas fa-arrow-right"></i></a>
+        
+        <section id="team" class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">Our Team</span>
+                    <h2 class="animate-in">Meet our exceptional attorneys</h2>
+                    <a href="#" class="view-all animate-in">View All Team <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="lawyer-card scale-in">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&q=80" alt="Viktor Surnyk">
-                    <h3>VIKTOR SURNYK</h3>
-                    <p>Managing Partner</p>
-                    <a href="#" class="vcard-btn">VCARD <i class="fas fa-arrow-right"></i></a>
+                
+                <div class="team-grid">
+                    <div class="team-card animate-in">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Victoria Reynolds">
+                        </div>
+                        <div class="team-overlay">
+                            <div class="team-details">
+                                <h3>Victoria Reynolds</h3>
+                                <p class="team-position">Managing Partner</p>
+                                <p class="team-specialty">Corporate Law</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card animate-in">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1662104935883-e9dd0619eaba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael Chen">
+                        </div>
+                        <div class="team-overlay">
+                            <div class="team-details">
+                                <h3>Jessica Yun</h3>
+                                <p class="team-position">Senior Partner</p>
+                                <p class="team-specialty">Litigation</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card animate-in">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1662104935762-707db0439ecd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sophia Martinez">
+                        </div>
+                        <div class="team-overlay">
+                            <div class="team-details">
+                                <h3>Muhammed Abdul</h3>
+                                <p class="team-position">Partner</p>
+                                <p class="team-specialty">Bankruptcy & Restructuring</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card animate-in">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="James Washington">
+                        </div>
+                        <div class="team-overlay">
+                            <div class="team-details">
+                                <h3>James Washington</h3>
+                                <p class="team-position">Partner</p>
+                                <p class="team-specialty">Intellectual Property</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section class="recognition-section">
-            <h2>OUR RECOGNITIONS</h2>
-            <div class="recognition-logos slide-in">
-                <img src="images/chambers.png" alt="Chambers and Partners" onerror="this.src='https://placehold.co/320x80/1C352D/ffffff?text=Chambers+and+Partners'">
-                <img src="images/legal500.png" alt="Legal 500" onerror="this.src='https://placehold.co/320x80/1C352D/ffffff?text=Legal+500'">
-                <img src="images/iflr1000.png" alt="IFLR1000" onerror="this.src='https://placehold.co/320x80/1C352D/ffffff?text=IFLR1000'">
-                <img src="images/bestlawyers.png" alt="Best Lawyers" onerror="this.src='https://placehold.co/320x80/1C352D/ffffff?text=Best+Lawyers'">
-                <img src="images/whoswho.png" alt="Who's Who Legal" onerror="this.src='https://placehold.co/320x80/1C352D/ffffff?text=Who%27s+Who+Legal'">
+        
+        <section id="case-studies" class="case-studies">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">Recent Work</span>
+                    <h2 class="animate-in">Featured case studies</h2>
+                </div>
+                
+                <div class="case-slider">
+                    <div class="case-slide active animate-in">
+                        <div class="case-image">
+                            <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Major acquisition case">
+                        </div>
+                        <div class="case-content">
+                            <div class="case-tag">Corporate</div>
+                            <h3>$2.5B Cross-Border Acquisition</h3>
+                            <p>We advised a leading technology company in its acquisition of a European software provider, navigating complex regulatory requirements across multiple jurisdictions.</p>
+                            <a href="#" class="btn-text">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="case-slide">
+                        <div class="case-image">
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Patent litigation case">
+                        </div>
+                        <div class="case-content">
+                            <div class="case-tag">Intellectual Property</div>
+                            <h3>Landmark Patent Litigation Victory</h3>
+                            <p>Successfully represented a pharmaceutical company in high-stakes patent litigation, protecting valuable intellectual property rights worth over $1 billion in market value.</p>
+                            <a href="#" class="btn-text">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-controls">
+                    <button class="case-prev" aria-label="Previous case"><i class="fas fa-arrow-left"></i></button>
+                    <div class="case-dots">
+                        <button class="case-dot active" aria-label="Case 1"></button>
+                        <button class="case-dot" aria-label="Case 2"></button>
+                    </div>
+                    <button class="case-next" aria-label="Next case"><i class="fas fa-arrow-right"></i></button>
+                </div>
             </div>
         </section>
-
-        <section class="partners-section">
-            <h2>PARTNERS</h2>
-            <div class="partners-logos slide-in">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/320px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/320px-Google_2015_logo.svg.png" alt="Google">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/320px-Amazon_logo.svg.png" alt="Amazon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/320px-IBM_logo.svg.png" alt="IBM">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/320px-Netflix_2015_logo.svg.png" alt="Netflix">
+        
+        <section id="news" class="news-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">Insights</span>
+                    <h2 class="animate-in">Latest news and publications</h2>
+                    <a href="#" class="view-all animate-in">View All Articles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="news-grid">
+                    <div class="news-card animate-in">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=300&q=80" alt="Legal conference">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">September 15, 2024</span>
+                                <span class="news-category">Events</span>
+                            </div>
+                            <h3>International Legal Forum on Financial Regulation</h3>
+                            <p>Our partners presented keynote speeches at the IX International Forum on Financial Regulation and Compliance.</p>
+                            <a href="#" class="btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card animate-in">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=300&q=80" alt="Legal publication">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">September 8, 2024</span>
+                                <span class="news-category">Publications</span>
+                            </div>
+                            <h3>Navigating the New Corporate Transparency Act</h3>
+                            <p>Our latest white paper explores the implications of the CTA and what businesses need to know to ensure compliance.</p>
+                            <a href="#" class="btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card animate-in">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&h=300&q=80" alt="Award ceremony">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">August 27, 2024</span>
+                                <span class="news-category">Recognition</span>
+                            </div>
+                            <h3>Prestige Law Named "Law Firm of the Year" in Litigation</h3>
+                            <p>Our firm has been recognized for excellence in litigation by the National Law Journal for the third consecutive year.</p>
+                            <a href="#" class="btn-text">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <div class="testimonials-header">
+                    <span class="section-tag animate-in">Testimonials</span>
+                    <h2 class="animate-in">What our clients say</h2>
+                </div>
+                
+                <div class="testimonials-slider">
+                    <div class="testimonial-slide active animate-in">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <blockquote>
+                                <p>Prestige Law provided exceptional guidance during our complex merger. Their strategic insight and attention to detail were invaluable in navigating regulatory hurdles and ensuring a smooth transaction.</p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" alt="Client portrait">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Robert Anderson</h4>
+                                    <p>CEO, Global Innovations Inc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <blockquote>
+                                <p>The intellectual property team at Prestige Law is second to none. Their deep knowledge of patent law and strategic approach to protecting our innovations has been critical to our company's growth and success.</p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" alt="Client portrait">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>CTO, MedTech Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonials-controls">
+                    <button class="testimonial-prev" aria-label="Previous testimonial"><i class="fas fa-arrow-left"></i></button>
+                    <div class="testimonial-dots">
+                        <button class="testimonial-dot active" aria-label="Testimonial 1"></button>
+                        <button class="testimonial-dot" aria-label="Testimonial 2"></button>
+                    </div>
+                    <button class="testimonial-next" aria-label="Next testimonial"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="recognitions" class="recognitions-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">Recognitions</span>
+                    <h2 class="animate-in">Awards and accreditations</h2>
+                </div>
+                
+                <div class="recognitions-marquee animate-in">
+                    <div class="marquee-content">
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Legal 500">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Chambers and Partners">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Best Lawyers">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="IFLR1000">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Global Law Experts">
+                        </div>
+                        <!-- Duplicate for continuous scrolling effect -->
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Legal 500">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Chambers and Partners">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Best Lawyers">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="IFLR1000">
+                        </div>
+                        <div class="recognition-item">
+                            <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=100&q=80" alt="Global Law Experts">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-flex">
+                    <div class="contact-info animate-in">
+                        <span class="section-tag">Contact Us</span>
+                        <h2>Let's discuss your legal needs</h2>
+                        <p>Get in touch with our team of experts to discuss how we can assist with your legal matters. We're committed to providing exceptional service and strategic solutions.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Visit Our Office</h4>
+                                    <p>One Prestige Plaza, 1200 Financial District<br>New York, NY 10001</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Call Us</h4>
+                                    <p>+1 (800) 123-4567<br>+1 (212) 555-6789</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email Us</h4>
+                                    <p>info@prestigelaw.com<br>inquiries@prestigelaw.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form animate-in">
+                        <form id="contactForm">
+                            <div class="form-header">
+                                <h3>Send Us a Message</h3>
+                                <p>Complete the form below and we'll get back to you shortly.</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="name">Full Name*</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address*</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="practice">Practice Area*</label>
+                                <select id="practice" name="practice" required>
+                                    <option value="" disabled selected>Select a practice area</option>
+                                    <option value="corporate">Corporate Law</option>
+                                    <option value="litigation">Litigation</option>
+                                    <option value="bankruptcy">Bankruptcy & Restructuring</option>
+                                    <option value="intellectual">Intellectual Property</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message*</label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-group form-checkbox">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <label for="privacy">I have read and agree to the <a href="#">Privacy Policy</a></label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">Submit Inquiry</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
+    
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Phone: (555) 123-4567</p>
-                <p>Email: info@lawfirm.com</p>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="#" class="logo-text">Prestige<span>Law</span></a>
+                    <p>Exceptional legal counsel for complex matters.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#hero">Home</a></li>
+                            <li><a href="#expertise">Expertise</a></li>
+                            <li><a href="#team">Our Team</a></li>
+                            <li><a href="#news">Insights</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-nav-column">
+                        <h4>Practice Areas</h4>
+                        <ul>
+                            <li><a href="#">Corporate Law</a></li>
+                            <li><a href="#">Litigation</a></li>
+                            <li><a href="#">Bankruptcy & Restructuring</a></li>
+                            <li><a href="#">Intellectual Property</a></li>
+                            <li><a href="#">View All Practices</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-nav-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Publications</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                            <li><a href="#">News & Events</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-subscribe">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <p>Stay informed about legal developments and firm news.</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Location</h3>
-                <p>123 Legal Street</p>
-                <p>City, State 12345</p>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Prestige Law Partners. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-meta-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Settings</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Law Firm. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="js/main.js" defer></script>
-    <script>
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            const body = document.body;
-            const html = document.documentElement;
-
-            if (menuButton && navLinks) {
-                menuButton.addEventListener('click', function() {
-                    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-                    menuButton.setAttribute('aria-expanded', !isExpanded);
-                    navLinks.classList.toggle('active');
-                    body.classList.toggle('menu-open');
-                    html.classList.toggle('no-scroll');
-                });
-
-                // Close menu when clicking on a link
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        menuButton.setAttribute('aria-expanded', 'false');
-                        body.classList.remove('menu-open');
-                        html.classList.remove('no-scroll');
-                    });
-                });
-
-                // Close menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    const isClickInside = navLinks.contains(e.target) || menuButton.contains(e.target);
-                    if (!isClickInside && navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        menuButton.setAttribute('aria-expanded', 'false');
-                        body.classList.remove('menu-open');
-                        html.classList.remove('no-scroll');
-                    }
-                });
-            }
-
-        });
-    </script>
+    
+    <script src="js/main.js"></script>
 </body>
 </html>
