@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Profile | Prestige Law Partners</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/expert-profile.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">Prestige<span>Law</span></a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="practice-area.html" class="nav-link">Expertise</a></li>
+                    <li><a href="index.html#team" class="nav-link active">Our Team</a></li>
+                    <li><a href="index.html#news" class="nav-link">Insights</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-right">
+                <div class="language-selector">
+                    <span class="current-language">EN</span>
+                    <div class="language-options">
+                        <a href="#" class="active">EN</a>
+                        <a href="#">FR</a>
+                        <a href="#">DE</a>
+                    </div>
+                </div>
+                
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="mobile-menu">
+        <div class="container">
+            <div class="mobile-menu-content">
+                <nav>
+                    <ul class="mobile-nav-links">
+                        <li class="fade-in-item"><a href="index.html">Home</a></li>
+                        <li class="fade-in-item"><a href="practice-area.html">Expertise</a></li>
+                        <li class="fade-in-item"><a href="index.html#team">Our Team</a></li>
+                        <li class="fade-in-item"><a href="index.html#news">Insights</a></li>
+                        <li class="fade-in-item"><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-contact fade-in-item">
+                    <h3>Get in touch</h3>
+                    <p>info@prestigelaw.com</p>
+                    <p>+1 (800) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <main>
+        <section class="expert-hero">
+            <div class="container">
+                <div class="back-link animate-in">
+                    <a href="team.html"><i class="fas fa-arrow-left"></i> GO BACK</a>
+                </div>
+                
+                <div class="expert-profile-header">
+                    <div class="expert-image animate-in">
+                        <img src="/placeholder.svg" alt="" id="expert-photo">
+                    </div>
+                    
+                    <div class="expert-intro animate-in">
+                        <h1 id="expert-name"></h1>
+                        <p id="expert-title"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="expert-details">
+            <div class="container">
+                <div class="expert-content-grid">
+                    <div class="expert-main-content">
+                        <div class="specialization-section animate-in">
+                            <h2 id="specialization-title">SPECIALIZATION: CRIMINAL LAW AND PROCESS, BUSINESS PROTECTION, WHITE COLLAR CRIME</h2>
+                            
+                            <div class="expert-bio" id="expert-bio">
+                                <!-- Bio paragraphs will be inserted here dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div class="memberships-section animate-in">
+                            <h2>MEMBERSHIP IN PROFESSIONAL ASSOCIATIONS</h2>
+                            
+                            <ul class="memberships-list" id="memberships-list">
+                                <!-- Memberships will be inserted here dynamically -->
+                            </ul>
+                        </div>
+                        
+                        <div class="certificates-section animate-in">
+                            <h2>PROFESSIONAL CERTIFICATES</h2>
+                            
+                            <ul class="certificates-list" id="certificates-list">
+                                <!-- Certificates will be inserted here dynamically -->
+                            </ul>
+                        </div>
+                        
+                        <div class="education-section animate-in">
+                            <h2>EDUCATION</h2>
+                            
+                            <ul class="education-list" id="education-list">
+                                <!-- Education will be inserted here dynamically -->
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="expert-sidebar">
+                        <div class="contact-info-box animate-in">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <p id="expert-phone"></p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <p id="expert-email"></p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fab fa-linkedin"></i>
+                                <p id="expert-linkedin"></p>
+                            </div>
+                            
+                            <div class="download-cv">
+                                <a href="#" id="expert-cv-link" class="btn btn-outline">DOWNLOAD CV <i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="languages-box animate-in">
+                            <h3>Languages</h3>
+                            <ul class="languages-list" id="languages-list">
+                                <!-- Languages will be inserted here dynamically -->
+                            </ul>
+                        </div>
+                        
+                        <div class="related-experts-box animate-in">
+                            <h3>Other Experts</h3>
+                            <div class="related-experts" id="related-experts">
+                                <!-- Related experts will be inserted here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="animate-in">Need legal assistance?</h2>
+                <p class="animate-in">Our team of experienced attorneys is ready to help you navigate complex legal challenges.</p>
+                <div class="cta-buttons animate-in">
+                    <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+                    <a href="practice-area.html" class="btn btn-secondary">Our Expertise</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo-text">Prestige<span>Law</span></a>
+                    <p>Exceptional legal counsel for complex matters.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="practice-area.html">Expertise</a></li>
+                            <li><a href="index.html#team">Our Team</a></li>
+                            <li><a href="index.html#news">Insights</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-nav-column">
+                        <h4>Practice Areas</h4>
+                        <ul>
+                            <li><a href="practice-area.html?practice=corporate">Corporate Law</a></li>
+                            <li><a href="practice-area.html?practice=litigation">Litigation</a></li>
+                            <li><a href="practice-area.html?practice=bankruptcy">Bankruptcy & Restructuring</a></li>
+                            <li><a href="practice-area.html?practice=ip">Intellectual Property</a></li>
+                            <li><a href="practice-area.html">View All Practices</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-nav-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Publications</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                            <li><a href="#">News & Events</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-subscribe">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <p>Stay informed about legal developments and firm news.</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Prestige Law Partners. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-meta-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Settings</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/expert-profile.js"></script>
+</body>
+</html>
