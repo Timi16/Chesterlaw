@@ -1,0 +1,345 @@
+/* Attorney Profile Page Styles */
+.profile-header {
+    background-color: #1a3a4a;
+    color: #fff;
+    padding: 60px 0;
+    position: relative;
+}
+
+.profile-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.profile-header .container {
+    position: relative;
+    z-index: 1;
+}
+
+.back-link {
+    margin-bottom: 30px;
+}
+
+.back-link a {
+    display: inline-flex;
+    align-items: center;
+    color: #c9a96e;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-link a i {
+    margin-right: 8px;
+}
+
+.back-link a:hover {
+    color: #fff;
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-header-info h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.profile-position {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #c9a96e;
+    margin-bottom: 20px;
+}
+
+.profile-details {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.profile-details .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+}
+
+.profile-bio h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a3a4a;
+    margin-bottom: 20px;
+}
+
+.profile-bio p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.profile-sidebar {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a3a4a;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.contact-icon i {
+    color: #c9a96e;
+    font-size: 16px;
+}
+
+.contact-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #333;
+}
+
+.languages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.languages-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a3a4a;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #c9a96e;
+    color: #fff;
+}
+
+.related-attorneys {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #1a3a4a;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.related-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.related-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.related-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a3a4a;
+    margin-bottom: 5px;
+}
+
+.related-position {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #c9a96e;
+    margin-bottom: 10px;
+}
+
+.related-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #1a3a4a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.related-link i {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.related-link:hover {
+    color: #c9a96e;
+}
+
+.related-link:hover i {
+    transform: translateX(3px);
+}
+
+.membership-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.membership-list li {
+    position: relative;
+    padding-left: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.membership-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #c9a96e;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .profile-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-details .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-header-info h1 {
+        font-size: 36px;
+    }
+    
+    .related-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .profile-header-info h1 {
+        font-size: 28px;
+    }
+    
+    .profile-position {
+        font-size: 16px;
+    }
+}
