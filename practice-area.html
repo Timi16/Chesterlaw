@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Areas | Prestige Law Partners</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/practice-area.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="noise-overlay"></div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">Prestige<span>Law</span></a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="practice-area.html" class="nav-link active">Expertise</a></li>
+                    <li><a href="index.html#team" class="nav-link">Our Team</a></li>
+                    <li><a href="index.html#news" class="nav-link">Insights</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-right">
+                <div class="language-selector">
+                    <span class="current-language">EN</span>
+                    <div class="language-options">
+                        <a href="#" class="active">EN</a>
+                        <a href="#">FR</a>
+                        <a href="#">DE</a>
+                    </div>
+                </div>
+                
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="container">
+            <div class="mobile-menu-content">
+                <nav>
+                    <ul class="mobile-nav-links">
+                        <li class="fade-in-item"><a href="index.html">Home</a></li>
+                        <li class="fade-in-item"><a href="practice-area.html">Expertise</a></li>
+                        <li class="fade-in-item"><a href="index.html#team">Our Team</a></li>
+                        <li class="fade-in-item"><a href="index.html#news">Insights</a></li>
+                        <li class="fade-in-item"><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-contact fade-in-item">
+                    <h3>Get in touch</h3>
+                    <p>info@prestigelaw.com</p>
+                    <p>+1 (800) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero section - dynamically updated based on selected practice area -->
+        <section class="practice-hero" id="practice-hero">
+            <div class="practice-hero-image">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80" alt="Practice Areas">
+            </div>
+            <div class="container">
+                <div class="practice-hero-content">
+                    <div class="breadcrumb animate-in">
+                        <a href="index.html">Home</a>
+                        <span>/</span>
+                        <a href="practice-area.html">Expertise</a>
+                        <span>/</span>
+                        <span id="practice-breadcrumb">Practice Areas</span>
+                    </div>
+                    <h1 class="animate-in" id="practice-title">Our Practice Areas</h1>
+                    <p class="animate-in" id="practice-description">Prestige Law Partners provides expert legal counsel across a range of practice areas, tailored to meet the complex needs of our clients. Explore our areas of expertise below.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Practice areas overview section - shown when no specific practice is selected -->
+        <section class="practice-overview-section" id="practice-overview">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">Expertise</span>
+                    <h2 class="animate-in">Comprehensive legal solutions</h2>
+                </div>
+                
+                <div class="practice-grid">
+                    <!-- Corporate Law -->
+                    <div class="practice-card animate-in" data-practice="corporate">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Corporate Law</h3>
+                        <p>Expert guidance on formation, governance, mergers, acquisitions, and compliance matters for businesses of all sizes.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="corporate">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Litigation -->
+                    <div class="practice-card animate-in" data-practice="litigation">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Litigation</h3>
+                        <p>Strategic representation in complex disputes, from pre-litigation counseling through trial and appeal.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="litigation">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Bankruptcy & Restructuring -->
+                    <div class="practice-card animate-in" data-practice="bankruptcy">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Bankruptcy & Restructuring</h3>
+                        <p>Comprehensive advice on financial restructuring, Chapter 11 proceedings, and distressed asset transactions.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="bankruptcy">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Intellectual Property -->
+                    <div class="practice-card animate-in" data-practice="ip">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Intellectual Property</h3>
+                        <p>Protection and enforcement of patents, trademarks, copyrights, and trade secrets in the digital age.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="ip">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Real Estate & Construction -->
+                    <div class="practice-card animate-in" data-practice="real-estate">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Real Estate & Construction</h3>
+                        <p>Advice on acquisitions, development, financing, leasing, and construction projects across all sectors.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="real-estate">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Tax Practice -->
+                    <div class="practice-card animate-in" data-practice="tax">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3>Tax Practice</h3>
+                        <p>Strategic tax planning, compliance, and controversy resolution for businesses and high-net-worth individuals.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="tax">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Family & Inheritance Law -->
+                    <div class="practice-card animate-in" data-practice="family">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Family & Inheritance Law</h3>
+                        <p>Sensitive guidance on estate planning, wealth transfer, and family legal matters with discretion.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="family">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Employment Law -->
+                    <div class="practice-card animate-in" data-practice="employment">
+                        <div class="practice-card-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Employment Law</h3>
+                        <p>Advisory and litigation services on employment issues, compliance, and workplace policies.</p>
+                        <a href="#" class="btn-text practice-link" data-practice="employment">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Detailed practice area content - shown when a specific practice is selected -->
+        <section class="practice-detail-section" id="practice-detail">
+            <div class="container">
+                <div class="practice-content-grid">
+                    <div class="practice-main-content" id="practice-main-content">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                    
+                    <div class="practice-sidebar">
+                        <h3>Practice Areas</h3>
+                        <div class="practice-nav" id="practice-nav">
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="corporate">Corporate Law</a>
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="litigation">Litigation</a>
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="bankruptcy">Bankruptcy & Restructuring</a>
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="ip">Intellectual Property</a>
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="real-estate">Real Estate & Construction</a>
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="tax">Tax Practice</a>
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="family">Family & Inheritance Law</a>
+                            <a href="#" class="practice-nav-link practice-sidebar-link" data-practice="employment">Employment Law</a>
+                        </div>
+                        
+                        <h3>Key Attorneys</h3>
+                        <div id="practice-attorneys">
+                            <!-- Dynamic attorneys will be loaded here -->
+                        </div>
+                        
+                        <div class="practice-contact-box">
+                            <h4>Need Assistance?</h4>
+                            <p>Contact our team for a confidential consultation about your legal needs.</p>
+                            <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Case study section - shown for specific practices -->
+        <section class="case-study-section" id="case-study-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">Case Study</span>
+                    <h2 class="animate-in">Successful outcomes</h2>
+                </div>
+                
+                <div id="case-study-content">
+                    <!-- Dynamic case study content will be loaded here -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ section - shown for specific practices -->
+        <section class="faq-section" id="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag animate-in">FAQ</span>
+                    <h2 class="animate-in">Frequently asked questions</h2>
+                </div>
+                
+                <div id="faq-content">
+                    <!-- Dynamic FAQ content will be loaded here -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="animate-in">Ready to work with expert legal counsel?</h2>
+                <p class="animate-in">Our team of experienced attorneys is ready to help you navigate complex legal challenges and achieve your objectives.</p>
+                <div class="cta-buttons animate-in">
+                    <a href="index.html#contact" class="btn btn-outline">Schedule a Consultation</a>
+                    <a href="index.html#team" class="btn btn-secondary">View Our Team</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo-text">Prestige<span>Law</span></a>
+                    <p>Exceptional legal counsel for complex matters.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="footer-nav-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="practice-area.html">Expertise</a></li>
+                            <li><a href="index.html#team">Our Team</a></li>
+                            <li><a href="index.html#news">Insights</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-nav-column">
+                        <h4>Practice Areas</h4>
+                        <ul>
+                            <li><a href="practice-area.html?practice=corporate">Corporate Law</a></li>
+                            <li><a href="practice-area.html?practice=litigation">Litigation</a></li>
+                            <li><a href="practice-area.html?practice=bankruptcy">Bankruptcy & Restructuring</a></li>
+                            <li><a href="practice-area.html?practice=ip">Intellectual Property</a></li>
+                            <li><a href="practice-area.html">View All Practices</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-nav-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Publications</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                            <li><a href="#">News & Events</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-subscribe">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <p>Stay informed about legal developments and firm news.</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Prestige Law Partners. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-meta-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Settings</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/practice-area.js"></script>
+</body>
+</html>

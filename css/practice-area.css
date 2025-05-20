@@ -1,0 +1,492 @@
+/* Practice Area Page Styles */
+
+/* Hero Section */
+.practice-hero {
+  height: 50vh;
+  min-height: 40rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.practice-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.practice-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.practice-hero-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(20, 61, 97, 0.85), rgba(20, 61, 97, 0.7));
+}
+
+.practice-hero-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--white);
+  max-width: 80rem;
+}
+
+.practice-hero-content h1 {
+  color: var(--white);
+  margin-bottom: var(--spacing-lg);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.breadcrumb a {
+  color: var(--accent-gold);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.breadcrumb span {
+  color: var(--white);
+  margin: 0 var(--spacing-sm);
+  font-size: 1.4rem;
+}
+
+/* Practice Overview Section */
+.practice-overview-section {
+  padding: var(--spacing-4xl) 0;
+  background-color: var(--white);
+}
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.practice-card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-medium);
+  border-bottom: 3px solid transparent;
+}
+
+.practice-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-bottom-color: var(--secondary);
+}
+
+.practice-card-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: var(--accent-cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.practice-card-icon i {
+  color: var(--secondary);
+  font-size: 2.4rem;
+}
+
+.practice-card h3 {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary);
+}
+
+.practice-card p {
+  color: var(--text-color);
+  margin-bottom: var(--spacing-lg);
+  min-height: 7.2rem;
+}
+
+/* Practice Detail Section */
+.practice-detail-section {
+  padding: var(--spacing-4xl) 0;
+  background-color: var(--light-gray);
+  display: none; /* Hidden by default, shown when a practice is selected */
+}
+
+.practice-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-3xl);
+}
+
+.practice-sidebar {
+  background-color: var(--accent-cream);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+}
+
+.practice-sidebar h3 {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary);
+}
+
+.practice-nav {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.practice-nav-link {
+  display: block;
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--medium-gray);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.practice-nav-link:hover,
+.practice-nav-link.active {
+  color: var(--secondary);
+  padding-left: var(--spacing-sm);
+}
+
+.practice-contact-box {
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.practice-contact-box h4 {
+  color: var(--white);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.practice-contact-box p {
+  color: var(--light-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.attorney-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-medium);
+}
+
+.attorney-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.attorney-image {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: var(--spacing-md);
+}
+
+.attorney-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.attorney-info h4 {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--primary);
+}
+
+.attorney-info p {
+  font-size: 1.4rem;
+  color: var(--secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.attorney-contact {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.attorney-contact a {
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  transition: var(--transition-fast);
+}
+
+.attorney-contact a:hover {
+  color: var(--primary);
+}
+
+.service-card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-medium);
+  border-left: 3px solid var(--secondary);
+}
+
+.service-card:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-card h3 {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary);
+}
+
+.service-card p {
+  margin-bottom: var(--spacing-lg);
+}
+
+.service-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.service-feature {
+  display: flex;
+  align-items: center;
+}
+
+.service-feature i {
+  color: var(--secondary);
+  margin-right: var(--spacing-sm);
+}
+
+/* Case Study Section */
+.case-study-section {
+  background-color: var(--accent-cream);
+  padding: var(--spacing-4xl) 0;
+  display: none; /* Hidden by default, shown when a practice is selected */
+}
+
+.case-study-card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: var(--spacing-2xl);
+}
+
+.case-study-content {
+  padding: var(--spacing-xl);
+}
+
+.case-study-tag {
+  display: inline-block;
+  background-color: var(--secondary);
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.case-study-content h3 {
+  font-size: 2.4rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.case-study-content p {
+  margin-bottom: var(--spacing-lg);
+}
+
+.case-study-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--medium-gray);
+}
+
+.case-stat {
+  text-align: center;
+}
+
+.case-stat-number {
+  font-family: var(--font-heading);
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.case-stat-label {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: var(--spacing-4xl) 0;
+  display: none; /* Hidden by default, shown when a practice is selected */
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--medium-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg) 0;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.faq-question h3 {
+  font-size: 2rem;
+  margin-bottom: 0;
+  transition: var(--transition-fast);
+}
+
+.faq-question i {
+  color: var(--secondary);
+  transition: var(--transition-fast);
+}
+
+.faq-question:hover h3 {
+  color: var(--secondary);
+}
+
+.faq-answer {
+  padding-bottom: var(--spacing-lg);
+  display: none;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+/* CTA Section */
+.cta-section {
+  background-color: var(--primary);
+  padding: var(--spacing-4xl) 0;
+  color: var(--white);
+  text-align: center;
+}
+
+.cta-section h2 {
+  color: var(--white);
+  margin-bottom: var(--spacing-lg);
+  font-size: 3.6rem;
+}
+
+.cta-section p {
+  color: var(--light-gray);
+  max-width: 70rem;
+  margin: 0 auto var(--spacing-2xl);
+  font-size: 1.8rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Page transitions */
+.page-transition {
+  animation: fadeIn 0.5s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .practice-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-features {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-grid {
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  }
+
+  .case-study-stats {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .practice-hero {
+    height: 40vh;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .practice-card p {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .practice-grid {
+    grid-template-columns: 1fr;
+  }
+}
