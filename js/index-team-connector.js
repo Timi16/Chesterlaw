@@ -1,52 +1,45 @@
 // This file connects the team section in index.html to the expert profile pages
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Find all team member cards in the index page
-  const teamCards = document.querySelectorAll(".team-card")
+  // Find the team section in the index page
+  const teamSection = document.querySelector("#team")
 
-  // Add click event listeners to each team card
-  teamCards.forEach((card) => {
-    card.addEventListener("click", function (e) {
-      e.preventDefault()
+  if (teamSection) {
+    // Find all team member elements
+    const teamMembers = teamSection.querySelectorAll(".team-member")
 
-      // Get the expert ID from the data attribute
-      const expertId = this.getAttribute("data-expert-id")
+    // Add click event listeners to each team member
+    teamMembers.forEach((member) => {
+      member.addEventListener("click", function (e) {
+        e.preventDefault()
 
-      if (expertId) {
-        // Create transition effect
-        createTransitionEffect(() => {
-          // Navigate to the expert profile page
+        // Get the expert ID from the data attribute
+        const expertId = this.getAttribute("data-expert-id")
+
+        if (expertId) {
+          // Navigate to the expert profile page with the expert ID
           window.location.href = `expert-profile.html?id=${expertId}`
-        })
-      }
+        }
+      })
     })
-  })
 
-  // Function to create a transition effect
-  function createTransitionEffect(callback) {
-    // Create overlay element
-    const overlay = document.createElement("div")
-    overlay.style.position = "fixed"
-    overlay.style.top = "0"
-    overlay.style.left = "0"
-    overlay.style.width = "100%"
-    overlay.style.height = "100%"
-    overlay.style.backgroundColor = "var(--primary)"
-    overlay.style.zIndex = "9999"
-    overlay.style.opacity = "0"
-    overlay.style.transition = "opacity 0.3s ease"
+    // Find the "View Full Team" button if it exists
+    const viewFullTeamBtn = teamSection.querySelector(".view-full-team")
 
-    // Add overlay to the body
-    document.body.appendChild(overlay)
+    if (viewFullTeamBtn) {
+      // Add click event listener to the "View Full Team" button
+      viewFullTeamBtn.addEventListener("click", (e) => {
+        e.preventDefault()
 
-    // Trigger transition
-    setTimeout(() => {
-      overlay.style.opacity = "1"
+        // Create an array of all expert IDs
+        const expertIds = ["viktor", "vitaliy", "olga", "pavlo", "maksym", "oleksandr"]
 
-      // Execute callback after transition completes
-      setTimeout(() => {
-        if (callback) callback()
-      }, 300)
-    }, 10)
+        // Randomly select an expert ID
+        const randomExpertId = expertIds[Math.floor(Math.random() * expertIds.length)]
+
+        // Navigate to the expert profile page with the random expert ID
+        window.location.href = `expert-profile.html?id=${randomExpertId}`
+      })
+    }
   }
 })

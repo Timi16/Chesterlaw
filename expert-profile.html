@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Profile | Prestige Law Partners</title>
+    <title>Expert Profile | Alarius Law</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/expert-profile.css">
     <link rel="stylesheet" href="css/animations.css">
@@ -21,33 +21,24 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html" class="logo-text">Prestige<span>Law</span></a>
+                <a href="index.html">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wx2AZoXql2E7HaZazIpyqODsox05mV.png" alt="Alarius Law" class="logo-img">
+                </a>
             </div>
             
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="practice-area.html" class="nav-link">Expertise</a></li>
-                    <li><a href="index.html#team" class="nav-link active">Our Team</a></li>
-                    <li><a href="index.html#news" class="nav-link">Insights</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#about">ABOUT US</a></li>
+                    <li><a href="index.html#expertise">EXPERTISE</a></li>
+                    <li><a href="index.html#team" class="active">TEAM</a></li>
+                    <li><a href="index.html#news">NEWS</a></li>
+                    <li><a href="index.html#pro-bono">PRO BONO</a></li>
+                    <li><a href="index.html#contacts">CONTACTS</a></li>
                 </ul>
             </nav>
             
-            <div class="nav-right">
-                <div class="language-selector">
-                    <span class="current-language">EN</span>
-                    <div class="language-options">
-                        <a href="#" class="active">EN</a>
-                        <a href="#">FR</a>
-                        <a href="#">DE</a>
-                    </div>
-                </div>
-                
-                <button class="menu-toggle" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                </button>
+            <div class="language-selector">
+                <a href="#" class="active">EN</a> / <a href="#">UA</a>
             </div>
         </div>
     </header>
@@ -80,112 +71,77 @@
     </div>
     
     <main>
-        <section class="expert-hero">
-            <div class="container">
-                <div class="back-link animate-in">
-                    <a href="team.html"><i class="fas fa-arrow-left"></i> GO BACK</a>
+        <div class="back-link">
+            <a href="index.html#team"><i class="fas fa-arrow-left"></i> GO BACK</a>
+        </div>
+        
+        <div class="expert-container">
+            <div class="expert-sidebar">
+                <div class="expert-image">
+                    <img src="/placeholder.svg" alt="" id="expert-photo">
                 </div>
                 
-                <div class="expert-profile-header">
-                    <div class="expert-image animate-in">
-                        <img src="/placeholder.svg" alt="" id="expert-photo">
+                <div class="expert-contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p id="expert-phone"></p>
                     </div>
                     
-                    <div class="expert-intro animate-in">
-                        <h1 id="expert-name"></h1>
-                        <p id="expert-title"></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="expert-details">
-            <div class="container">
-                <div class="expert-content-grid">
-                    <div class="expert-main-content">
-                        <div class="specialization-section animate-in">
-                            <h2 id="specialization-title">SPECIALIZATION: CRIMINAL LAW AND PROCESS, BUSINESS PROTECTION, WHITE COLLAR CRIME</h2>
-                            
-                            <div class="expert-bio" id="expert-bio">
-                                <!-- Bio paragraphs will be inserted here dynamically -->
-                            </div>
-                        </div>
-                        
-                        <div class="memberships-section animate-in">
-                            <h2>MEMBERSHIP IN PROFESSIONAL ASSOCIATIONS</h2>
-                            
-                            <ul class="memberships-list" id="memberships-list">
-                                <!-- Memberships will be inserted here dynamically -->
-                            </ul>
-                        </div>
-                        
-                        <div class="certificates-section animate-in">
-                            <h2>PROFESSIONAL CERTIFICATES</h2>
-                            
-                            <ul class="certificates-list" id="certificates-list">
-                                <!-- Certificates will be inserted here dynamically -->
-                            </ul>
-                        </div>
-                        
-                        <div class="education-section animate-in">
-                            <h2>EDUCATION</h2>
-                            
-                            <ul class="education-list" id="education-list">
-                                <!-- Education will be inserted here dynamically -->
-                            </ul>
-                        </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p id="expert-email"></p>
                     </div>
                     
-                    <div class="expert-sidebar">
-                        <div class="contact-info-box animate-in">
-                            <div class="contact-item">
-                                <i class="fas fa-phone"></i>
-                                <p id="expert-phone"></p>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <p id="expert-email"></p>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <i class="fab fa-linkedin"></i>
-                                <p id="expert-linkedin"></p>
-                            </div>
-                            
-                            <div class="download-cv">
-                                <a href="#" id="expert-cv-link" class="btn btn-outline">DOWNLOAD CV <i class="fas fa-download"></i></a>
-                            </div>
-                        </div>
-                        
-                        <div class="languages-box animate-in">
-                            <h3>Languages</h3>
-                            <ul class="languages-list" id="languages-list">
-                                <!-- Languages will be inserted here dynamically -->
-                            </ul>
-                        </div>
-                        
-                        <div class="related-experts-box animate-in">
-                            <h3>Other Experts</h3>
-                            <div class="related-experts" id="related-experts">
-                                <!-- Related experts will be inserted here dynamically -->
-                            </div>
-                        </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <p id="expert-linkedin"></p>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <section class="cta-section">
-            <div class="container">
-                <h2 class="animate-in">Need legal assistance?</h2>
-                <p class="animate-in">Our team of experienced attorneys is ready to help you navigate complex legal challenges.</p>
-                <div class="cta-buttons animate-in">
-                    <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
-                    <a href="practice-area.html" class="btn btn-secondary">Our Expertise</a>
+                
+                <div class="expert-languages">
+                    <h3>Languages</h3>
+                    <ul id="languages-list">
+                        <!-- Languages will be inserted here dynamically -->
+                    </ul>
                 </div>
             </div>
-        </section>
+            
+            <div class="expert-content">
+                <div class="expert-header">
+                    <h1 id="expert-name"></h1>
+                    <p id="expert-title"></p>
+                </div>
+                
+                <div class="expert-specialization">
+                    <h2 id="specialization-title"></h2>
+                </div>
+                
+                <div class="expert-bio" id="expert-bio">
+                    <!-- Bio paragraphs will be inserted here dynamically -->
+                </div>
+                
+                <div class="expert-memberships">
+                    <h2>MEMBERSHIP IN PROFESSIONAL ASSOCIATIONS</h2>
+                    <ul id="memberships-list">
+                        <!-- Memberships will be inserted here dynamically -->
+                    </ul>
+                </div>
+                
+                <div class="expert-certificates">
+                    <h2>PROFESSIONAL CERTIFICATES</h2>
+                    <ul id="certificates-list">
+                        <!-- Certificates will be inserted here dynamically -->
+                    </ul>
+                </div>
+                
+                <div class="expert-education">
+                    <h2>EDUCATION</h2>
+                    <ul id="education-list">
+                        <!-- Education will be inserted here dynamically -->
+                    </ul>
+                </div>
+            </div>
+        </div>
     </main>
     
     <footer>

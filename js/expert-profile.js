@@ -5,54 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fetch expert data
   fetchExpertData(expertId)
-
-  // Custom cursor
-  const cursor = document.querySelector(".cursor")
-  const cursorFollower = document.querySelector(".cursor-follower")
-
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px"
-    cursor.style.top = e.clientY + "px"
-
-    setTimeout(() => {
-      cursorFollower.style.left = e.clientX + "px"
-      cursorFollower.style.top = e.clientY + "px"
-    }, 100)
-  })
-
-  // Mobile menu toggle
-  const menuToggle = document.querySelector(".menu-toggle")
-  const mobileMenu = document.querySelector(".mobile-menu")
-
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active")
-      mobileMenu.classList.toggle("active")
-      document.body.classList.toggle("menu-open")
-    })
-  }
-
-  // Animate elements on scroll
-  const animateElements = document.querySelectorAll(".animate-in")
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1
-          entry.target.style.transform = "translateY(0)"
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    {
-      threshold: 0.1,
-    },
-  )
-
-  animateElements.forEach((element) => {
-    observer.observe(element)
-  })
 })
 
 // Function to fetch expert data
@@ -68,8 +20,7 @@ function fetchExpertData(expertId) {
       phone: "+38 50 22 33 44",
       email: "PAVLO@ALARIUS.COM",
       linkedin: "PAVLO.LINKEDIN",
-      cv: "#",
-      specialization: "CRIMINAL LAW AND PROCESS, BUSINESS PROTECTION, WHITE COLLAR CRIME",
+      specialization: "SPECIALIZATION: CRIMINAL LAW AND PROCESS, BUSINESS PROTECTION, WHITE COLLAR CRIME",
       bio: [
         "As a lawyer with many years of experience in the positions of investigator and prosecutor, Pavlo focuses on providing high-quality legal protection to clients in the field of criminal law. His goal is to be a reliable partner for those faced with legal challenges, ensuring justice and protecting their rights in difficult situations.",
         "Pavlo has extensive experience in criminal proceedings, in particular, related to corruption, official crimes, business protection and anti-raider activities. This allows him to better understand the nuances of affairs and effectively defend the interests of clients.",
@@ -93,29 +44,6 @@ function fetchExpertData(expertId) {
         { name: "Ukrainian", level: "Native" },
         { name: "English", level: "Advanced" },
       ],
-      relatedExperts: [
-        {
-          id: "viktor",
-          name: "Viktor Surnyk",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-        },
-        {
-          id: "vitaliy",
-          name: "Vitaliy Nestor",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-        {
-          id: "olga",
-          name: "Olga Golovacheva",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-      ],
     },
     viktor: {
       name: "VIKTOR SURNYK",
@@ -125,8 +53,7 @@ function fetchExpertData(expertId) {
       phone: "+38 50 11 22 33",
       email: "VIKTOR@ALARIUS.COM",
       linkedin: "VIKTOR.LINKEDIN",
-      cv: "#",
-      specialization: "CORPORATE LAW, MERGERS & ACQUISITIONS, BUSINESS RESTRUCTURING",
+      specialization: "SPECIALIZATION: CORPORATE LAW, MERGERS & ACQUISITIONS, BUSINESS RESTRUCTURING",
       bio: [
         "Viktor Surnyk is the Managing Partner at Alarius Law, with over 20 years of experience in corporate law and complex business transactions. He specializes in mergers and acquisitions, corporate restructuring, and high-stakes business negotiations.",
         "Throughout his distinguished career, Viktor has advised Fortune 500 companies, international corporations, and high-growth startups on their most significant transactions and strategic initiatives. His deep understanding of both legal complexities and business objectives allows him to deliver practical solutions that protect client interests while facilitating growth.",
@@ -151,29 +78,6 @@ function fetchExpertData(expertId) {
         { name: "Ukrainian", level: "Native" },
         { name: "French", level: "Fluent" },
       ],
-      relatedExperts: [
-        {
-          id: "pavlo",
-          name: "Pavlo Holovko",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-        {
-          id: "vitaliy",
-          name: "Vitaliy Nestor",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-        {
-          id: "olga",
-          name: "Olga Golovacheva",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-      ],
     },
     vitaliy: {
       name: "VITALIY NESTOR",
@@ -183,8 +87,7 @@ function fetchExpertData(expertId) {
       phone: "+38 50 33 44 55",
       email: "VITALIY@ALARIUS.COM",
       linkedin: "VITALIY.LINKEDIN",
-      cv: "#",
-      specialization: "INTELLECTUAL PROPERTY, TECHNOLOGY LAW, DATA PRIVACY",
+      specialization: "SPECIALIZATION: INTELLECTUAL PROPERTY, TECHNOLOGY LAW, DATA PRIVACY",
       bio: [
         "Vitaliy Nestor is a Managing Partner at Alarius Law specializing in intellectual property law, technology transactions, and data privacy. With over 15 years of experience, Vitaliy has established himself as a leading authority in helping clients protect and leverage their intellectual assets in the digital economy.",
         "Vitaliy represents a diverse portfolio of clients ranging from emerging technology startups to multinational corporations across various industries including software, biotechnology, entertainment, and consumer products. He provides comprehensive counsel on patent prosecution, trademark registration, copyright protection, and trade secret safeguarding.",
@@ -209,29 +112,6 @@ function fetchExpertData(expertId) {
         { name: "Ukrainian", level: "Native" },
         { name: "German", level: "Intermediate" },
       ],
-      relatedExperts: [
-        {
-          id: "pavlo",
-          name: "Pavlo Holovko",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-        {
-          id: "viktor",
-          name: "Viktor Surnyk",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-        },
-        {
-          id: "olga",
-          name: "Olga Golovacheva",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-      ],
     },
     olga: {
       name: "OLGA GOLOVACHEVA",
@@ -241,8 +121,7 @@ function fetchExpertData(expertId) {
       phone: "+38 50 44 55 66",
       email: "OLGA@ALARIUS.COM",
       linkedin: "OLGA.LINKEDIN",
-      cv: "#",
-      specialization: "FAMILY LAW, INHERITANCE, DISPUTE RESOLUTION",
+      specialization: "SPECIALIZATION: FAMILY LAW, INHERITANCE, DISPUTE RESOLUTION",
       bio: [
         "Olga Golovacheva is a Solicitor at Alarius Law with extensive experience in family law, inheritance matters, and dispute resolution. With over 12 years of practice, she has established herself as a trusted advisor to clients navigating complex personal and family legal challenges.",
         "Olga represents individuals in a wide range of family law matters, including divorce, child custody, property division, and domestic violence protection. Her compassionate approach combined with strategic advocacy helps clients achieve favorable outcomes during difficult life transitions.",
@@ -264,29 +143,6 @@ function fetchExpertData(expertId) {
         { name: "Russian", level: "Native" },
         { name: "English", level: "Fluent" },
       ],
-      relatedExperts: [
-        {
-          id: "pavlo",
-          name: "Pavlo Holovko",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-        {
-          id: "viktor",
-          name: "Viktor Surnyk",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-        },
-        {
-          id: "vitaliy",
-          name: "Vitaliy Nestor",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-      ],
     },
     maksym: {
       name: "MAKSYM PYROZHOK",
@@ -296,8 +152,7 @@ function fetchExpertData(expertId) {
       phone: "+38 50 55 66 77",
       email: "MAKSYM@ALARIUS.COM",
       linkedin: "MAKSYM.LINKEDIN",
-      cv: "#",
-      specialization: "CORPORATE LAW, COMMERCIAL CONTRACTS, REGULATORY COMPLIANCE",
+      specialization: "SPECIALIZATION: CORPORATE LAW, COMMERCIAL CONTRACTS, REGULATORY COMPLIANCE",
       bio: [
         "Maksym Pyrozhok is a Junior Lawyer at Alarius Law focusing on corporate law, commercial contracts, and regulatory compliance. Despite his junior status, Maksym has quickly established himself as a valuable team member with a keen analytical mind and strong work ethic.",
         "Maksym assists senior attorneys with corporate transactions, including mergers and acquisitions, corporate restructurings, and joint ventures. His attention to detail and thorough due diligence work have been instrumental in identifying potential issues and ensuring smooth transaction closings.",
@@ -312,40 +167,16 @@ function fetchExpertData(expertId) {
         { name: "English", level: "Advanced" },
         { name: "Polish", level: "Intermediate" },
       ],
-      relatedExperts: [
-        {
-          id: "viktor",
-          name: "Viktor Surnyk",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-        },
-        {
-          id: "vitaliy",
-          name: "Vitaliy Nestor",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-        {
-          id: "oleksandr",
-          name: "Oleksandr Martyniuk",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-      ],
     },
     oleksandr: {
       name: "OLEKSANDR MARTYNIUK",
       title: "Solicitor",
       photo:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
       phone: "+38 50 66 77 88",
       email: "OLEKSANDR@ALARIUS.COM",
       linkedin: "OLEKSANDR.LINKEDIN",
-      cv: "#",
-      specialization: "LITIGATION, DISPUTE RESOLUTION, INTERNATIONAL ARBITRATION",
+      specialization: "SPECIALIZATION: LITIGATION, DISPUTE RESOLUTION, INTERNATIONAL ARBITRATION",
       bio: [
         "Oleksandr Martyniuk is a Solicitor at Alarius Law specializing in litigation, dispute resolution, and international arbitration. With over 10 years of experience, he has established himself as a formidable advocate in complex commercial disputes.",
         "Oleksandr represents clients in high-stakes litigation across a wide range of industries, including financial services, energy, manufacturing, and technology. His strategic approach to litigation, combined with his persuasive advocacy skills, has resulted in numerous favorable outcomes for clients.",
@@ -370,29 +201,6 @@ function fetchExpertData(expertId) {
         { name: "English", level: "Fluent" },
         { name: "German", level: "Intermediate" },
       ],
-      relatedExperts: [
-        {
-          id: "pavlo",
-          name: "Pavlo Holovko",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-        {
-          id: "viktor",
-          name: "Viktor Surnyk",
-          title: "Managing Partner",
-          photo:
-            "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-        },
-        {
-          id: "olga",
-          name: "Olga Golovacheva",
-          title: "Solicitor",
-          photo:
-            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
-        },
-      ],
     },
   }
 
@@ -415,8 +223,7 @@ function fetchExpertData(expertId) {
   document.getElementById("expert-phone").textContent = expertData.phone
   document.getElementById("expert-email").textContent = expertData.email
   document.getElementById("expert-linkedin").textContent = expertData.linkedin
-  document.getElementById("expert-cv-link").href = expertData.cv
-  document.getElementById("specialization-title").textContent = `SPECIALIZATION: ${expertData.specialization}`
+  document.getElementById("specialization-title").textContent = expertData.specialization
 
   // Update bio
   const bioContainer = document.getElementById("expert-bio")
@@ -462,42 +269,4 @@ function fetchExpertData(expertId) {
     li.innerHTML = `<span class="language-name">${language.name}</span><span class="language-level">${language.level}</span>`
     languagesContainer.appendChild(li)
   })
-
-  // Update related experts
-  const relatedExpertsContainer = document.getElementById("related-experts")
-  relatedExpertsContainer.innerHTML = ""
-  expertData.relatedExperts.forEach((expert) => {
-    const expertElement = document.createElement("a")
-    expertElement.href = `expert-profile.html?id=${expert.id}`
-    expertElement.className = "related-expert"
-    expertElement.innerHTML = `
-      <div class="related-expert-image">
-        <img src="${expert.photo}" alt="${expert.name}">
-      </div>
-      <div class="related-expert-info">
-        <h4>${expert.name}</h4>
-        <p>${expert.title}</p>
-      </div>
-    `
-    relatedExpertsContainer.appendChild(expertElement)
-  })
 }
-
-// Add this code to connect with index.html team section
-document.addEventListener("DOMContentLoaded", () => {
-  // Check if we're on the index page
-  const teamSection = document.getElementById("team")
-  if (teamSection) {
-    // Find all team member cards and add click event listeners
-    const teamCards = document.querySelectorAll(".team-card")
-    teamCards.forEach((card) => {
-      card.addEventListener("click", function (e) {
-        e.preventDefault()
-        const expertId = this.getAttribute("data-expert-id")
-        if (expertId) {
-          window.location.href = `expert-profile.html?id=${expertId}`
-        }
-      })
-    })
-  }
-})
