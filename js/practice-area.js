@@ -1028,6 +1028,20 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     }, 100)
 
+    // Add text reveal animation to headings
+    const headings = document.querySelectorAll("h2, h3")
+    headings.forEach((heading) => {
+      const text = heading.textContent
+      const words = text.split(" ")
+
+      let newHTML = ""
+      words.forEach((word, index) => {
+        newHTML += `<span class="animate-text-reveal" style="animation-delay: ${0.1 * index}s"><span>${word}</span></span> `
+      })
+
+      heading.innerHTML = newHTML
+    })
+
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
@@ -1073,6 +1087,14 @@ document.addEventListener("DOMContentLoaded", () => {
     animateElements.forEach((element) => {
       observer.observe(element)
     })
+
+    // Add staggered animation to practice cards
+    const practiceCards = document.querySelectorAll(".practice-card")
+    practiceCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("animate-visible")
+      }, 100 * index)
+    })
   }
 
   // Add event listeners to practice links
@@ -1080,7 +1102,11 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       e.preventDefault()
       const practiceId = link.dataset.practice
-      showPracticeArea(practiceId)
+
+      // Create transition effect before navigation
+      createPageTransition(() => {
+        showPracticeArea(practiceId)
+      })
     })
   })
 
@@ -1089,9 +1115,46 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       e.preventDefault()
       const practiceId = link.dataset.practice
-      showPracticeArea(practiceId)
+
+      // Create transition effect before navigation
+      createPageTransition(() => {
+        showPracticeArea(practiceId)
+      })
     })
   })
+
+  // Create page transition effect
+  function createPageTransition(callback) {
+    // Create overlay for transition
+    const overlay = document.createElement("div")
+    overlay.className = "page-transition-overlay"
+    document.body.appendChild(overlay)
+
+    // Create animated elements inside overlay
+    for (let i = 0; i < 5; i++) {
+      const bar = document.createElement("div")
+      bar.className = "transition-bar"
+      overlay.appendChild(bar)
+    }
+
+    // Animate the overlay
+    setTimeout(() => {
+      overlay.classList.add("active")
+
+      // Execute callback after animation completes
+      setTimeout(() => {
+        if (callback) callback()
+
+        // Remove overlay after transition completes
+        setTimeout(() => {
+          overlay.classList.remove("active")
+          setTimeout(() => {
+            document.body.removeChild(overlay)
+          }, 800)
+        }, 200)
+      }, 800)
+    }, 50)
+  }
 
   // Check URL for practice area parameter
   function checkURLParams() {
@@ -1136,4 +1199,22 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.toggle("menu-open")
     })
   }
+
+  // Add color shift animation to practice cards on hover
+  const cards = document.querySelectorAll(".practice-card")
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      const icon = card.querySelector(".practice-card-icon i")
+      if (icon) {
+        icon.style.animation = "colorPulse 2s infinite"
+      }
+    })
+
+    card.addEventListener("mouseleave", () => {
+      const icon = card.querySelector(".practice-card-icon i")
+      if (icon) {
+        icon.style.animation = ""
+      }
+    })
+  })
 })
