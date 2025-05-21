@@ -325,6 +325,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Newsletter form validation
+    const newsletterForms = document.querySelectorAll('.newsletter-form, .subscribe-form');
+    
+    newsletterForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = form.querySelector('input[type="email"]');
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            if (emailInput.value.trim() === '') {
+                emailInput.classList.add('error');
+                return;
+            }
+            
+            // Simulate form submission
+            submitButton.disabled = true;
+            submitButton.textContent = 'Subscribing...';
+            
+            setTimeout(() => {
+                form.reset();
+                submitButton.disabled = false;
+                submitButton.textContent = 'Subscribe';
+                
+                // Show success message
+                alert('Thank you for subscribing to our newsletter!');
+            }, 1500);
+        });
+    });
+    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
