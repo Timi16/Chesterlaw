@@ -1,64 +1,74 @@
-// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Custom Cursor
+    // Page loader
+    const loader = document.querySelector('.loader');
+    
+    setTimeout(() => {
+        loader.style.opacity = '0';
+        document.body.classList.remove('no-scroll');
+        
+        setTimeout(() => {
+            loader.style.display = 'none';
+            
+            // Initialize animations after loader is gone
+            initAnimations();
+        }, 500);
+    }, 2000);
+    
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Custom cursor
     const cursor = document.querySelector('.cursor');
     const cursorFollower = document.querySelector('.cursor-follower');
     
-    document.addEventListener('mousemove', function(e) {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        setTimeout(function() {
-            cursorFollower.style.left = e.clientX + 'px';
-            cursorFollower.style.top = e.clientY + 'px';
-        }, 100);
-    });
-    
-    // Add hover effect to links and buttons
-    const links = document.querySelectorAll('a, button, .language-selector, .team-card');
-    
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(0.5)';
-            cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            cursorFollower.style.borderColor = 'var(--secondary)';
+    if (window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
         });
         
-        link.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursorFollower.style.borderColor = 'var(--primary)';
-        });
-    });
-    
-    // Header Scroll Effect
-    function handleHeaderScroll() {
-        const header = document.querySelector('header');
-        const scrollPosition = window.scrollY;
+        // Add active class to cursor when hovering over links and buttons
+        const links = document.querySelectorAll('a, button, .team-card, .news-card, .recognition-item');
         
-        if (scrollPosition > 50) {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-            header.style.height = '7rem';
-        } else {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-            header.style.height = '8rem';
-        }
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+                cursorFollower.classList.add('active');
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+                cursorFollower.classList.remove('active');
+            });
+        });
     }
     
-    window.addEventListener('scroll', handleHeaderScroll);
-    
-    // Mobile Menu Toggle
+    // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
     
-    menuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
         document.body.classList.toggle('no-scroll');
     });
     
     // Close mobile menu when clicking on a link
-    document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+    
+    mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
@@ -66,290 +76,216 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Hero Slider
-    function initHeroSlider() {
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.hero-dot');
-        const prevBtn = document.querySelector('.hero-prev');
-        const nextBtn = document.querySelector('.hero-next');
-        let currentSlide = 0;
-        let slideInterval;
+    // Hero slider
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroDots = document.querySelectorAll('.hero-dot');
+    const heroPrev = document.querySelector('.hero-prev');
+    const heroNext = document.querySelector('.hero-next');
+    let currentHeroSlide = 0;
+    let heroSlideInterval;
+    
+    function showHeroSlide(index) {
+        heroSlides.forEach(slide => slide.classList.remove('active'));
+        heroDots.forEach(dot => dot.classList.remove('active'));
         
-        function showSlide(index) {
-            // Hide all slides and remove active class from dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Show the current slide and add active class to corresponding dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            
-            // Add active class to hero content with delay
-            setTimeout(() => {
-                slides[index].querySelector('.hero-content').classList.add('active');
-            }, 100);
-        }
+        heroSlides[index].classList.add('active');
+        heroDots[index].classList.add('active');
+        currentHeroSlide = index;
         
-        function nextSlide() {
-            // Hide active class from current hero content
-            slides[currentSlide].querySelector('.hero-content').classList.remove('active');
-            
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        function prevSlide() {
-            // Hide active class from current hero content
-            slides[currentSlide].querySelector('.hero-content').classList.remove('active');
-            
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        // Initialize slider
-        showSlide(currentSlide);
-        
-        // Auto slide
-        function startSlideInterval() {
-            slideInterval = setInterval(nextSlide, 8000);
-        }
-        
-        function resetSlideInterval() {
-            clearInterval(slideInterval);
-            startSlideInterval();
-        }
-        
-        startSlideInterval();
-        
-        // Event listeners for controls
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                resetSlideInterval();
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                resetSlideInterval();
-            });
-        }
-        
-        // Event listeners for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                // Hide active class from current hero content
-                slides[currentSlide].querySelector('.hero-content').classList.remove('active');
-                
-                currentSlide = index;
-                showSlide(currentSlide);
-                resetSlideInterval();
-            });
-        });
+        // Reset auto-advance timer
+        clearInterval(heroSlideInterval);
+        startHeroSlideInterval();
     }
     
-    // Initialize hero slider if it exists
-    if (document.querySelector('.hero-slider')) {
-        initHeroSlider();
+    function startHeroSlideInterval() {
+        heroSlideInterval = setInterval(() => {
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            showHeroSlide(currentHeroSlide);
+        }, 8000);
     }
     
-    // Expertise Tabs
-    function initExpertiseTabs() {
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabPanes = document.querySelectorAll('.tab-pane');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
-                
-                // Remove active class from all buttons and panes
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabPanes.forEach(pane => pane.classList.remove('active'));
-                
-                // Add active class to current button and pane
-                button.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-    }
-    
-    // Initialize expertise tabs if they exist
-    if (document.querySelector('.expertise-tabs')) {
-        initExpertiseTabs();
-    }
-    
-    // Case Studies Slider
-    function initCaseSlider() {
-        const slides = document.querySelectorAll('.case-slide');
-        const dots = document.querySelectorAll('.case-dot');
-        const prevBtn = document.querySelector('.case-prev');
-        const nextBtn = document.querySelector('.case-next');
-        let currentSlide = 0;
-        
-        function showSlide(index) {
-            // Hide all slides and remove active class from dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Show the current slide and add active class to corresponding dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        // Initialize slider
-        showSlide(currentSlide);
-        
-        // Event listeners for controls
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-        }
-        
-        // Event listeners for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-    }
-    
-    // Initialize case slider if it exists
-    if (document.querySelector('.case-slider')) {
-        initCaseSlider();
-    }
-    
-    // Testimonials Slider
-    function initTestimonialsSlider() {
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const dots = document.querySelectorAll('.testimonial-dot');
-        const prevBtn = document.querySelector('.testimonial-prev');
-        const nextBtn = document.querySelector('.testimonial-next');
-        let currentSlide = 0;
-        
-        function showSlide(index) {
-            // Hide all slides and remove active class from dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Show the current slide and add active class to corresponding dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        // Initialize slider
-        showSlide(currentSlide);
-        
-        // Event listeners for controls
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-        }
-        
-        // Event listeners for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-    }
-    
-    // Initialize testimonials slider if it exists
-    if (document.querySelector('.testimonials-slider')) {
-        initTestimonialsSlider();
-    }
-    
-    // Animated Stats Counter
-    function initStatsCounter() {
-        const stats = document.querySelectorAll('.stat-number');
-        
-        // Check if element is in viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
-                rect.bottom >= 0
-            );
-        }
-        
-        // Animate counter
-        function animateCounter(counter, target) {
-            let current = 0;
-            const increment = target / 100;
-            const duration = 2000;
-            const interval = duration / (target / increment);
-            
-            const timer = setInterval(() => {
-                current += increment;
-                counter.textContent = Math.round(current);
-                
-                if (current >= target) {
-                    counter.textContent = target;
-                    clearInterval(timer);
-                }
-            }, interval);
-        }
-        
-        // Start counter animation when element is in viewport
-        function startCounters() {
-            stats.forEach(stat => {
-                if (isInViewport(stat) && !stat.classList.contains('counted')) {
-                    const target = parseInt(stat.getAttribute('data-count'));
-                    animateCounter(stat, target);
-                    stat.classList.add('counted');
-                }
-            });
-        }
-        
-        // Check on scroll
-        window.addEventListener('scroll', startCounters);
-        
-        // Check on load
-        startCounters();
-    }
-    
-    // Initialize stats counter if it exists
-    if (document.querySelector('.stats-grid')) {
-        initStatsCounter();
-    }
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70,
-                    behavior: 'smooth'
-                });
-            }
+    heroDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showHeroSlide(index);
         });
     });
+    
+    heroPrev.addEventListener('click', () => {
+        currentHeroSlide = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
+        showHeroSlide(currentHeroSlide);
+    });
+    
+    heroNext.addEventListener('click', () => {
+        currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+        showHeroSlide(currentHeroSlide);
+    });
+    
+    // Start auto-advance for hero slider
+    startHeroSlideInterval();
+    
+    // Expertise tabs
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.dataset.tab;
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            button.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    
+    // Case studies slider
+    const caseSlides = document.querySelectorAll('.case-slide');
+    const caseDots = document.querySelectorAll('.case-dot');
+    const casePrev = document.querySelector('.case-prev');
+    const caseNext = document.querySelector('.case-next');
+    let currentCaseSlide = 0;
+    
+    function showCaseSlide(index) {
+        caseSlides.forEach(slide => slide.classList.remove('active'));
+        caseDots.forEach(dot => dot.classList.remove('active'));
+        
+        caseSlides[index].classList.add('active');
+        caseDots[index].classList.add('active');
+        currentCaseSlide = index;
+    }
+    
+    caseDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showCaseSlide(index);
+        });
+    });
+    
+    casePrev.addEventListener('click', () => {
+        currentCaseSlide = (currentCaseSlide - 1 + caseSlides.length) % caseSlides.length;
+        showCaseSlide(currentCaseSlide);
+    });
+    
+    caseNext.addEventListener('click', () => {
+        currentCaseSlide = (currentCaseSlide + 1) % caseSlides.length;
+        showCaseSlide(currentCaseSlide);
+    });
+    
+    // Testimonials slider
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    const testimonialPrev = document.querySelector('.testimonial-prev');
+    const testimonialNext = document.querySelector('.testimonial-next');
+    let currentTestimonialSlide = 0;
+    
+    function showTestimonialSlide(index) {
+        testimonialSlides.forEach(slide => slide.classList.remove('active'));
+        testimonialDots.forEach(dot => dot.classList.remove('active'));
+        
+        testimonialSlides[index].classList.add('active');
+        testimonialDots[index].classList.add('active');
+        currentTestimonialSlide = index;
+    }
+    
+    testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showTestimonialSlide(index);
+        });
+    });
+    
+    testimonialPrev.addEventListener('click', () => {
+        currentTestimonialSlide = (currentTestimonialSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
+        showTestimonialSlide(currentTestimonialSlide);
+    });
+    
+    testimonialNext.addEventListener('click', () => {
+        currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
+        showTestimonialSlide(currentTestimonialSlide);
+    });
+    
+    // Stats counter animation
+    function animateStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 16ms per frame (approx 60fps)
+            let current = 0;
+            
+            const updateStat = () => {
+                current += step;
+                if (current < target) {
+                    stat.textContent = Math.floor(current);
+                    requestAnimationFrame(updateStat);
+                } else {
+                    stat.textContent = target;
+                }
+            };
+            
+            updateStat();
+        });
+    }
+    
+    // Initialize text animations
+    function initAnimations() {
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Split text into characters
+        if (typeof SplitType !== 'undefined') {
+            const splitTextElements = document.querySelectorAll('.split-text');
+            
+            splitTextElements.forEach(element => {
+                new SplitType(element, { types: 'chars' });
+            });
+            
+            // Animate split text on scroll
+            gsap.utils.toArray('.split-text').forEach(text => {
+                ScrollTrigger.create({
+                    trigger: text,
+                    start: 'top 80%',
+                    onEnter: () => text.classList.add('active'),
+                    once: true
+                });
+            });
+        }
+        
+        // Animate reveal text on scroll
+        gsap.utils.toArray('.reveal-text').forEach(text => {
+            ScrollTrigger.create({
+                trigger: text,
+                start: 'top 80%',
+                onEnter: () => text.classList.add('active'),
+                once: true
+            });
+        });
+        
+        // Animate elements on scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // If this is a stat number, start the animation
+                    if (entry.target.classList.contains('stat-item')) {
+                        animateStats();
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
     
     // Form validation
     const contactForm = document.getElementById('contactForm');
@@ -359,85 +295,54 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Simple validation
-            let isValid = true;
+            let valid = true;
             const requiredFields = contactForm.querySelectorAll('[required]');
             
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
-                    isValid = false;
+                    valid = false;
                     field.classList.add('error');
                 } else {
                     field.classList.remove('error');
                 }
             });
             
-            if (isValid) {
-                // Form submission success
-                alert('Thank you for your message. We will contact you shortly.');
-                contactForm.reset();
-            } else {
-                alert('Please fill in all required fields.');
+            if (valid) {
+                // Simulate form submission
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                
+                setTimeout(() => {
+                    contactForm.reset();
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Inquiry';
+                    
+                    // Show success message
+                    alert('Thank you for your inquiry. We will get back to you shortly.');
+                }, 2000);
             }
         });
     }
     
-    // Scroll animations with vanilla JS
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.animate-in');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementBottom = element.getBoundingClientRect().bottom;
-            const isVisible = elementTop < window.innerHeight - 100 && elementBottom > 0;
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            if (isVisible && !element.classList.contains('animated')) {
-                // Use vanilla JS to animate the element
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-                element.classList.add('animated');
-            }
-        });
-    }
-    
-    // Run animation on scroll
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Run animation on page load after a slight delay
-    setTimeout(animateOnScroll, 200);
-    
-    // Update active nav link based on scroll position
-    function updateActiveNavLink() {
-        const sections = document.querySelectorAll('section[id]');
-        let scrollPosition = window.scrollY + 100;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
             
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + sectionId) {
-                        link.classList.add('active');
-                    }
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
-        });
-    }
-    
-    window.addEventListener('scroll', updateActiveNavLink);
-    
-    // Add hover effect to team cards
-    const teamCards = document.querySelectorAll('.team-card');
-    
-    teamCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.classList.add('hover');
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.classList.remove('hover');
         });
     });
 });
