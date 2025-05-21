@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
           name: "Michael Thompson",
           title: "Senior Associate",
           image:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
         },
       ],
       caseStudy: {
@@ -647,7 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Family & Inheritance Law",
       description: "Sensitive guidance on estate planning, wealth transfer, and family legal matters with discretion.",
       heroImage:
-        "https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80",
+        'https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80",3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80',
       content: `
         <div class="section-header">
           <span class="section-tag animate-in">Family & Inheritance Law</span>
@@ -1174,368 +1174,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // Listen for popstate events (browser back/forward)
   window.addEventListener("popstate", checkURLParams)
 
-  // Custom cursor
-  const cursor = document.querySelector(".cursor")
-  const cursorFollower = document.querySelector(".cursor-follower")
+  // Initialize animations for elements that are already in view
+  function initAnimations() {
+    const animateElements = document.querySelectorAll(".animate-in")
 
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px"
-    cursor.style.top = e.clientY + "px"
-
-    setTimeout(() => {
-      cursorFollower.style.left = e.clientX + "px"
-      cursorFollower.style.top = e.clientY + "px"
-    }, 100)
-  })
-
-  // Fix mobile navigation - ensure it works from any page including expertise section
-  const mobileMenuToggle = document.querySelector(".menu-toggle")
-  const mobileMenu = document.querySelector(".mobile-menu")
-  const mobileNavLinks = document.querySelectorAll(".mobile-nav-links li a")
-
-  if (mobileMenuToggle && mobileMenu) {
-    // Improved toggle functionality
-    mobileMenuToggle.addEventListener("click", (e) => {
-      e.stopPropagation() // Prevent event bubbling
-      mobileMenuToggle.classList.toggle("active")
-      mobileMenu.classList.toggle("active")
-
-      if (mobileMenu.classList.contains("active")) {
-        document.body.style.overflow = "hidden" // Prevent scrolling when menu is open
-
-        // Add dramatic entrance animation for each menu item
-        document.querySelectorAll(".mobile-nav-links li").forEach((item, index) => {
-          item.style.animation = `slideInRight 0.5s forwards ${0.1 * index}s`
-          item.style.opacity = "0"
-          setTimeout(() => {
-            item.style.opacity = "1"
-          }, 100 * index)
-        })
-      } else {
-        document.body.style.overflow = "" // Restore scrolling when menu is closed
-      }
-
-      document.body.classList.toggle("menu-open")
-    })
-
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (mobileMenu.classList.contains("active") && !mobileMenu.contains(e.target) && e.target !== mobileMenuToggle) {
-        mobileMenuToggle.classList.remove("active")
-        mobileMenu.classList.remove("active")
-        document.body.classList.remove("menu-open")
-        document.body.style.overflow = ""
-      }
-    })
-
-    // Prevent clicks inside menu from closing it
-    mobileMenu.addEventListener("click", (e) => {
-      e.stopPropagation()
-    })
-  }
-
-  // Enhanced mobile navigation links with proper handling
-  mobileNavLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href")
-
-      // If it's an anchor link on the same page
-      if (href.startsWith("#")) {
-        e.preventDefault()
-
-        // Close the mobile menu
-        mobileMenuToggle.classList.remove("active")
-        mobileMenu.classList.remove("active")
-        document.body.classList.remove("menu-open")
-        document.body.style.overflow = ""
-
-        // Scroll to the section with animation
-        const targetSection = document.querySelector(href)
-        if (targetSection) {
-          createMiniTransition(() => {
-            targetSection.scrollIntoView({ behavior: "smooth" })
-          })
-        }
-      } else if (href.includes("#")) {
-        // Handle links like "index.html#contact"
-        e.preventDefault()
-
-        // Close the mobile menu
-        mobileMenuToggle.classList.remove("active")
-        mobileMenu.classList.remove("active")
-        document.body.classList.remove("menu-open")
-        document.body.style.overflow = ""
-
-        // Extract the base URL and the anchor
-        const [baseUrl, anchor] = href.split("#")
-
-        // If we're already on the correct page, just scroll
-        if (window.location.pathname.includes(baseUrl) || baseUrl === "") {
-          const targetSection = document.querySelector(`#${anchor}`)
-          if (targetSection) {
-            createMiniTransition(() => {
-              targetSection.scrollIntoView({ behavior: "smooth" })
-            })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-visible")
+            observer.unobserve(entry.target)
           }
-        } else {
-          // Navigate to the new page with the anchor
-          createSpectacularTransition(() => {
-            window.location.href = href
-          })
-        }
-      } else {
-        // Regular navigation to another page
-        e.preventDefault()
-
-        // Close the mobile menu
-        mobileMenuToggle.classList.remove("active")
-        mobileMenu.classList.remove("active")
-        document.body.classList.remove("menu-open")
-        document.body.style.overflow = ""
-
-        // Navigate with transition effect
-        createSpectacularTransition(() => {
-          window.location.href = href
         })
-      }
-    })
-  })
+      },
+      {
+        threshold: 0.1,
+      },
+    )
 
-  // Enhanced practice card animations
-  const practiceCards = document.querySelectorAll(".practice-card")
-  practiceCards.forEach((card) => {
-    card.addEventListener("mouseenter", () => {
-      // Create floating particles inside the card
-      for (let i = 0; i < 5; i++) {
-        const particle = document.createElement("div")
-        particle.className = "card-particle"
-        particle.style.left = `${Math.random() * 100}%`
-        particle.style.top = `${Math.random() * 100}%`
-        particle.style.animationDelay = `${Math.random() * 0.5}s`
-        card.appendChild(particle)
-
-        // Remove particles after animation completes
-        setTimeout(() => {
-          if (card.contains(particle)) {
-            card.removeChild(particle)
-          }
-        }, 3000)
-      }
-    })
-  })
-
-  // Create spectacular page transition effect with advanced animations
-  function createSpectacularTransition(callback) {
-    // Create overlay for transition
-    const overlay = document.createElement("div")
-    overlay.className = "spectacular-transition-overlay"
-    document.body.appendChild(overlay)
-
-    // Create animated elements inside overlay
-    for (let i = 0; i < 10; i++) {
-      const bar = document.createElement("div")
-      bar.className = "spectacular-transition-bar"
-      bar.style.top = `${i * 10}vh`
-      overlay.appendChild(bar)
-
-      // Add floating particles for extra visual impact
-      for (let j = 0; j < 5; j++) {
-        const particle = document.createElement("div")
-        particle.className = "transition-particle"
-        particle.style.left = `${Math.random() * 100}%`
-        particle.style.animationDelay = `${Math.random() * 0.5}s`
-        particle.style.animationDuration = `${0.5 + Math.random() * 1}s`
-        bar.appendChild(particle)
-      }
-    }
-
-    // Add 3D rotating law scales symbol
-    const symbol = document.createElement("div")
-    symbol.className = "law-symbol"
-    symbol.innerHTML = '<i class="fas fa-balance-scale"></i>'
-    overlay.appendChild(symbol)
-
-    // Animate the overlay with advanced timing
-    setTimeout(() => {
-      overlay.classList.add("active")
-      symbol.classList.add("active")
-
-      // Execute callback after animation completes
-      setTimeout(() => {
-        if (callback) callback()
-      }, 1200)
-    }, 50)
-  }
-
-  // Create mini transition for in-page navigation
-  function createMiniTransition(callback) {
-    const flash = document.createElement("div")
-    flash.className = "navigation-flash"
-    document.body.appendChild(flash)
-
-    setTimeout(() => {
-      flash.classList.add("active")
-      setTimeout(() => {
-        if (callback) callback()
-        setTimeout(() => {
-          document.body.removeChild(flash)
-        }, 500)
-      }, 300)
-    }, 10)
-  }
-
-  // Enhanced text reveal animations for headings
-  function enhanceTextAnimations() {
-    const headings = document.querySelectorAll("h1, h2, h3, .animate-text")
-
-    headings.forEach((heading) => {
-      const text = heading.textContent
-      const words = text.split(" ")
-
-      let newHTML = ""
-      words.forEach((word, index) => {
-        newHTML += `<span class="text-reveal-container"><span class="text-reveal" style="animation-delay: ${0.1 * index}s">${word}</span></span> `
-      })
-
-      heading.innerHTML = newHTML
+    animateElements.forEach((element) => {
+      observer.observe(element)
     })
   }
 
-  // Add magnetic effect to buttons
-  function addMagneticEffect() {
-    const buttons = document.querySelectorAll(".btn, .btn-text, .practice-card-icon")
-
-    buttons.forEach((button) => {
-      button.classList.add("magnetic-button")
-
-      button.addEventListener("mousemove", (e) => {
-        const rect = button.getBoundingClientRect()
-        const x = e.clientX - rect.left - rect.width / 2
-        const y = e.clientY - rect.top - rect.height / 2
-
-        const strength = 20 // Adjust the magnetic strength
-        button.style.transform = `translate(${x / strength}px, ${y / strength}px)`
-      })
-
-      button.addEventListener("mouseleave", () => {
-        button.style.transform = "translate(0, 0)"
-      })
-    })
-  }
-
-  // Enhanced cursor effects
-  function enhanceCursorEffects() {
-    const cursor = document.querySelector(".cursor")
-    const cursorFollower = document.querySelector(".cursor-follower")
-
-    if (!cursor || !cursorFollower) return
-
-    const links = document.querySelectorAll("a, .btn, .practice-card, .team-card")
-
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", () => {
-        if (link.classList.contains("btn") || link.classList.contains("btn-text")) {
-          document.body.classList.add("btn-hover")
-        } else {
-          document.body.classList.add("link-hover")
-        }
-      })
-
-      link.addEventListener("mouseleave", () => {
-        document.body.classList.remove("link-hover")
-        document.body.classList.remove("btn-hover")
-      })
-    })
-  }
-
-  // Add parallax effect to elements
-  function addParallaxEffect() {
-    const parallaxElements = document.querySelectorAll(".practice-card, .team-card, .case-study-card")
-
-    parallaxElements.forEach((element) => {
-      element.classList.add("parallax-element")
-    })
-
-    document.addEventListener("mousemove", (e) => {
-      const x = e.clientX / window.innerWidth - 0.5
-      const y = e.clientY / window.innerHeight - 0.5
-
-      parallaxElements.forEach((element) => {
-        const rect = element.getBoundingClientRect()
-        const elementX = rect.left + rect.width / 2
-        const elementY = rect.top + rect.height / 2
-
-        // Calculate distance from mouse to element center
-        const distX = (e.clientX - elementX) / window.innerWidth
-        const distY = (e.clientY - elementY) / window.innerHeight
-
-        // Only apply parallax if mouse is relatively close to the element
-        if (Math.abs(distX) < 0.3 && Math.abs(distY) < 0.3) {
-          const strength = 15 // Adjust the parallax strength
-          element.style.transform = `translate(${-distX * strength}px, ${-distY * strength}px)`
-        } else {
-          element.style.transform = "translate(0, 0)"
-        }
-      })
-    })
-  }
-
-  // Initialize enhanced animations
-  function initEnhancedAnimations() {
-    enhanceTextAnimations()
-    addMagneticEffect()
-    enhanceCursorEffects()
-    addParallaxEffect()
-
-    // Add CSS variables for RGB values to use in animations
-    const root = document.documentElement
-    const primaryColor = getComputedStyle(root).getPropertyValue("--primary").trim()
-    const secondaryColor = getComputedStyle(root).getPropertyValue("--secondary").trim()
-    const accentGoldColor = getComputedStyle(root).getPropertyValue("--accent-gold").trim()
-
-    // Convert hex to RGB
-    function hexToRgb(hex) {
-      const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
-      hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b)
-
-      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-      return result
-        ? `${Number.parseInt(result[1], 16)}, ${Number.parseInt(result[2], 16)}, ${Number.parseInt(result[3], 16)}`
-        : null
-    }
-
-    // Set RGB variables
-    if (primaryColor.startsWith("#")) {
-      root.style.setProperty("--primary-rgb", hexToRgb(primaryColor))
-    }
-
-    if (secondaryColor.startsWith("#")) {
-      root.style.setProperty("--secondary-rgb", hexToRgb(secondaryColor))
-    }
-
-    if (accentGoldColor.startsWith("#")) {
-      root.style.setProperty("--accent-gold-rgb", hexToRgb(accentGoldColor))
-    }
-  }
-
-  // Call enhanced animations after page load
-  window.addEventListener("load", initEnhancedAnimations)
-
-  // Add color shift animation to practice cards on hover
-  const cards = document.querySelectorAll(".practice-card")
-  cards.forEach((card) => {
-    card.addEventListener("mouseenter", () => {
-      const icon = card.querySelector(".practice-card-icon i")
-      if (icon) {
-        icon.style.animation = "colorPulse 2s infinite"
-      }
-    })
-
-    card.addEventListener("mouseleave", () => {
-      const icon = card.querySelector(".practice-card-icon i")
-      if (icon) {
-        icon.style.animation = ""
-      }
-    })
-  })
+  // Initialize animations on page load
+  initAnimations()
 })
