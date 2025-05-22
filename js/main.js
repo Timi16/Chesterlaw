@@ -76,53 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Hero slider
-    const heroSlides = document.querySelectorAll('.hero-slide');
-    const heroDots = document.querySelectorAll('.hero-dot');
-    const heroPrev = document.querySelector('.hero-prev');
-    const heroNext = document.querySelector('.hero-next');
-    let currentHeroSlide = 0;
-    let heroSlideInterval;
-    
-    function showHeroSlide(index) {
-        heroSlides.forEach(slide => slide.classList.remove('active'));
-        heroDots.forEach(dot => dot.classList.remove('active'));
-        
-        heroSlides[index].classList.add('active');
-        heroDots[index].classList.add('active');
-        currentHeroSlide = index;
-        
-        // Reset auto-advance timer
-        clearInterval(heroSlideInterval);
-        startHeroSlideInterval();
-    }
-    
-    function startHeroSlideInterval() {
-        heroSlideInterval = setInterval(() => {
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-            showHeroSlide(currentHeroSlide);
-        }, 8000);
-    }
-    
-    heroDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showHeroSlide(index);
-        });
-    });
-    
-    heroPrev.addEventListener('click', () => {
-        currentHeroSlide = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
-        showHeroSlide(currentHeroSlide);
-    });
-    
-    heroNext.addEventListener('click', () => {
-        currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-        showHeroSlide(currentHeroSlide);
-    });
-    
-    // Start auto-advance for hero slider
-    startHeroSlideInterval();
-    
     // Expertise tabs
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabPanes = document.querySelectorAll('.tab-pane');
