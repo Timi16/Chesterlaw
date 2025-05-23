@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Add active class to cursor when hovering over links and buttons
-        const links = document.querySelectorAll('a, button, .team-card, .news-card, .recognition-item');
+        const links = document.querySelectorAll('a, button, .team-card, .case-slide, .recognition-item');
         
         links.forEach(link => {
             link.addEventListener('mouseenter', () => {
@@ -92,12 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Case studies slider
+    // Case studies slider with AUTO-SLIDING
     const caseSlides = document.querySelectorAll('.case-slide');
     const caseDots = document.querySelectorAll('.case-dot');
     const casePrev = document.querySelector('.case-prev');
     const caseNext = document.querySelector('.case-next');
     let currentCaseSlide = 0;
+    let caseAutoSlideInterval;
     
     function showCaseSlide(index) {
         caseSlides.forEach(slide => slide.classList.remove('active'));
@@ -108,28 +109,57 @@ document.addEventListener('DOMContentLoaded', function() {
         currentCaseSlide = index;
     }
     
+    function nextCaseSlide() {
+        currentCaseSlide = (currentCaseSlide + 1) % caseSlides.length;
+        showCaseSlide(currentCaseSlide);
+    }
+    
+    function startCaseAutoSlide() {
+        caseAutoSlideInterval = setInterval(nextCaseSlide, 5000); // 5 seconds
+    }
+    
+    function stopCaseAutoSlide() {
+        clearInterval(caseAutoSlideInterval);
+    }
+    
+    // Start auto-sliding
+    startCaseAutoSlide();
+    
+    // Pause auto-sliding on hover
+    const caseSlider = document.querySelector('.case-slider');
+    if (caseSlider) {
+        caseSlider.addEventListener('mouseenter', stopCaseAutoSlide);
+        caseSlider.addEventListener('mouseleave', startCaseAutoSlide);
+    }
+    
     caseDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showCaseSlide(index);
+            stopCaseAutoSlide();
+            setTimeout(startCaseAutoSlide, 3000); // Restart after 3 seconds
         });
     });
     
     casePrev.addEventListener('click', () => {
         currentCaseSlide = (currentCaseSlide - 1 + caseSlides.length) % caseSlides.length;
         showCaseSlide(currentCaseSlide);
+        stopCaseAutoSlide();
+        setTimeout(startCaseAutoSlide, 3000);
     });
     
     caseNext.addEventListener('click', () => {
-        currentCaseSlide = (currentCaseSlide + 1) % caseSlides.length;
-        showCaseSlide(currentCaseSlide);
+        nextCaseSlide();
+        stopCaseAutoSlide();
+        setTimeout(startCaseAutoSlide, 3000);
     });
     
-    // Testimonials slider
+    // Testimonials slider with AUTO-SLIDING
     const testimonialSlides = document.querySelectorAll('.testimonial-slide');
     const testimonialDots = document.querySelectorAll('.testimonial-dot');
     const testimonialPrev = document.querySelector('.testimonial-prev');
     const testimonialNext = document.querySelector('.testimonial-next');
     let currentTestimonialSlide = 0;
+    let testimonialAutoSlideInterval;
     
     function showTestimonialSlide(index) {
         testimonialSlides.forEach(slide => slide.classList.remove('active'));
@@ -140,20 +170,48 @@ document.addEventListener('DOMContentLoaded', function() {
         currentTestimonialSlide = index;
     }
     
+    function nextTestimonialSlide() {
+        currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
+        showTestimonialSlide(currentTestimonialSlide);
+    }
+    
+    function startTestimonialAutoSlide() {
+        testimonialAutoSlideInterval = setInterval(nextTestimonialSlide, 6000); // 6 seconds
+    }
+    
+    function stopTestimonialAutoSlide() {
+        clearInterval(testimonialAutoSlideInterval);
+    }
+    
+    // Start auto-sliding
+    startTestimonialAutoSlide();
+    
+    // Pause auto-sliding on hover
+    const testimonialsSlider = document.querySelector('.testimonials-slider');
+    if (testimonialsSlider) {
+        testimonialsSlider.addEventListener('mouseenter', stopTestimonialAutoSlide);
+        testimonialsSlider.addEventListener('mouseleave', startTestimonialAutoSlide);
+    }
+    
     testimonialDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showTestimonialSlide(index);
+            stopTestimonialAutoSlide();
+            setTimeout(startTestimonialAutoSlide, 4000);
         });
     });
     
     testimonialPrev.addEventListener('click', () => {
         currentTestimonialSlide = (currentTestimonialSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
         showTestimonialSlide(currentTestimonialSlide);
+        stopTestimonialAutoSlide();
+        setTimeout(startTestimonialAutoSlide, 4000);
     });
     
     testimonialNext.addEventListener('click', () => {
-        currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
-        showTestimonialSlide(currentTestimonialSlide);
+        nextTestimonialSlide();
+        stopTestimonialAutoSlide();
+        setTimeout(startTestimonialAutoSlide, 4000);
     });
     
     // Stats counter animation
