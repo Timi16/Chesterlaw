@@ -647,7 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Family & Inheritance Law",
       description: "Sensitive guidance on estate planning, wealth transfer, and family legal matters with discretion.",
       heroImage:
-        'https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80",3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80',
+        "https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80",
       content: `
         <div class="section-header">
           <span class="section-tag animate-in">Family & Inheritance Law</span>
@@ -855,47 +855,47 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       ],
     },
-  }
+  };
 
   // DOM elements
-  const practiceOverview = document.getElementById("practice-overview")
-  const practiceDetail = document.getElementById("practice-detail")
-  const caseStudySection = document.getElementById("case-study-section")
-  const faqSection = document.getElementById("faq-section")
-  const practiceTitle = document.getElementById("practice-title")
-  const practiceBreadcrumb = document.getElementById("practice-breadcrumb")
-  const practiceDescription = document.getElementById("practice-description")
-  const practiceMainContent = document.getElementById("practice-main-content")
-  const practiceAttorneys = document.getElementById("practice-attorneys")
-  const caseStudyContent = document.getElementById("case-study-content")
-  const faqContent = document.getElementById("faq-content")
-  const practiceHeroImage = document.querySelector(".practice-hero-image img")
-  const practiceLinks = document.querySelectorAll(".practice-link")
-  const practiceSidebarLinks = document.querySelectorAll(".practice-sidebar-link")
+  const practiceOverview = document.getElementById("practice-overview");
+  const practiceDetail = document.getElementById("practice-detail");
+  const caseStudySection = document.getElementById("case-study-section");
+  const faqSection = document.getElementById("faq-section");
+  const practiceTitle = document.getElementById("practice-title");
+  const practiceBreadcrumb = document.getElementById("practice-breadcrumb");
+  const practiceDescription = document.getElementById("practice-description");
+  const practiceMainContent = document.getElementById("practice-main-content");
+  const practiceAttorneys = document.getElementById("practice-attorneys");
+  const caseStudyContent = document.getElementById("case-study-content");
+  const faqContent = document.getElementById("faq-content");
+  const practiceHeroImage = document.querySelector(".practice-hero-image img");
+  const practiceLinks = document.querySelectorAll(".practice-link");
+  const practiceSidebarLinks = document.querySelectorAll(".practice-sidebar-link");
 
   // Function to show practice area details
   function showPracticeArea(practiceId) {
     // Get practice area data
-    const practice = practiceAreas[practiceId]
-    if (!practice) return
+    const practice = practiceAreas[practiceId];
+    if (!practice) return;
 
     // Update URL with practice area
-    const url = new URL(window.location)
-    url.searchParams.set("practice", practiceId)
-    window.history.pushState({}, "", url)
+    const url = new URL(window.location);
+    url.searchParams.set("practice", practiceId);
+    window.history.pushState({practiceId}, "", url);
 
     // Update hero section
-    practiceTitle.textContent = practice.title
-    practiceBreadcrumb.textContent = practice.title
-    practiceDescription.textContent = practice.description
-    practiceHeroImage.src = practice.heroImage
-    practiceHeroImage.alt = practice.title
+    practiceTitle.textContent = practice.title;
+    practiceBreadcrumb.textContent = practice.title;
+    practiceDescription.textContent = practice.description;
+    practiceHeroImage.src = practice.heroImage;
+    practiceHeroImage.alt = practice.title;
 
     // Update main content
-    practiceMainContent.innerHTML = practice.content
+    practiceMainContent.innerHTML = practice.content;
 
     // Update attorneys
-    let attorneysHTML = ""
+    let attorneysHTML = "";
     practice.attorneys.forEach((attorney) => {
       attorneysHTML += `
         <div class="attorney-card">
@@ -906,14 +906,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <h4>${attorney.name}</h4>
             <p>${attorney.title}</p>
             <div class="attorney-contact">
-              <a href="#"><i class="fas fa-envelope"></i> Email</a>
-              <a href="#"><i class="fas fa-phone"></i> Call</a>
+              <a href="#" aria-label="Email ${attorney.name}"><i class="fas fa-envelope"></i> Email</a>
+              <a href="#" aria-label="Call ${attorney.name}"><i class="fas fa-phone"></i> Call</a>
             </div>
           </div>
         </div>
-      `
-    })
-    practiceAttorneys.innerHTML = attorneysHTML
+      `;
+    });
+    practiceAttorneys.innerHTML = attorneysHTML;
 
     // Update case study
     if (practice.caseStudy) {
@@ -933,21 +933,21 @@ document.addEventListener("DOMContentLoaded", () => {
                   <div class="case-stat-number">${stat.number}</div>
                   <div class="case-stat-label">${stat.label}</div>
                 </div>
-              `,
+              `
                 )
                 .join("")}
             </div>
           </div>
         </div>
-      `
-      caseStudySection.style.display = "block"
+      `;
+      caseStudySection.style.display = "block";
     } else {
-      caseStudySection.style.display = "none"
+      caseStudySection.style.display = "none";
     }
 
     // Update FAQs
     if (practice.faqs && practice.faqs.length > 0) {
-      let faqsHTML = ""
+      let faqsHTML = "";
       practice.faqs.forEach((faq, index) => {
         faqsHTML += `
           <div class="faq-item animate-in ${index === 0 ? "active" : ""}">
@@ -959,52 +959,64 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>${faq.answer}</p>
             </div>
           </div>
-        `
-      })
-      faqContent.innerHTML = faqsHTML
-      faqSection.style.display = "block"
+        `;
+      });
+      faqContent.innerHTML = faqsHTML;
+      faqSection.style.display = "block";
 
       // Add event listeners to FAQ items
-      const faqItems = document.querySelectorAll(".faq-item")
-      faqItems.forEach((item) => {
-        const question = item.querySelector(".faq-question")
-
-        question.addEventListener("click", () => {
-          const isActive = item.classList.contains("active")
-
-          // Close all items
-          faqItems.forEach((faqItem) => {
-            faqItem.classList.remove("active")
-          })
-
-          // If the clicked item wasn't active, open it
-          if (!isActive) {
-            item.classList.add("active")
-          }
-        })
-      })
+      setTimeout(() => {
+        const faqItems = document.querySelectorAll(".faq-item");
+        faqItems.forEach((item) => {
+          const question = item.querySelector(".faq-question");
+          
+          question.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+            
+            // Close all items
+            faqItems.forEach((faqItem) => {
+              faqItem.classList.remove("active");
+            });
+            
+            // If the clicked item wasn't active, open it
+            if (!isActive) {
+              item.classList.add("active");
+            }
+          });
+        });
+      }, 100);
     } else {
-      faqSection.style.display = "none"
+      faqSection.style.display = "none";
     }
 
     // Show practice detail section and hide overview
-    practiceOverview.style.display = "none"
-    practiceDetail.style.display = "block"
+    practiceOverview.style.display = "none";
+    practiceDetail.style.display = "block";
 
     // Update active state in sidebar
     practiceSidebarLinks.forEach((link) => {
-      link.classList.remove("active")
+      link.classList.remove("active");
       if (link.dataset.practice === practiceId) {
-        link.classList.add("active")
+        link.classList.add("active");
       }
-    })
+    });
 
     // Animate elements
-    const animateElements = document.querySelectorAll(".animate-in")
+    animateContentElements();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Function to animate content elements
+  function animateContentElements() {
+    const animateElements = document.querySelectorAll(".animate-in");
+    
+    // Reset animations
     animateElements.forEach((element) => {
-      element.style.opacity = 0
-      element.style.transform = "translateY(20px)"
-    })
+      element.style.opacity = 0;
+      element.style.transform = "translateY(20px)";
+    });
 
     // Use setTimeout to ensure the DOM has updated
     setTimeout(() => {
@@ -1012,191 +1024,260 @@ document.addEventListener("DOMContentLoaded", () => {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = 1
-              entry.target.style.transform = "translateY(0)"
-              observer.unobserve(entry.target)
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = "translateY(0)";
+              observer.unobserve(entry.target);
             }
-          })
+          });
         },
         {
           threshold: 0.1,
-        },
-      )
+        }
+      );
 
-      animateElements.forEach((element) => {
-        observer.observe(element)
-      })
-    }, 100)
+      animateElements.forEach((element, index) => {
+        // Add staggered delay for smoother animation
+        setTimeout(() => {
+          observer.observe(element);
+        }, index * 50);
+      });
+    }, 100);
 
     // Add text reveal animation to headings
-    const headings = document.querySelectorAll("h2, h3")
+    const headings = document.querySelectorAll("h2, h3");
     headings.forEach((heading) => {
-      const text = heading.textContent
-      const words = text.split(" ")
+      const text = heading.textContent;
+      const words = text.split(" ");
 
-      let newHTML = ""
+      let newHTML = "";
       words.forEach((word, index) => {
-        newHTML += `<span class="animate-text-reveal" style="animation-delay: ${0.1 * index}s"><span>${word}</span></span> `
-      })
+        newHTML += `<span class="animate-text-reveal" style="animation-delay: ${0.1 * index}s"><span>${word}</span></span> `;
+      });
 
-      heading.innerHTML = newHTML
-    })
-
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: "smooth" })
+      heading.innerHTML = newHTML;
+    });
   }
 
   // Function to show practice overview
   function showPracticeOverview() {
-    practiceOverview.style.display = "block"
-    practiceDetail.style.display = "none"
-    caseStudySection.style.display = "none"
-    faqSection.style.display = "none"
+    practiceOverview.style.display = "block";
+    practiceDetail.style.display = "none";
+    caseStudySection.style.display = "none";
+    faqSection.style.display = "none";
 
     // Update URL
-    const url = new URL(window.location)
-    url.searchParams.delete("practice")
-    window.history.pushState({}, "", url)
+    const url = new URL(window.location);
+    url.searchParams.delete("practice");
+    window.history.pushState({}, "", url);
 
     // Reset hero section
-    practiceTitle.textContent = "Our Practice Areas"
-    practiceBreadcrumb.textContent = "Practice Areas"
+    practiceTitle.textContent = "Our Practice Areas";
+    practiceBreadcrumb.textContent = "Practice Areas";
     practiceDescription.textContent =
-      "Prestige Law Partners provides expert legal counsel across a range of practice areas, tailored to meet the complex needs of our clients. Explore our areas of expertise below."
+      "Prestige Law Partners provides expert legal counsel across a range of practice areas, tailored to meet the complex needs of our clients. Explore our areas of expertise below.";
     practiceHeroImage.src =
-      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80"
-    practiceHeroImage.alt = "Practice Areas"
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80";
+    practiceHeroImage.alt = "Practice Areas";
+
+    // Reset active states
+    practiceSidebarLinks.forEach(link => {
+      link.classList.remove("active");
+    });
 
     // Animate elements
-    const animateElements = document.querySelectorAll(".animate-in")
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1
-            entry.target.style.transform = "translateY(0)"
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      {
-        threshold: 0.1,
-      },
-    )
+    const animateElements = document.querySelectorAll(".animate-in");
+    animateElements.forEach(element => {
+      element.style.opacity = 0;
+      element.style.transform = "translateY(20px)";
+    });
 
-    animateElements.forEach((element) => {
-      observer.observe(element)
-    })
+    setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = "translateY(0)";
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      animateElements.forEach((element) => {
+        observer.observe(element);
+      });
+    }, 100);
 
     // Add staggered animation to practice cards
-    const practiceCards = document.querySelectorAll(".practice-card")
+    const practiceCards = document.querySelectorAll(".practice-card");
     practiceCards.forEach((card, index) => {
       setTimeout(() => {
-        card.classList.add("animate-visible")
-      }, 100 * index)
-    })
+        card.classList.add("animate-visible");
+      }, 100 * index);
+    });
+  }
+
+  // Create page transition effect
+  function createPageTransition(callback) {
+    // Create overlay for transition
+    const overlay = document.createElement("div");
+    overlay.className = "page-transition-overlay";
+    document.body.appendChild(overlay);
+
+    // Create animated elements inside overlay
+    for (let i = 0; i < 5; i++) {
+      const bar = document.createElement("div");
+      bar.className = "transition-bar";
+      overlay.appendChild(bar);
+    }
+
+    // Animate the overlay
+    setTimeout(() => {
+      overlay.classList.add("active");
+
+      // Execute callback after animation completes
+      setTimeout(() => {
+        if (callback) callback();
+
+        // Remove overlay after transition completes
+        setTimeout(() => {
+          overlay.classList.remove("active");
+          setTimeout(() => {
+            document.body.removeChild(overlay);
+          }, 800);
+        }, 200);
+      }, 800);
+    }, 50);
   }
 
   // Add event listeners to practice links
   practiceLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      e.preventDefault()
-      const practiceId = link.dataset.practice
-
-      // Create transition effect before navigation
-      createPageTransition(() => {
-        showPracticeArea(practiceId)
-      })
-    })
-  })
+      e.preventDefault();
+      const practiceId = link.dataset.practice;
+      
+      if (practiceId) {
+        // Create transition effect before navigation
+        createPageTransition(() => {
+          showPracticeArea(practiceId);
+        });
+      }
+    });
+  });
 
   // Add event listeners to sidebar links
   practiceSidebarLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      e.preventDefault()
-      const practiceId = link.dataset.practice
+      e.preventDefault();
+      const practiceId = link.dataset.practice;
+      
+      if (practiceId) {
+        // Create transition effect before navigation
+        createPageTransition(() => {
+          showPracticeArea(practiceId);
+        });
+      }
+    });
+  });
 
-      // Create transition effect before navigation
-      createPageTransition(() => {
-        showPracticeArea(practiceId)
-      })
-    })
-  })
-
-  // Create page transition effect
-  function createPageTransition(callback) {
-    // Create overlay for transition
-    const overlay = document.createElement("div")
-    overlay.className = "page-transition-overlay"
-    document.body.appendChild(overlay)
-
-    // Create animated elements inside overlay
-    for (let i = 0; i < 5; i++) {
-      const bar = document.createElement("div")
-      bar.className = "transition-bar"
-      overlay.appendChild(bar)
-    }
-
-    // Animate the overlay
-    setTimeout(() => {
-      overlay.classList.add("active")
-
-      // Execute callback after animation completes
-      setTimeout(() => {
-        if (callback) callback()
-
-        // Remove overlay after transition completes
-        setTimeout(() => {
-          overlay.classList.remove("active")
-          setTimeout(() => {
-            document.body.removeChild(overlay)
-          }, 800)
-        }, 200)
-      }, 800)
-    }, 50)
-  }
+  // Add event listener to logo/home links to return to overview
+  document.querySelectorAll('.logo-text, a[href="practice-area.html"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Only intercept if we're already on the practice area page
+      if (window.location.pathname.includes('practice-area')) {
+        e.preventDefault();
+        createPageTransition(() => {
+          showPracticeOverview();
+        });
+      }
+    });
+  });
 
   // Check URL for practice area parameter
   function checkURLParams() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const practiceParam = urlParams.get("practice")
+    const urlParams = new URLSearchParams(window.location.search);
+    const practiceParam = urlParams.get("practice");
 
     if (practiceParam && practiceAreas[practiceParam]) {
-      showPracticeArea(practiceParam)
+      showPracticeArea(practiceParam);
     } else {
-      showPracticeOverview()
+      showPracticeOverview();
     }
   }
 
-  // Check URL on page load
-  checkURLParams()
+  // Handle browser back/forward navigation
+  window.addEventListener("popstate", (event) => {
+    if (event.state && event.state.practiceId) {
+      showPracticeArea(event.state.practiceId);
+    } else {
+      showPracticeOverview();
+    }
+  });
 
-  // Listen for popstate events (browser back/forward)
-  window.addEventListener("popstate", checkURLParams)
-
-  // Initialize animations for elements that are already in view
+  // Initialize animations
   function initAnimations() {
-    const animateElements = document.querySelectorAll(".animate-in")
+    const animateElements = document.querySelectorAll(".animate-in");
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-visible")
-            observer.unobserve(entry.target)
+            entry.target.classList.add("animate-visible");
+            observer.unobserve(entry.target);
           }
-        })
+        });
       },
       {
         threshold: 0.1,
-      },
-    )
+      }
+    );
 
     animateElements.forEach((element) => {
-      observer.observe(element)
-    })
+      observer.observe(element);
+    });
+
+    // Add particle effects to practice cards
+    const practiceCards = document.querySelectorAll('.practice-card');
+    practiceCards.forEach(card => {
+      card.addEventListener('mouseenter', createParticles);
+    });
   }
 
+  // Create particle effects
+  function createParticles(e) {
+    const card = e.currentTarget;
+    const cardRect = card.getBoundingClientRect();
+    
+    for (let i = 0; i < 5; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'card-particle';
+      
+      // Random position around the icon
+      const iconRect = card.querySelector('.practice-card-icon').getBoundingClientRect();
+      const x = iconRect.left - cardRect.left + iconRect.width/2 + (Math.random() - 0.5) * 30;
+      const y = iconRect.top - cardRect.top + iconRect.height/2 + (Math.random() - 0.5) * 30;
+      
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+      
+      card.appendChild(particle);
+      
+      // Remove particle after animation completes
+      setTimeout(() => {
+        if (particle.parentNode === card) {
+          card.removeChild(particle);
+        }
+      }, 3000);
+    }
+  }
+
+  // Check URL on page load
+  checkURLParams();
+
   // Initialize animations on page load
-  initAnimations()
-})
+  initAnimations();
+});

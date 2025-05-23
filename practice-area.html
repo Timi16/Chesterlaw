@@ -142,31 +142,28 @@
         <!-- Hero section - dynamically updated based on selected practice area -->
         <section class="practice-hero" id="practice-hero">
             <div class="practice-hero-image">
-                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80" alt="Practice Areas">
-            </div>
-            <div class="container">
-                <div class="practice-hero-content">
-                    <div class="breadcrumb animate-in">
-                        <a href="index.html">Home</a>
-                        <span>/</span>
-                        <a href="practice-area.html">Expertise</a>
-                        <span>/</span>
-                        <span id="practice-breadcrumb">Practice Areas</span>
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=14                    <nav aria-label="breadcrumb" class="breadcrumb">
+                        <ol>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="practice-areas.html" id="practice-breadcrumb">Practice Areas</a></li>
+                        </ol>
+                    </nav>
+                    <h1 id="practice-title">Our Practice Areas</h1>
+                    <p id="practice-description">Prestige Law Partners provides expert legal counsel across a range of practice areas, tailored to meet the complex needs of our clients. Explore our areas of expertise below.</p>
+                    <div class="hero-buttons">
+                        <a href="#practice-overview" class="btn btn-primary">Explore Our Services</a>
+                        <a href="contact.html" class="btn btn-outline">Schedule a Consultation</a>
                     </div>
-                    <h1 class="animate-in" id="practice-title">Our Practice Areas</h1>
-                    <p class="animate-in" id="practice-description">Prestige Law Partners provides expert legal counsel across a range of practice areas, tailored to meet the complex needs of our clients. Explore our areas of expertise below.</p>
                 </div>
             </div>
         </section>
         
         <!-- Practice areas overview section - shown when no specific practice is selected -->
-        <section class="practice-overview-section" id="practice-overview">
+        <section class="practice-overview-section active" id="practice-overview">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag animate-in">Expertise</span>
-                    <h2 class="animate-in">Comprehensive legal solutions</h2>
-                </div>
-                
+                    <span class="section-tag">Expertise</span>
+                    <h2>Comprehensive legal solutions</h2>
                 <div class="practice-grid">
                     <!-- Corporate Law -->
                     <div class="practice-card animate-in" data-practice="corporate">
@@ -394,8 +391,1203 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Practice Area Dynamic Content System
+            class PracticeAreaManager {
+                constructor() {
+                    this.currentPractice = null;
+                    this.practiceData = this.initializePracticeData();
+                    this.init();
+                }
 
+                init() {
+                    // Initialize event listeners
+                    this.bindEvents();
+                    
+                    // Check for URL parameters on page load
+                    this.checkURLParameters();
+                    
+                    // Initialize animations
+                    this.initializeAnimations();
+                }
+
+                bindEvents() {
+                    // Practice card links
+                    document.querySelectorAll('.practice-link').forEach(link => {
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const practice = e.currentTarget.getAttribute('data-practice');
+                            this.loadPracticeArea(practice);
+                        });
+                    });
+
+                    // Sidebar navigation links
+                    document.querySelectorAll('.practice-sidebar-link').forEach(link => {
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const practice = e.currentTarget.getAttribute('data-practice');
+                            this.loadPracticeArea(practice);
+                        });
+                    });
+
+                    // Back to overview functionality
+                    document.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('back-to-overview')) {
+                            e.preventDefault();
+                            this.showOverview();
+                        }
+                    });
+                }
+
+                checkURLParameters() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const practice = urlParams.get('practice');
+                    if (practice && this.practiceData[practice]) {
+                        this.loadPracticeArea(practice);
+                    }
+                }
+
+                loadPracticeArea(practiceKey) {
+                    const practice = this.practiceData[practiceKey];
+                    if (!practice) return;
+
+                    this.currentPractice = practiceKey;
+                    
+                    // Update URL without page reload
+                    const newUrl = `${window.location.pathname}?practice=${practiceKey}`;
+                    history.pushState({practice: practiceKey}, '', newUrl);
+
+                    // Hide overview section
+                    document.getElementById('practice-overview').classList.remove('active');
+                    
+                    // Update hero section
+                    this.updateHeroSection(practice);
+                    
+                    // Show and update detail section
+                    this.updateDetailSection(practice);
+                    
+                    // Update case studies
+                    this.updateCaseStudies(practice);
+                    
+                    // Update FAQ section
+                    this.updateFAQSection(practice);
+                    
+                    // Update sidebar
+                    this.updateSidebar(practiceKey);
+                    
+                    // Smooth scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Trigger animations
+                    this.triggerDetailAnimations();
+                }
+
+                updateHeroSection(practice) {
+                    const hero = document.getElementById('practice-hero');
+                    const title = document.getElementById('practice-title');
+                    const description = document.getElementById('practice-description');
+                    const breadcrumb = document.getElementById('practice-breadcrumb');
+                    const heroImage = hero.querySelector('.practice-hero-image img');
+
+                    // Update content
+                    title.textContent = practice.title;
+                    description.textContent = practice.heroDescription;
+                    breadcrumb.textContent = practice.title;
+                    heroImage.src = practice.heroImage;
+                    heroImage.alt = practice.title;
+
+                    // Add back button to hero
+                    const heroContent = hero.querySelector('.practice-hero-content');
+                    let backButton = heroContent.querySelector('.back-to-overview');
+                    if (!backButton) {
+                        backButton = document.createElement('a');
+                        backButton.href = '#';
+                        backButton.className = 'back-to-overview btn-text';
+                        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to All Practice Areas';
+                        heroContent.insertBefore(backButton, heroContent.querySelector('.hero-buttons'));
+                    }
+                }
+
+                updateDetailSection(practice) {
+                    const detailSection = document.getElementById('practice-detail');
+                    const mainContent = document.getElementById('practice-main-content');
+                    
+                    detailSection.style.display = 'block';
+                    
+                    mainContent.innerHTML = `
+                        <div class="practice-detail-content">
+                            <div class="practice-overview">
+                                <h2>Overview</h2>
+                                <p class="lead">${practice.overview}</p>
+                            </div>
+                            
+                            <div class="practice-services">
+                                <h3>Our Services</h3>
+                                <div class="services-grid">
+                                    ${practice.services.map(service => `
+                                        <div class="service-item animate-in">
+                                            <div class="service-icon">
+                                                <i class="${service.icon}"></i>
+                                            </div>
+                                            <h4>${service.title}</h4>
+                                            <p>${service.description}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <div class="practice-approach">
+                                <h3>Our Approach</h3>
+                                <p>${practice.approach}</p>
+                            </div>
+                            
+                            <div class="practice-experience">
+                                <h3>Experience & Results</h3>
+                                <div class="experience-highlights">
+                                    ${practice.highlights.map(highlight => `
+                                        <div class="highlight-item animate-in">
+                                            <div class="highlight-number">${highlight.number}</div>
+                                            <div class="highlight-text">${highlight.text}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Update attorneys section
+                    this.updateAttorneys(practice.attorneys);
+                }
+
+                updateAttorneys(attorneys) {
+                    const attorneysSection = document.getElementById('practice-attorneys');
+                    attorneysSection.innerHTML = attorneys.map(attorney => `
+                        <div class="attorney-card animate-in">
+                            <img src="${attorney.image}" alt="${attorney.name}">
+                            <div class="attorney-info">
+                                <h4>${attorney.name}</h4>
+                                <p>${attorney.title}</p>
+                                <a href="#" class="btn-text">View Profile</a>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                updateCaseStudies(practice) {
+                    const caseStudySection = document.getElementById('case-study-section');
+                    const caseStudyContent = document.getElementById('case-study-content');
+                    
+                    if (practice.caseStudy) {
+                        caseStudySection.style.display = 'block';
+                        caseStudyContent.innerHTML = `
+                            <div class="case-study-card animate-in">
+                                <div class="case-study-content">
+                                    <h3>${practice.caseStudy.title}</h3>
+                                    <p class="case-study-challenge"><strong>Challenge:</strong> ${practice.caseStudy.challenge}</p>
+                                    <p class="case-study-solution"><strong>Solution:</strong> ${practice.caseStudy.solution}</p>
+                                    <p class="case-study-result"><strong>Result:</strong> ${practice.caseStudy.result}</p>
+                                </div>
+                                <div class="case-study-image">
+                                    <img src="${practice.caseStudy.image}" alt="Case Study">
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        caseStudySection.style.display = 'none';
+                    }
+                }
+
+                updateFAQSection(practice) {
+                    const faqSection = document.getElementById('faq-section');
+                    const faqContent = document.getElementById('faq-content');
+                    
+                    if (practice.faqs && practice.faqs.length > 0) {
+                        faqSection.style.display = 'block';
+                        faqContent.innerHTML = `
+                            <div class="faq-accordion">
+                                ${practice.faqs.map((faq, index) => `
+                                    <div class="faq-item animate-in">
+                                        <div class="faq-question" data-faq="${index}">
+                                            <h4>${faq.question}</h4>
+                                            <i class="fas fa-plus"></i>
+                                        </div>
+                                        <div class="faq-answer">
+                                            <p>${faq.answer}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                        
+                        // Bind FAQ accordion events
+                        this.bindFAQEvents();
+                    } else {
+                        faqSection.style.display = 'none';
+                    }
+                }
+
+                bindFAQEvents() {
+                    document.querySelectorAll('.faq-question').forEach(question => {
+                        question.addEventListener('click', (e) => {
+                            const faqItem = e.currentTarget.parentElement;
+                            const answer = faqItem.querySelector('.faq-answer');
+                            const icon = e.currentTarget.querySelector('i');
+                            
+                            // Toggle active state
+                            faqItem.classList.toggle('active');
+                            
+                            // Toggle icon
+                            if (faqItem.classList.contains('active')) {
+                                icon.classList.replace('fa-plus', 'fa-minus');
+                                answer.style.maxHeight = answer.scrollHeight + 'px';
+                            } else {
+                                icon.classList.replace('fa-minus', 'fa-plus');
+                                answer.style.maxHeight = '0';
+                            }
+                        });
+                    });
+                }
+
+                updateSidebar(currentPractice) {
+                    document.querySelectorAll('.practice-nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-practice') === currentPractice) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+
+                showOverview() {
+                    // Update URL
+                    history.pushState({}, '', window.location.pathname);
+                    
+                    // Show overview section
+                    document.getElementById('practice-overview').classList.add('active');
+                    
+                    // Hide detail sections
+                    document.getElementById('practice-detail').style.display = 'none';
+                    document.getElementById('case-study-section').style.display = 'none';
+                    document.getElementById('faq-section').style.display = 'none';
+                    
+                    // Reset hero section
+                    this.resetHeroSection();
+                    
+                    // Smooth scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    this.currentPractice = null;
+                }
+
+                resetHeroSection() {
+                    const title = document.getElementById('practice-title');
+                    const description = document.getElementById('practice-description');
+                    const breadcrumb = document.getElementById('practice-breadcrumb');
+                    const heroImage = document.querySelector('.practice-hero-image img');
+                    const backButton = document.querySelector('.back-to-overview');
+                    
+                    title.textContent = 'Our Practice Areas';
+                    description.textContent = 'Prestige Law Partners provides expert legal counsel across a range of practice areas, tailored to meet the complex needs of our clients. Explore our areas of expertise below.';
+                    breadcrumb.textContent = 'Practice Areas';
+                    heroImage.src = 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80';
+                    
+                    if (backButton) {
+                        backButton.remove();
+                    }
+                }
+
+                triggerDetailAnimations() {
+                    // Reset and trigger animations for new content
+                    setTimeout(() => {
+                        document.querySelectorAll('.animate-in').forEach((element, index) => {
+                            element.style.animationDelay = `${index * 0.1}s`;
+                            element.classList.add('animated');
+                        });
+                    }, 100);
+                }
+
+                initializeAnimations() {
+                    // Initialize intersection observer for animations
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('animated');
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    document.querySelectorAll('.animate-in').forEach(el => {
+                        observer.observe(el);
+                    });
+                }
+
+                initializePracticeData() {
+                    return {
+                        corporate: {
+                            title: 'Corporate Law',
+                            heroDescription: 'Expert guidance on formation, governance, mergers, acquisitions, and compliance matters for businesses of all sizes.',
+                            heroImage: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Corporate Law practice provides comprehensive legal services to businesses ranging from startups to Fortune 500 companies. We guide clients through complex transactions, regulatory compliance, and strategic business decisions with precision and expertise.',
+                            services: [
+                                {
+                                    icon: 'fas fa-handshake',
+                                    title: 'Mergers & Acquisitions',
+                                    description: 'Strategic guidance through complex M&A transactions, due diligence, and deal structuring.'
+                                },
+                                {
+                                    icon: 'fas fa-clipboard-check',
+                                    title: 'Corporate Governance',
+                                    description: 'Board advisory services, compliance programs, and corporate restructuring.'
+                                },
+                                {
+                                    icon: 'fas fa-rocket',
+                                    title: 'Business Formation',
+                                    description: 'Entity selection, formation, and early-stage legal structuring for new ventures.'
+                                },
+                                {
+                                    icon: 'fas fa-balance-scale',
+                                    title: 'Regulatory Compliance',
+                                    description: 'Comprehensive compliance programs and regulatory risk management.'
+                                }
+                            ],
+                            approach: 'We take a business-first approach to corporate law, understanding that legal solutions must align with commercial objectives. Our team combines deep legal expertise with practical business acumen to deliver results that drive success.',
+                            highlights: [
+                                { number: '$2.5B+', text: 'In transaction value completed' },
+                                { number: '150+', text: 'Successful M&A deals' },
+                                { number: '25+', text: 'Years of combined experience' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Sarah Mitchell',
+                                    title: 'Partner, Corporate Law',
+                                    image: 'https://images.unsplash.com/photo-1494790108755-2616c07fa6d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'David Chen',
+                                    title: 'Senior Associate',
+                                    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            caseStudy: {
+                                title: 'Multi-Million Dollar Technology Acquisition',
+                                challenge: 'A Fortune 500 client needed to acquire a rapidly growing tech startup while navigating complex intellectual property issues and regulatory approvals.',
+                                solution: 'Our team structured a two-phase acquisition with milestone-based earnouts, implemented comprehensive IP due diligence, and secured regulatory clearances.',
+                                result: 'Successfully completed the $45M acquisition within 90 days, delivering significant value to both parties.',
+                                image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+                            },
+                            faqs: [
+                                {
+                                    question: 'How long does a typical M&A transaction take?',
+                                    answer: 'M&A timelines vary significantly based on deal complexity, but typically range from 3-9 months from initial negotiations to closing.'
+                                },
+                                {
+                                    question: 'What are the key considerations in corporate governance?',
+                                    answer: 'Key considerations include board composition, fiduciary duties, compliance programs, risk management, and stakeholder communication.'
+                                }
+                            ]
+                        },
+                        litigation: {
+                            title: 'Litigation',
+                            heroDescription: 'Strategic representation in complex disputes, from pre-litigation counseling through trial and appeal.',
+                            heroImage: 'https://images.unsplash.com/photo-1589994965851-a8f479c573a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Litigation practice handles high-stakes disputes across multiple jurisdictions and practice areas. We combine aggressive advocacy with strategic thinking to achieve favorable outcomes for our clients.',
+                            services: [
+                                {
+                                    icon: 'fas fa-gavel',
+                                    title: 'Commercial Litigation',
+                                    description: 'Complex business disputes, contract disputes, and commercial litigation matters.'
+                                },
+                                {
+                                    icon: 'fas fa-shield-alt',
+                                    title: 'White Collar Defense',
+                                    description: 'Criminal defense, regulatory investigations, and compliance matters.'
+                                },
+                                {
+                                    icon: 'fas fa-users',
+                                    title: 'Class Action Defense',
+                                    description: 'Defense of class action lawsuits and mass tort litigation.'
+                                },
+                                {
+                                    icon: 'fas fa-file-alt',
+                                    title: 'Appeals',
+                                    description: 'Appellate advocacy in state and federal courts.'
+                                }
+                            ],
+                            approach: 'We believe in early case assessment and strategic planning. Our litigation team works closely with clients to understand business objectives and develop cost-effective strategies that align with those goals.',
+                            highlights: [
+                                { number: '90%+', text: 'Success rate in trials' },
+                                { number: '$100M+', text: 'In damages avoided for clients' },
+                                { number: '200+', text: 'Cases successfully resolved' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Michael Rodriguez',
+                                    title: 'Partner, Litigation',
+                                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'Jennifer Walsh',
+                                    title: 'Senior Counsel',
+                                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            caseStudy: {
+                                title: 'Successful Defense of Trade Secret Misappropriation Claim',
+                                challenge: 'A technology company faced a $50M trade secret lawsuit from a former business partner claiming misappropriation of proprietary algorithms.',
+                                solution: 'We conducted extensive discovery, engaged technical experts, and demonstrated that our client had independently developed the disputed technology.',
+                                result: 'Achieved complete dismissal of all claims with prejudice, saving the client millions in potential damages.',
+                                image: 'https://images.unsplash.com/photo-1589994965851-a8f479c573a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+                            },
+                            faqs: [
+                                {
+                                    question: 'How do you determine litigation strategy?',
+                                    answer: 'We begin with comprehensive case assessment, including legal merits, potential exposure, and business objectives to develop a tailored strategy.'
+                                },
+                                {
+                                    question: 'What is your approach to settlement negotiations?',
+                                    answer: 'We pursue settlement when it serves our client\'s interests, but we\'re always prepared to take cases to trial when necessary.'
+                                }
+                            ]
+                        },
+                        bankruptcy: {
+                            title: 'Bankruptcy & Restructuring',
+                            heroDescription: 'Comprehensive advice on financial restructuring, Chapter 11 proceedings, and distressed asset transactions.',
+                            heroImage: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Bankruptcy & Restructuring practice helps companies navigate financial distress and emerge stronger. We represent debtors, creditors, and other stakeholders in complex restructuring matters.',
+                            services: [
+                                {
+                                    icon: 'fas fa-chart-line',
+                                    title: 'Chapter 11 Reorganization',
+                                    description: 'Comprehensive guidance through Chapter 11 bankruptcy proceedings and plan confirmation.'
+                                },
+                                {
+                                    icon: 'fas fa-handshake',
+                                    title: 'Out-of-Court Restructuring',
+                                    description: 'Workout negotiations and consensual restructuring arrangements.'
+                                },
+                                {
+                                    icon: 'fas fa-building',
+                                    title: 'Asset Sales',
+                                    description: 'Section 363 asset sales and going-concern transactions.'
+                                },
+                                {
+                                    icon: 'fas fa-users',
+                                    title: 'Creditor Representation',
+                                    description: 'Representation of secured and unsecured creditors in bankruptcy proceedings.'
+                                }
+                            ],
+                            approach: 'We focus on preserving enterprise value and maximizing recoveries for all stakeholders. Our team combines financial expertise with legal acumen to craft creative solutions.',
+                            highlights: [
+                                { number: '$5B+', text: 'In restructured debt' },
+                                { number: '75+', text: 'Successful restructurings' },
+                                { number: '95%+', text: 'Plan confirmation rate' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Robert Kim',
+                                    title: 'Partner, Restructuring',
+                                    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'Amanda Foster',
+                                    title: 'Senior Associate',
+                                    image: 'https://images.unsplash.com/photo-1494790108755-2616c07fa6d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            faqs: [
+                                {
+                                    question: 'When should a company consider Chapter 11?',
+                                    answer: 'Chapter 11 should be considered when a company has valuable assets but unsustainable debt, and needs court protection to restructure operations.'
+                                },
+                                {
+                                    question: 'What are the alternatives to bankruptcy?',
+                                    answer: 'Alternatives include out-of-court workouts, assignment for benefit of creditors, and consensual compositions with creditors.'
+                                }
+                            ]
+                        },
+                        ip: {
+                            title: 'Intellectual Property',
+                            heroDescription: 'Protection and enforcement of patents, trademarks, copyrights, and trade secrets in the digital age.',
+                            heroImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Intellectual Property practice helps clients protect, monetize, and enforce their most valuable intangible assets. We serve clients across technology, life sciences, entertainment, and other IP-intensive industries.',
+                            services: [
+                                {
+                                    icon: 'fas fa-lightbulb',
+                                    title: 'Patent Prosecution',
+                                    description: 'Patent application drafting, prosecution, and portfolio management.'
+                                },
+                                {
+                                    icon: 'fas fa-trademark',
+                                    title: 'Trademark & Branding',
+                                    description: 'Trademark registration, enforcement, and brand protection strategies.'
+                                },
+                                {
+                                    icon: 'fas fa-shield-alt',
+                                    title: 'IP Litigation',
+                                    description: 'Patent infringement, trademark disputes, and trade secret litigation.'
+                                },
+                                {
+                                    icon: 'fas fa-handshake',
+                                    title: 'Licensing',
+                                    description: 'Technology licensing, joint ventures, and IP commercialization.'
+                                }
+                            ],
+                            approach: 'We take a strategic approach to IP protection, aligning our services with our clients\' business objectives and competitive landscape.',
+                            highlights: [
+                                { number: '500+', text: 'Patents obtained' },
+                                { number: '$50M+', text: 'In licensing revenue generated' },
+                                { number: '85%+', text: 'Success rate in IP litigation' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Dr. Lisa Chang',
+                                    title: 'Partner, IP & Technology',
+                                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'Thomas Anderson',
+                                    title: 'Patent Attorney',
+                                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            faqs: [
+                                {
+                                    question: 'How long does patent prosecution take?',
+                                    answer: 'Patent prosecution typically takes 2-4 years from filing to grant, depending on the technology area and complexity.'
+                                },
+                                {
+                                    question: 'What is the difference between patents and trade secrets?',
+                                    answer: 'Patents provide public disclosure in exchange for limited monopoly rights, while trade secrets can be protected indefinitely if kept confidential.'
+                                }
+                            ]
+                        },
+                        'real-estate': {
+                            title: 'Real Estate & Construction',
+                            heroDescription: 'Advice on acquisitions, development, financing, leasing, and construction projects across all sectors.',
+                            heroImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Real Estate & Construction practice serves developers, investors, lenders, and other participants in the real estate industry with comprehensive legal services.',
+                            services: [
+                                {
+                                    icon: 'fas fa-home',
+                                    title: 'Real Estate Transactions',
+                                    description: 'Acquisitions, dispositions, and commercial real estate transactions.'
+                                },
+                                {
+                                    icon: 'fas fa-hammer',
+                                    title: 'Construction Law',
+                                    description: 'Construction contracts, disputes, and project management legal services.'
+                                },
+                                {
+                                    icon: 'fas fa-dollar-sign',
+                                    title: 'Real Estate Finance',
+                                    description: 'Commercial lending, CMBS transactions, and structured finance.'
+                                },
+                                {
+                                    icon: 'fas fa-file-contract',
+                                    title: 'Leasing',
+                                    description: 'Commercial leasing, tenant representation, and landlord services.'
+                                }
+                            ],
+                            approach: 'We provide practical, business-oriented advice that helps clients navigate complex real estate transactions and achieve their development goals.',
+                            highlights: [
+                                { number: '$1B+', text: 'In real estate transactions' },
+                                { number: '250+', text: 'Properties transacted' },
+                                { number: '30+', text: 'Major developments completed' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Patricia Williams',
+                                    title: 'Partner, Real Estate',
+                                    image: 'https://images.unsplash.com/photo-1494790108755-2616c07fa6d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'James Martinez',
+                                    title: 'Construction Attorney',
+                                    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            faqs: [
+                                {
+                                    question: 'What are the key issues in construction contracts?',
+                                    answer: 'Key issues include scope definition, payment terms, change orders, delay provisions, and risk allocation between parties.'
+                                },
+                                {
+                                    question: 'How do you handle real estate due diligence?',
+                                    answer: 'We conduct comprehensive due diligence including title review, survey analysis, environmental assessment, and zoning compliance.'
+                                }
+                            ]
+                        },
+                        tax: {
+                            title: 'Tax Practice',
+                            heroDescription: 'Strategic tax planning, compliance, and controversy resolution for businesses and high-net-worth individuals.',
+                            heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Tax Practice provides comprehensive tax planning and compliance services, helping clients minimize tax liability while achieving business and personal objectives.',
+                            services: [
+                                {
+                                    icon: 'fas fa-calculator',
+                                    title: 'Tax Planning',
+                                    description: 'Strategic tax planning for businesses and high-net-worth individuals.'
+                                },
+                                {
+                                    icon: 'fas fa-file-invoice-dollar',
+                                    title: 'Tax Compliance',
+                                    description: 'Preparation and filing of complex tax returns and compliance matters.'
+                                },
+                                {
+                                    icon: 'fas fa-balance-scale',
+                                    title: 'Tax Controversy',
+                                    description: 'IRS audits, appeals, and tax litigation representation.'
+                                },
+                                {
+                                    icon: 'fas fa-globe',
+                                    title: 'International Tax',
+                                    description: 'Cross-border transactions and international tax planning.'
+                                }
+                            ],
+                            approach: 'We provide proactive tax advice that anticipates changing regulations and helps clients structure transactions tax-efficiently.',
+                            highlights: [
+                                { number: '$500M+', text: 'In tax savings achieved' },
+                                { number: '98%+', text: 'Success rate in controversies' },
+                                { number: '15+', text: 'Years average experience' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Richard Thompson',
+                                    title: 'Partner, Tax',
+                                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'Maria Gonzalez',
+                                    title: 'Tax Attorney',
+                                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            faqs: [
+                                {
+                                    question: 'What tax planning strategies do you recommend?',
+                                    answer: 'We recommend strategies tailored to each client\'s situation, including entity structuring, timing of income and deductions, and succession planning.'
+                                },
+                                {
+                                    question: 'How do you handle IRS audits?',
+                                    answer: 'We provide comprehensive audit defense, from initial response through appeals, with a focus on achieving favorable resolutions efficiently.'
+                                }
+                            ]
+                        },
+                        family: {
+                            title: 'Family & Inheritance Law',
+                            heroDescription: 'Sensitive guidance on estate planning, wealth transfer, and family legal matters with discretion.',
+                            heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Family & Inheritance Law practice provides sophisticated legal services for high-net-worth families, focusing on wealth preservation, estate planning, and family governance.',
+                            services: [
+                                {
+                                    icon: 'fas fa-users',
+                                    title: 'Estate Planning',
+                                    description: 'Comprehensive estate planning, wills, trusts, and succession planning.'
+                                },
+                                {
+                                    icon: 'fas fa-heart',
+                                    title: 'Family Law',
+                                    description: 'Matrimonial matters, prenuptial agreements, and family disputes.'
+                                },
+                                {
+                                    icon: 'fas fa-landmark',
+                                    title: 'Probate & Administration',
+                                    description: 'Estate administration, probate proceedings, and trust administration.'
+                                },
+                                {
+                                    icon: 'fas fa-globe',
+                                    title: 'International Families',
+                                    description: 'Cross-border estate planning and international family structures.'
+                                }
+                            ],
+                            approach: 'We provide discreet, personalized service that respects family dynamics while achieving optimal legal and tax outcomes.',
+                            highlights: [
+                                { number: '$2B+', text: 'In assets under planning' },
+                                { number: '150+', text: 'Families served' },
+                                { number: '25+', text: 'Years of combined experience' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Elizabeth Harper',
+                                    title: 'Partner, Family Law',
+                                    image: 'https://images.unsplash.com/photo-1494790108755-2616c07fa6d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'Jonathan Blake',
+                                    title: 'Estate Planning Attorney',
+                                    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            faqs: [
+                                {
+                                    question: 'When should I update my estate plan?',
+                                    answer: 'Estate plans should be reviewed every 3-5 years or after major life events like marriage, divorce, births, or significant asset changes.'
+                                },
+                                {
+                                    question: 'What are the benefits of a family trust?',
+                                    answer: 'Family trusts can provide tax benefits, asset protection, privacy, and flexibility in wealth transfer while maintaining family control.'
+                                }
+                            ]
+                        },
+                        employment: {
+                            title: 'Employment Law',
+                            heroDescription: 'Advisory and litigation services on employment issues, compliance, and workplace policies.',
+                            heroImage: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80',
+                            overview: 'Our Employment Law practice helps employers navigate the complex landscape of workplace regulations while protecting their business interests and maintaining positive employee relations.',
+                            services: [
+                                {
+                                    icon: 'fas fa-briefcase',
+                                    title: 'Employment Compliance',
+                                    description: 'Wage and hour compliance, workplace policies, and regulatory compliance.'
+                                },
+                                {
+                                    icon: 'fas fa-users',
+                                    title: 'Employee Relations',
+                                    description: 'Hiring, termination, performance management, and disciplinary actions.'
+                                },
+                                {
+                                    icon: 'fas fa-shield-alt',
+                                    title: 'Workplace Investigations',
+                                    description: 'Internal investigations, harassment claims, and discrimination matters.'
+                                },
+                                {
+                                    icon: 'fas fa-gavel',
+                                    title: 'Employment Litigation',
+                                    description: 'Defense of employment claims, class actions, and workplace disputes.'
+                                }
+                            ],
+                            approach: 'We focus on preventing employment issues through proactive counseling and training, while providing aggressive defense when litigation arises.',
+                            highlights: [
+                                { number: '300+', text: 'Employment matters handled' },
+                                { number: '90%+', text: 'Success rate in litigation' },
+                                { number: '50+', text: 'Companies counseled' }
+                            ],
+                            attorneys: [
+                                {
+                                    name: 'Catherine Moore',
+                                    title: 'Partner, Employment Law',
+                                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                },
+                                {
+                                    name: 'Steven Davis',
+                                    title: 'Employment Attorney',
+                                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'
+                                }
+                            ],
+                            faqs: [
+                                {
+                                    question: 'What are the most common employment law risks?',
+                                    answer: 'Common risks include wage and hour violations, discrimination claims, harassment allegations, and wrongful termination lawsuits.'
+                                },
+                                {
+                                    question: 'How often should we update our employee handbook?',
+                                    answer: 'Employee handbooks should be reviewed annually and updated whenever there are changes in applicable laws or company policies.'
+                                }
+                            ]
+                        }
+                    };
+                }
+            }
+
+            // Additional CSS animations and styles for dynamic content
+            const additionalStyles = `
+                <style>
+                    .practice-detail-section {
+                        display: none;
+                        padding: 80px 0;
+                    }
+                    
+                    .practice-content-grid {
+                        display: grid;
+                        grid-template-columns: 2fr 1fr;
+                        gap: 60px;
+                        margin-top: 40px;
+                    }
+                    
+                    .practice-main-content {
+                        background: var(--card-bg);
+                        padding: 40px;
+                        border-radius: 12px;
+                        border: 1px solid var(--border-color);
+                    }
+                    
+                    .practice-overview {
+                        margin-bottom: 50px;
+                    }
+                    
+                    .practice-overview h2 {
+                        font-family: var(--font-serif);
+                        font-size: 2.5rem;
+                        color: var(--text-primary);
+                        margin-bottom: 20px;
+                    }
+                    
+                    .lead {
+                        font-size: 1.2rem;
+                        line-height: 1.8;
+                        color: var(--text-secondary);
+                    }
+                    
+                    .practice-services {
+                        margin-bottom: 50px;
+                    }
+                    
+                    .practice-services h3 {
+                        font-family: var(--font-serif);
+                        font-size: 2rem;
+                        color: var(--text-primary);
+                        margin-bottom: 30px;
+                    }
+                    
+                    .services-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                        gap: 30px;
+                    }
+                    
+                    .service-item {
+                        background: rgba(255, 255, 255, 0.02);
+                        padding: 30px;
+                        border-radius: 8px;
+                        border: 1px solid var(--border-color);
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .service-item:hover {
+                        background: rgba(255, 255, 255, 0.05);
+                        border-color: var(--accent-gold);
+                        transform: translateY(-5px);
+                    }
+                    
+                    .service-icon {
+                        width: 60px;
+                        height: 60px;
+                        background: linear-gradient(135deg, var(--accent-gold), #c9a961);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 20px;
+                    }
+                    
+                    .service-icon i {
+                        font-size: 24px;
+                        color: var(--bg-primary);
+                    }
+                    
+                    .service-item h4 {
+                        font-family: var(--font-serif);
+                        font-size: 1.3rem;
+                        color: var(--text-primary);
+                        margin-bottom: 15px;
+                    }
+                    
+                    .service-item p {
+                        color: var(--text-secondary);
+                        line-height: 1.6;
+                    }
+                    
+                    .practice-approach {
+                        margin-bottom: 50px;
+                    }
+                    
+                    .practice-approach h3 {
+                        font-family: var(--font-serif);
+                        font-size: 2rem;
+                        color: var(--text-primary);
+                        margin-bottom: 20px;
+                    }
+                    
+                    .practice-approach p {
+                        font-size: 1.1rem;
+                        line-height: 1.8;
+                        color: var(--text-secondary);
+                    }
+                    
+                    .experience-highlights {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 30px;
+                    }
+                    
+                    .highlight-item {
+                        text-align: center;
+                        padding: 30px 20px;
+                        background: rgba(255, 255, 255, 0.02);
+                        border-radius: 8px;
+                        border: 1px solid var(--border-color);
+                    }
+                    
+                    .highlight-number {
+                        font-family: var(--font-serif);
+                        font-size: 2.5rem;
+                        font-weight: 700;
+                        color: var(--accent-gold);
+                        margin-bottom: 10px;
+                    }
+                    
+                    .highlight-text {
+                        color: var(--text-primary);
+                        font-weight: 500;
+                    }
+                    
+                    .practice-sidebar {
+                        background: var(--card-bg);
+                        padding: 40px;
+                        border-radius: 12px;
+                        border: 1px solid var(--border-color);
+                        height: fit-content;
+                        position: sticky;
+                        top: 100px;
+                    }
+                    
+                    .practice-sidebar h3 {
+                        font-family: var(--font-serif);
+                        font-size: 1.5rem;
+                        color: var(--text-primary);
+                        margin-bottom: 20px;
+                    }
+                    
+                    .practice-nav {
+                        margin-bottom: 40px;
+                    }
+                    
+                    .practice-nav-link {
+                        display: block;
+                        padding: 12px 0;
+                        color: var(--text-secondary);
+                        text-decoration: none;
+                        border-bottom: 1px solid var(--border-color);
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .practice-nav-link:hover,
+                    .practice-nav-link.active {
+                        color: var(--accent-gold);
+                        padding-left: 10px;
+                    }
+                    
+                    .attorney-card {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        padding: 20px 0;
+                        border-bottom: 1px solid var(--border-color);
+                    }
+                    
+                    .attorney-card:last-child {
+                        border-bottom: none;
+                    }
+                    
+                    .attorney-card img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                    
+                    .attorney-info h4 {
+                        color: var(--text-primary);
+                        margin-bottom: 5px;
+                        font-size: 1rem;
+                    }
+                    
+                    .attorney-info p {
+                        color: var(--text-secondary);
+                        font-size: 0.9rem;
+                        margin-bottom: 8px;
+                    }
+                    
+                    .practice-contact-box {
+                        background: rgba(198, 169, 95, 0.1);
+                        padding: 30px;
+                        border-radius: 8px;
+                        border: 1px solid var(--accent-gold);
+                        margin-top: 40px;
+                    }
+                    
+                    .practice-contact-box h4 {
+                        color: var(--text-primary);
+                        margin-bottom: 15px;
+                    }
+                    
+                    .practice-contact-box p {
+                        color: var(--text-secondary);
+                        margin-bottom: 20px;
+                    }
+                    
+                    .case-study-section,
+                    .faq-section {
+                        display: none;
+                        padding: 80px 0;
+                        background: rgba(255, 255, 255, 0.02);
+                    }
+                    
+                    .case-study-card {
+                        display: grid;
+                        grid-template-columns: 2fr 1fr;
+                        gap: 40px;
+                        background: var(--card-bg);
+                        padding: 40px;
+                        border-radius: 12px;
+                        border: 1px solid var(--border-color);
+                    }
+                    
+                    .case-study-content h3 {
+                        font-family: var(--font-serif);
+                        font-size: 1.8rem;
+                        color: var(--text-primary);
+                        margin-bottom: 30px;
+                    }
+                    
+                    .case-study-content p {
+                        margin-bottom: 20px;
+                        line-height: 1.6;
+                    }
+                    
+                    .case-study-content strong {
+                        color: var(--accent-gold);
+                    }
+                    
+                    .case-study-image img {
+                        width: 100%;
+                        height: 300px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                    }
+                    
+                    .faq-accordion {
+                        max-width: 800px;
+                        margin: 0 auto;
+                    }
+                    
+                    .faq-item {
+                        background: var(--card-bg);
+                        border-radius: 8px;
+                        margin-bottom: 15px;
+                        border: 1px solid var(--border-color);
+                        overflow: hidden;
+                    }
+                    
+                    .faq-question {
+                        padding: 25px;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .faq-question:hover {
+                        background: rgba(255, 255, 255, 0.02);
+                    }
+                    
+                    .faq-question h4 {
+                        color: var(--text-primary);
+                        margin: 0;
+                        font-size: 1.1rem;
+                    }
+                    
+                    .faq-question i {
+                        color: var(--accent-gold);
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    .faq-item.active .faq-question i {
+                        transform: rotate(45deg);
+                    }
+                    
+                    .faq-answer {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.3s ease;
+                    }
+                    
+                    .faq-answer p {
+                        padding: 0 25px 25px;
+                        color: var(--text-secondary);
+                        line-height: 1.6;
+                        margin: 0;
+                    }
+                    
+                    .back-to-overview {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        color: var(--accent-gold) !important;
+                        text-decoration: none;
+                        font-weight: 500;
+                        margin-bottom: 20px;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .back-to-overview:hover {
+                        gap: 12px;
+                    }
+                    
+                    .back-to-overview i {
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    .back-to-overview:hover i {
+                        transform: translateX(-3px);
+                    }
+                    
+                    @media (max-width: 768px) {
+                        .practice-content-grid {
+                            grid-template-columns: 1fr;
+                            gap: 40px;
+                        }
+                        
+                        .case-study-card {
+                            grid-template-columns: 1fr;
+                        }
+                        
+                        .services-grid {
+                            grid-template-columns: 1fr;
+                        }
+                        
+                        .experience-highlights {
+                            grid-template-columns: 1fr;
+                        }
+                        
+                        .practice-sidebar {
+                            position: static;
+                        }
+                    }
+                    
+                    /* Animation classes */
+                    .animate-in {
+                        opacity: 0;
+                        transform: translateY(30px);
+                        transition: all 0.6s ease;
+                    }
+                    
+                    .animate-in.animated {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                </style>
+            `;
+
+            // Initialize the practice area manager when DOM is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Add additional styles to head
+                document.head.insertAdjacentHTML('beforeend', additionalStyles);
+                
+                // Initialize the practice area manager
+                new PracticeAreaManager();
+                
+                // Handle browser back/forward buttons
+                window.addEventListener('popstate', function(e) {
+                    if (e.state && e.state.practice) {
+                        new PracticeAreaManager().loadPracticeArea(e.state.practice);
+                    } else {
+                        new PracticeAreaManager().showOverview();
+                    }
+                });
+            });
+    </script>
     <script src="js/main.js"></script>
-    <script src="js/practice-area.js"></script>
+    <script src="js/practice-area.js" defer></script>
 </body>
 </html>

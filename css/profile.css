@@ -79,6 +79,17 @@
 .practice-overview-section {
   padding: var(--spacing-4xl) 0;
   background-color: var(--white);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.4s ease-out;
+}
+
+.practice-detail-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-out, transform 0.4s ease-out;
+  padding: var(--spacing-4xl) 0;
 }
 
 .practice-grid {
@@ -92,33 +103,57 @@
   border-radius: var(--radius-md);
   padding: var(--spacing-xl);
   box-shadow: var(--shadow-md);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.practice-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(201, 177, 122, 0.1) 0%, rgba(201, 177, 122, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.practice-card:hover::before {
+  opacity: 1;
 }
 
 .practice-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
 
 .practice-card-icon {
-  width: 8rem;
-  height: 8rem;
-  background-color: var(--primary-light);
-  color: var(--white);
+  width: 6rem;
+  height: 6rem;
+  background-color: var(--accent-gold);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--spacing-lg);
-  font-size: 3rem;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin: 0 auto var(--spacing-md);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .practice-card:hover .practice-card-icon {
-  background-color: var(--secondary);
+  background-color: var(--primary);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.practice-card:hover .practice-card-icon i {
   transform: scale(1.1);
 }
 
@@ -135,13 +170,63 @@
 
 .practice-link {
   margin-top: auto;
+  color: var(--accent-gold);
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.practice-link i {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.practice-card:hover .practice-link {
+  color: var(--primary);
+}
+
+.practice-card:hover .practice-link i {
+  transform: translateX(5px);
+}
+
+.back-to-practices {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xl);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.back-to-practices i {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.back-to-practices:hover {
+  color: var(--primary);
+}
+
+.back-to-practices:hover i {
+  transform: translateX(-5px);
 }
 
 /* ===== PRACTICE DETAIL SECTION ===== */
 .practice-detail-section {
   padding: var(--spacing-4xl) 0;
-  background-color: var(--white);
-  display: none;
+  background-color: var(--light-gray);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-out, transform 0.4s ease-out;
+}
+
+.practice-detail-section.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .practice-content-grid {
