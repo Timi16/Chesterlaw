@@ -194,6 +194,123 @@ const practiceAreas = {
                 </div>
             </div>
         `
+    },
+    realestate: {
+        title: "Real Estate Law",
+        heroImage: "images/practices/real-estate.jpg",
+        description: "Comprehensive legal services for all aspects of real estate transactions and disputes.",
+        content: `
+            <div class="practice-content">
+                <h2>Real Estate Law Services</h2>
+                <p>Our real estate practice provides expert legal guidance for property transactions, development projects, and real estate litigation.</p>
+                
+                <div class="service-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-building"></i>
+                        <h3>Property Transactions</h3>
+                        <p>Handling purchases, sales, leases, and complex real estate transactions.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-city"></i>
+                        <h3>Development & Zoning</h3>
+                        <p>Guidance on property development, zoning laws, and land use regulations.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-key"></i>
+                        <h3>Property Management</h3>
+                        <p>Legal support for property management, tenant relations, and compliance.</p>
+                    </div>
+                </div>
+
+                <div class="key-benefits">
+                    <h3>Why Choose Us for Real Estate Law?</h3>
+                    <ul>
+                        <li>Extensive experience in property transactions</li>
+                        <li>Deep understanding of local real estate markets</li>
+                        <li>Comprehensive development project support</li>
+                        <li>Expert handling of real estate disputes</li>
+                    </ul>
+                </div>
+            </div>
+        `
+    },
+    family: {
+        title: "Family Law",
+        heroImage: "images/practices/family-law.jpg",
+        description: "Compassionate legal support for family matters and domestic relations.",
+        content: `
+            <div class="practice-content">
+                <h2>Family Law Services</h2>
+                <p>Our family law practice provides sensitive and professional legal support for all aspects of domestic relations and family matters.</p>
+                
+                <div class="service-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-heart"></i>
+                        <h3>Divorce & Separation</h3>
+                        <p>Professional guidance through divorce proceedings and separation agreements.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-child"></i>
+                        <h3>Child Custody</h3>
+                        <p>Advocacy for child custody, support, and visitation arrangements.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-home"></i>
+                        <h3>Property Division</h3>
+                        <p>Fair resolution of marital property division and asset distribution.</p>
+                    </div>
+                </div>
+
+                <div class="key-benefits">
+                    <h3>Why Choose Us for Family Law?</h3>
+                    <ul>
+                        <li>Compassionate approach to sensitive matters</li>
+                        <li>Experience in complex family disputes</li>
+                        <li>Focus on children's best interests</li>
+                        <li>Skilled negotiation and mediation</li>
+                    </ul>
+                </div>
+            </div>
+        `
+    },
+    inheritance: {
+        title: "Inheritance Law",
+        heroImage: "images/practices/inheritance-law.jpg",
+        description: "Expert guidance in estate planning, probate, and inheritance matters.",
+        content: `
+            <div class="practice-content">
+                <h2>Inheritance Law Services</h2>
+                <p>Our inheritance law practice provides comprehensive estate planning and probate services to protect your family's legacy.</p>
+                
+                <div class="service-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-scroll"></i>
+                        <h3>Estate Planning</h3>
+                        <p>Creating wills, trusts, and comprehensive estate plans.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Probate Administration</h3>
+                        <p>Guiding executors and beneficiaries through the probate process.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Asset Protection</h3>
+                        <p>Strategies for protecting and preserving family wealth.</p>
+                    </div>
+                </div>
+
+                <div class="key-benefits">
+                    <h3>Why Choose Us for Inheritance Law?</h3>
+                    <ul>
+                        <li>Comprehensive estate planning expertise</li>
+                        <li>Experience with complex probate matters</li>
+                        <li>Tax-efficient wealth transfer strategies</li>
+                        <li>Family-focused approach</li>
+                    </ul>
+                </div>
+            </div>
+        `
     }
 };
 
