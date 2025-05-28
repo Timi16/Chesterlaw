@@ -1,0 +1,326 @@
+/* Practice Areas Specific Styles */
+.practice-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 500px;
+    background-color: #1a3a4a;
+    color: #fff;
+    overflow: hidden;
+}
+
+.practice-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.practice-hero-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(26, 58, 74, 0.8), rgba(26, 58, 74, 0.95));
+}
+
+.practice-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.breadcrumb {
+    margin-bottom: 30px;
+}
+
+.breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #c9a96e;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '/';
+    margin-left: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.practice-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.practice-hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Practice Overview Section */
+.practice-overview-section {
+    padding: 80px 0;
+    display: none;
+}
+
+.practice-overview-section.active {
+    display: block;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: #1a3a4a;
+}
+
+.practice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.practice-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.practice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.practice-card-icon {
+    width: 60px;
+    height: 60px;
+    background: #1a3a4a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.practice-card-icon i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.practice-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #1a3a4a;
+    margin-bottom: 15px;
+}
+
+.practice-card p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Practice Detail Section */
+.practice-detail-section {
+    display: none;
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.practice-detail-section.active {
+    display: block;
+}
+
+.practice-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.practice-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: #1a3a4a;
+    margin-bottom: 30px;
+}
+
+.practice-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 40px;
+}
+
+.service-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.highlight-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.highlight-item.fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.highlight-item i {
+    font-size: 32px;
+    color: #c9a96e;
+    margin-bottom: 20px;
+}
+
+.highlight-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: #1a3a4a;
+    margin-bottom: 15px;
+}
+
+.highlight-item p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 0;
+}
+
+.key-benefits {
+    background: #1a3a4a;
+    color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    margin-top: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.key-benefits.fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.key-benefits h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.key-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.key-benefits li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.key-benefits li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #c9a96e;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .practice-hero {
+        min-height: 400px;
+    }
+
+    .practice-hero h1 {
+        font-size: 36px;
+    }
+
+    .practice-hero p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .practice-content h2 {
+        font-size: 28px;
+    }
+
+    .service-highlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .practice-hero h1 {
+        font-size: 28px;
+    }
+
+    .practice-card {
+        padding: 30px;
+    }
+
+    .key-benefits {
+        padding: 30px;
+    }
+}

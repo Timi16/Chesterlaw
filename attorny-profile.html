@@ -3,441 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attorney Profile | Prestige Law Partners</title>
+    <title>Attorney Profile | Chester Law Partners</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: #1a3a4a;
-            text-decoration: none;
-        }
-        
-        .logo-text span {
-            color: #c9a96e;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-link {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: #c9a96e;
-        }
-        
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #c9a96e;
-        }
-        
-        .language-selector {
-            position: relative;
-            margin-left: 20px;
-            cursor: pointer;
-        }
-        
-        .current-language {
-            display: flex;
-            align-items: center;
-            font-weight: 500;
-        }
-        
-        .current-language::after {
-            content: '▼';
-            font-size: 10px;
-            margin-left: 5px;
-        }
-        
-        .language-options {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            padding: 10px 0;
-            min-width: 100px;
-            display: none;
-        }
-        
-        .language-options a {
-            display: block;
-            padding: 5px 15px;
-            text-decoration: none;
-            color: #333;
-            transition: background-color 0.3s ease;
-        }
-        
-        .language-options a:hover, .language-options a.active {
-            background-color: #f5f5f5;
-            color: #c9a96e;
-        }
-        
-        /* Profile Header Styles */
-        .profile-header {
-            background-color: #1a3a4a;
-            color: #fff;
-            padding: 60px 0;
-            position: relative;
-        }
-        
-        .profile-header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .profile-header .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .back-link {
-            margin-bottom: 30px;
-        }
-        
-        .back-link a {
-            display: inline-flex;
-            align-items: center;
-            color: #c9a96e;
-            font-size: 16px;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .back-link a i {
-            margin-right: 8px;
-        }
-        
-        .back-link a:hover {
-            color: #fff;
-        }
-        
-        .profile-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-        
-        .profile-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .profile-header-info h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .profile-position {
-            font-size: 18px;
-            color: #c9a96e;
-            margin-bottom: 20px;
-        }
-        
-        /* Profile Details Styles */
-        .profile-details {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .profile-details .container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 50px;
-        }
-        
-        .profile-bio h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: #1a3a4a;
-            margin-bottom: 20px;
-        }
-        
-        .profile-bio p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        
-        .profile-sidebar {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .sidebar-section {
-            margin-bottom: 30px;
-        }
-        
-        .sidebar-section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .sidebar-section h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: #1a3a4a;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .contact-icon {
-            width: 36px;
-            height: 36px;
-            background-color: #f5f5f5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-        
-        .contact-icon i {
-            color: #c9a96e;
-            font-size: 16px;
-        }
-        
-        .contact-text {
-            font-size: 15px;
-            color: #333;
-        }
-        
-        .languages-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .languages-list li {
-            font-size: 15px;
-            color: #333;
-            margin-bottom: 8px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: #f5f5f5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a3a4a;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background-color: #c9a96e;
-            color: #fff;
-        }
-        
-        .membership-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .membership-list li {
-            position: relative;
-            padding-left: 25px;
-            font-size: 15px;
-            color: #333;
-            margin-bottom: 12px;
-        }
-        
-        .membership-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #c9a96e;
-        }
-        
-        /* Related Attorneys Styles */
-        .related-attorneys {
-            padding: 80px 0;
-            background-color: #fff;
-        }
-        
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 600;
-            color: #1a3a4a;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .related-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .related-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-        
-        .related-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .related-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: #1a3a4a;
-            margin-bottom: 5px;
-        }
-        
-        .related-position {
-            font-size: 14px;
-            color: #c9a96e;
-            margin-bottom: 10px;
-        }
-        
-        .related-link {
-            font-size: 14px;
-            color: #1a3a4a;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            transition: color 0.3s ease;
-        }
-        
-        .related-link i {
-            margin-left: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .related-link:hover {
-            color: #c9a96e;
-        }
-        
-        .related-link:hover i {
-            transform: translateX(3px);
-        }
-        
-        /* Footer Styles */
-        footer {
-            background-color: #1a3a4a;
-            color: #fff;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 50px;
-            margin-bottom: 50px;
-        }
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/attorney-profile.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/Logo.jpeg.jpg" alt="Chester Law Logo">
+                <a href="index.html" class="logo-text">Chester<span>Law</span></a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#expertise" class="nav-link">Expertise</a></li>
+                    <li><a href="team.html" class="nav-link active">Our Team</a></li>
+                    <li><a href="index.html#news" class="nav-link">Blog</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="language-selector">
+                <span class="current-language">EN</span>
+                <div class="language-options">
+                    <a href="#" class="active">EN</a>
+                    <a href="#">FR</a>
+                    <a href="#">DE</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="profile-header">
+            <div class="container">
+                <div class="back-link">
+                    <a href="team.html"><i class="fas fa-arrow-left"></i> Back to Team</a>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-image">
+                        <img src="" alt="Attorney Profile Image" id="attorney-image">
+                    </div>
+                    <div class="profile-header-info">
+                        <h1 id="attorney-name"></h1>
+                        <p class="profile-position" id="attorney-position"></p>
+                        <p id="attorney-specialty"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-details">
+            <div class="container">
+                <div class="profile-bio">
+                    <h2>About</h2>
+                    <div id="attorney-bio"></div>
+                    <h2>Education</h2>
+                    <ul class="education-list" id="attorney-education"></ul>
+                </div>
+                <div class="profile-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Contact Information</h3>
+                        <div class="contact-info" id="attorney-contact"></div>
+                    </div>
+                    <div class="sidebar-section">
+                        <h3>Languages</h3>
+                        <ul class="languages-list" id="attorney-languages"></ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h3>Connect</h3>
+                        <div class="social-links" id="attorney-social"></div>
+                    </div>
+                    <div class="sidebar-section">
+                        <h3>Professional Memberships</h3>
+                        <ul class="membership-list" id="attorney-memberships"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Chester Law Logo">
+                    <a href="index.html" class="logo-text">Chester<span>Law</span></a>
+                    <p>&copy; 2023 Chester Law. All rights reserved.</p>
+                </div>
+                <nav class="footer-nav">
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#expertise">Expertise</a></li>
+                            <li><a href="team.html">Our Team</a></li>
+                            <li><a href="index.html#news">Blog</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
         
         .footer-logo {
             margin-bottom: 20px;
@@ -632,21 +307,10 @@
                 font-size: 16px;
             }
         }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html" class="logo-text">Prestige<span>Law</span></a>
-            </div>
-            
-            <nav class="desktop-nav">
-                <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="index.html#expertise" class="nav-link">Expertise</a></li>
                     <li><a href="team.html" class="nav-link active">Our Team</a></li>
-                    <li><a href="index.html#news" class="nav-link">Insights</a></li>
+                    <li><a href="index.html#news" class="nav-link">Blog</a></li>
                     <li><a href="index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -701,7 +365,7 @@
         <div class="container">
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="index.html" class="logo-text">Prestige<span>Law</span></a>
+                    <a href="index.html" class="logo-text">Chester<span>Law</span></a>
                     <p>Exceptional legal counsel for complex matters.</p>
                 </div>
                 
@@ -712,7 +376,7 @@
                             <li><a href="index.html">Home</a></li>
                             <li><a href="index.html#expertise">Expertise</a></li>
                             <li><a href="team.html">Our Team</a></li>
-                            <li><a href="index.html#news">Insights</a></li>
+                            <li><a href="index.html#news">Blog</a></li>
                             <li><a href="index.html#contact">Contact</a></li>
                         </ul>
                     </div>
@@ -752,7 +416,7 @@
 
             <div class="footer-bottom">
                 <div class="copyright">
-                    <p>&copy; 2024 Prestige Law Partners. All rights reserved.</p>
+                    <p>&copy; 2024 Chester Law Partners. All rights reserved.</p>
                 </div>
 
                 <div class="footer-meta-links">
@@ -777,14 +441,14 @@
                 expertise: ['corporate'],
                 specialization: 'CORPORATE LAW AND MERGERS & ACQUISITIONS',
                 bio: [
-                    'Victoria Reynolds is a Managing Partner at Prestige Law with over 20 years of experience in corporate law and mergers & acquisitions. She focuses on providing high-quality legal services to clients in various industries.',
+                    'Victoria Reynolds is a Managing Partner at Chester Law with over 20 years of experience in corporate law and mergers & acquisitions. She focuses on providing high-quality legal services to clients in various industries.',
                     'Victoria has extensive experience in corporate transactions, particularly related to mergers, acquisitions, and corporate restructuring. This allows her to better understand the nuances of deals and effectively defend the interests of clients in complex business matters.',
                     'Victoria is known for her analytical approach and ability to create innovative solutions to challenging legal issues. Using her experience, she develops individual strategic approaches aimed at achieving the best results in each specific case.',
                     'Understanding how important it is for clients to have reliable support in the face of legal challenges, Victoria focuses on an individual approach, developing strategies that meet their specific needs. Her experience at all stages of corporate transactions allows her to accurately assess the situation and protect the interests of clients at the highest level.',
                     'Victoria\'s goal is to create an atmosphere of trust and openness, where every client can be sure that their interests are represented with maximum commitment and professionalism. Victoria is always ready to become your advocate in the world of corporate law, helping you overcome difficulties and achieve your business goals.'
                 ],
                 phone: '+1 (800) 123-4567',
-                email: 'victoria.reynolds@prestigelaw.com',
+                email: 'victoria.reynolds@chesterlaw.com',
                 linkedin: '#',
                 languages: ['English', 'French', 'Spanish'],
                 memberships: [
@@ -802,14 +466,14 @@
                 expertise: ['litigation'],
                 specialization: 'COMMERCIAL LITIGATION AND DISPUTE RESOLUTION',
                 bio: [
-                    'Jessica Yun is a Senior Partner at Prestige Law specializing in commercial litigation and dispute resolution. With over 15 years of experience, she has successfully represented clients in complex commercial disputes across various industries.',
+                    'Jessica Yun is a Senior Partner at Chester Law specializing in commercial litigation and dispute resolution. With over 15 years of experience, she has successfully represented clients in complex commercial disputes across various industries.',
                     'Jessica has a proven track record in high-stakes litigation, arbitration, and alternative dispute resolution. Her strategic approach and attention to detail have resulted in numerous favorable outcomes for her clients.',
                     'Known for her persuasive advocacy and thorough preparation, Jessica is equally comfortable in the courtroom and in settlement negotiations. She works closely with clients to understand their business objectives and develop litigation strategies that align with their goals.',
                     'Jessica regularly handles cases involving contract disputes, business torts, shareholder disputes, and class actions. Her industry experience spans financial services, technology, healthcare, and manufacturing.',
-                    'Prior to joining Prestige Law, Jessica served as a judicial clerk for the United States Court of Appeals, providing her with valuable insights into judicial decision-making that inform her litigation strategy.'
+                    'Prior to joining Chester Law, Jessica served as a judicial clerk for the United States Court of Appeals, providing her with valuable insights into judicial decision-making that inform her litigation strategy.'
                 ],
                 phone: '+1 (800) 123-4568',
-                email: 'jessica.yun@prestigelaw.com',
+                email: 'jessica.yun@chesterlaw.com',
                 linkedin: '#',
                 languages: ['English', 'Korean', 'Mandarin'],
                 memberships: [
@@ -827,14 +491,14 @@
                 expertise: ['bankruptcy'],
                 specialization: 'BANKRUPTCY LAW AND FINANCIAL RESTRUCTURING',
                 bio: [
-                    'Muhammed Abdul is a Partner at Prestige Law specializing in bankruptcy law and financial restructuring. With over 12 years of experience, he has guided numerous clients through complex insolvency proceedings and debt restructuring.',
+                    'Muhammed Abdul is a Partner at Chester Law specializing in bankruptcy law and financial restructuring. With over 12 years of experience, he has guided numerous clients through complex insolvency proceedings and debt restructuring.',
                     'Muhammed represents debtors, creditors, committees, and other stakeholders in Chapter 11 reorganizations, Chapter 7 liquidations, and out-of-court workouts. His expertise extends to distressed asset sales, debtor-in-possession financing, and cross-border insolvency matters.',
                     'Known for his practical approach and deep understanding of financial markets, Muhammed helps clients navigate the complexities of bankruptcy law while focusing on preserving value and achieving optimal outcomes.',
                     'Muhammed has significant experience in various industries, including retail, healthcare, energy, and real estate. This diverse background allows him to quickly grasp industry-specific challenges and develop tailored solutions.',
-                    'Before joining Prestige Law, Muhammed worked at a leading financial advisory firm, giving him valuable insights into the financial aspects of restructuring that complement his legal expertise.'
+                    'Before joining Chester Law, Muhammed worked at a leading financial advisory firm, giving him valuable insights into the financial aspects of restructuring that complement his legal expertise.'
                 ],
                 phone: '+1 (800) 123-4569',
-                email: 'muhammed.abdul@prestigelaw.com',
+                email: 'muhammed.abdul@chesterlaw.com',
                 linkedin: '#',
                 languages: ['English', 'Arabic', 'Urdu'],
                 memberships: [
@@ -859,7 +523,7 @@
                     'James is committed to helping clients develop comprehensive IP strategies that align with their business objectives and provide competitive advantages in the marketplace.'
                 ],
                 phone: '+1 (800) 123-4570',
-                email: 'james.washington@prestigelaw.com',
+                email: 'james.washington@chesterlaw.com',
                 linkedin: '#',
                 languages: ['English', 'Japanese'],
                 memberships: [
@@ -880,11 +544,11 @@
                     'Sarah Johnson is a Senior Associate at Prestige Law specializing in corporate governance and securities law. With 8 years of experience, she advises public and private companies on governance matters, securities offerings, and regulatory compliance.',
                     'Sarah has significant experience in securities transactions, including public and private offerings, Rule 144A placements, and venture capital financings. She also advises on SEC reporting obligations, proxy statements, and corporate governance best practices.',
                     'Sarah works closely with boards of directors and executive management teams to navigate complex governance issues, including fiduciary duties, shareholder activism, and ESG matters.',
-                    'Prior to joining Prestige Law, Sarah worked in the legal department of a Fortune 100 company, giving her valuable insights into the practical challenges faced by in-house legal teams.',
+                    'Prior to joining Chester Law, Sarah worked in the legal department of a Fortune 100 company, giving her valuable insights into the practical challenges faced by in-house legal teams.',
                     'Sarah is known for her clear communication style and ability to translate complex legal requirements into practical business advice.'
                 ],
                 phone: '+1 (800) 123-4571',
-                email: 'sarah.johnson@prestigelaw.com',
+                email: 'sarah.johnson@chesterlaw.com',
                 linkedin: '#',
                 languages: ['English', 'German'],
                 memberships: [
@@ -905,11 +569,11 @@
                     'David Chen is an Associate at Prestige Law focusing on commercial litigation and arbitration. With 5 years of experience, he represents clients in a wide range of business disputes in state and federal courts.',
                     'David has experience in cases involving breach of contract, business torts, partnership disputes, and consumer class actions. He is also skilled in alternative dispute resolution, including mediation and arbitration.',
                     'David is known for his thorough legal research, strong writing skills, and attention to detail. He works closely with partners to develop effective litigation strategies that align with clients\' business objectives.',
-                    'Before joining Prestige Law, David served as a judicial law clerk, where he gained valuable insights into judicial decision-making that inform his approach to litigation.',
+                    'Before joining Chester Law, David served as a judicial law clerk, where he gained valuable insights into judicial decision-making that inform his approach to litigation.',
                     'David is committed to providing efficient and cost-effective representation while maintaining the highest standards of advocacy for his clients.'
                 ],
                 phone: '+1 (800) 123-4572',
-                email: 'david.chen@prestigelaw.com',
+                email: 'david.chen@chesterlaw.com',
                 linkedin: '#',
                 languages: ['English', 'Mandarin', 'Cantonese'],
                 memberships: [

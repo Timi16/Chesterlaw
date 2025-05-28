@@ -1,4 +1,185 @@
+// Attorney data
+const attorneys = [
+    {
+        id: 'victoria-reynolds',
+        name: 'Victoria Reynolds',
+        position: 'Managing Partner',
+        specialty: 'Corporate Law & Mergers',
+        image: 'images/attorneys/victoria-reynolds.jpg',
+        bio: 'Victoria Reynolds is a distinguished Managing Partner at Chester Law, with over 20 years of experience in corporate law and mergers & acquisitions.',
+        education: [
+            'J.D., Harvard Law School',
+            'B.A., Yale University, Economics'
+        ],
+        contact: {
+            email: 'victoria.reynolds@chesterlaw.com',
+            phone: '+1 (555) 123-4567',
+            office: '1234 Legal Avenue, Suite 500, San Francisco, CA 94111'
+        },
+        languages: ['English', 'French', 'Spanish'],
+        social: {
+            linkedin: '#',
+            twitter: '#'
+        },
+        memberships: [
+            'American Bar Association',
+            'California State Bar Association',
+            'International Bar Association'
+        ]
+    },
+    {
+        id: 'muhammed-abdul',
+        name: 'Muhammed Abdul',
+        position: 'Partner',
+        specialty: 'Bankruptcy & Restructuring',
+        image: 'images/attorneys/muhammed-abdul.jpg',
+        bio: 'Muhammed Abdul is a Partner specializing in bankruptcy and corporate restructuring, with extensive experience in complex financial transactions.',
+        education: [
+            'J.D., Stanford Law School',
+            'M.B.A., Stanford Graduate School of Business',
+            'B.S., UC Berkeley, Business Administration'
+        ],
+        contact: {
+            email: 'muhammed.abdul@chesterlaw.com',
+            phone: '+1 (555) 234-5678',
+            office: '1234 Legal Avenue, Suite 500, San Francisco, CA 94111'
+        },
+        languages: ['English', 'Arabic', 'Urdu'],
+        social: {
+            linkedin: '#'
+        },
+        memberships: [
+            'American Bankruptcy Institute',
+            'California State Bar Association',
+            'Turnaround Management Association'
+        ]
+    },
+    {
+        id: 'sarah-johnson',
+        name: 'Sarah Johnson',
+        position: 'Senior Associate',
+        specialty: 'Corporate Law',
+        image: 'images/attorneys/sarah-johnson.jpg',
+        bio: 'Sarah Johnson is a Senior Associate focusing on corporate law and securities regulation, with particular expertise in technology startups.',
+        education: [
+            'J.D., Columbia Law School',
+            'B.A., Princeton University, Public Policy'
+        ],
+        contact: {
+            email: 'sarah.johnson@chesterlaw.com',
+            phone: '+1 (555) 345-6789',
+            office: '1234 Legal Avenue, Suite 500, San Francisco, CA 94111'
+        },
+        languages: ['English', 'Mandarin'],
+        social: {
+            linkedin: '#',
+            twitter: '#'
+        },
+        memberships: [
+            'American Bar Association',
+            'California State Bar Association',
+            'Women in Law Association'
+        ]
+    }
+];
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Handle attorney profile if on attorney profile page
+    if (window.location.pathname.includes('attorny-profile.html')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const attorneyId = urlParams.get('id');
+        const attorney = attorneys.find(a => a.id === attorneyId);
+
+        if (!attorney) {
+            window.location.href = 'team.html';
+        } else {
+            // Update page title
+            document.title = `${attorney.name} | Chester Law Partners`;
+            
+            // Update attorney profile content
+            document.getElementById('attorney-image').src = attorney.image;
+            document.getElementById('attorney-name').textContent = attorney.name;
+            document.getElementById('attorney-position').textContent = attorney.position;
+            document.getElementById('attorney-specialty').textContent = attorney.specialty;
+            
+            // Update bio
+            document.getElementById('attorney-bio').innerHTML = `<p>${attorney.bio}</p>`;
+            
+            // Update education
+            const educationList = document.getElementById('attorney-education');
+            attorney.education.forEach(edu => {
+                const li = document.createElement('li');
+                li.textContent = edu;
+                educationList.appendChild(li);
+            });
+            
+            // Update contact info
+            const contactInfo = document.getElementById('attorney-contact');
+            contactInfo.innerHTML = `
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-text">${attorney.contact.email}</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-text">${attorney.contact.phone}</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-text">${attorney.contact.office}</div>
+                </div>
+            `;
+            
+            // Update languages
+            const languagesList = document.getElementById('attorney-languages');
+            attorney.languages.forEach(lang => {
+                const li = document.createElement('li');
+                li.textContent = lang;
+                languagesList.appendChild(li);
+            });
+            
+            // Update social links
+            const socialLinks = document.getElementById('attorney-social');
+            if (attorney.social.linkedin) {
+                socialLinks.innerHTML += `<a href="${attorney.social.linkedin}" class="social-link"><i class="fab fa-linkedin-in"></i></a>`;
+            }
+            if (attorney.social.twitter) {
+                socialLinks.innerHTML += `<a href="${attorney.social.twitter}" class="social-link"><i class="fab fa-twitter"></i></a>`;
+            }
+            
+            // Update memberships
+            const membershipsList = document.getElementById('attorney-memberships');
+            attorney.memberships.forEach(membership => {
+                const li = document.createElement('li');
+                li.textContent = membership;
+                membershipsList.appendChild(li);
+            });
+        }
+    }
+
+    // Language selector functionality
+    const languageSelector = document.querySelector('.language-selector');
+    const currentLanguage = document.querySelector('.current-language');
+    const languageOptions = document.querySelector('.language-options');
+
+    if (languageSelector && currentLanguage && languageOptions) {
+        languageSelector.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageOptions.style.display = languageOptions.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', () => {
+            languageOptions.style.display = 'none';
+        });
+
+        languageOptions.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                currentLanguage.textContent = e.target.textContent;
+                Array.from(languageOptions.children).forEach(a => a.classList.remove('active'));
+                e.target.classList.add('active');
+            }
+        });
+    }
     // Page loader
     const loader = document.querySelector('.loader');
     
