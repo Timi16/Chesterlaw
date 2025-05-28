@@ -155,6 +155,45 @@ const practiceAreas = {
                 </div>
             </div>
         `
+    },
+    employment: {
+        title: "Employment Law",
+        heroImage: "images/practices/employment-law.jpg",
+        description: "Comprehensive employment law services for both employers and employees.",
+        content: `
+            <div class="practice-content">
+                <h2>Employment Law Services</h2>
+                <p>Our employment law practice provides strategic counsel to employers and employees on all aspects of workplace law, from compliance to dispute resolution.</p>
+                
+                <div class="service-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Employment Agreements</h3>
+                        <p>Drafting and reviewing employment contracts, non-compete agreements, and severance packages.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Workplace Compliance</h3>
+                        <p>Ensuring compliance with labor laws, regulations, and workplace safety requirements.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-gavel"></i>
+                        <h3>Dispute Resolution</h3>
+                        <p>Representation in employment disputes, discrimination claims, and workplace investigations.</p>
+                    </div>
+                </div>
+
+                <div class="key-benefits">
+                    <h3>Why Choose Us for Employment Law?</h3>
+                    <ul>
+                        <li>Extensive experience in employment litigation and counseling</li>
+                        <li>Proactive approach to compliance and risk management</li>
+                        <li>Understanding of both employer and employee perspectives</li>
+                        <li>Practical solutions for complex workplace issues</li>
+                    </ul>
+                </div>
+            </div>
+        `
     }
 };
 
