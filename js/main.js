@@ -397,15 +397,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    testimonialPrev.addEventListener('click', () => {
-        currentTestimonialSlide = (currentTestimonialSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
-        showTestimonialSlide(currentTestimonialSlide);
-    });
+    if (testimonialPrev) {
+        testimonialPrev.addEventListener('click', () => {
+            currentTestimonialSlide = (currentTestimonialSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
+            showTestimonialSlide(currentTestimonialSlide);
+        });
+    }
     
-    testimonialNext.addEventListener('click', () => {
-        currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
-        showTestimonialSlide(currentTestimonialSlide);
-    });
+    if (testimonialNext) {
+        testimonialNext.addEventListener('click', () => {
+            currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
+            showTestimonialSlide(currentTestimonialSlide);
+        });
+    }
     
     // Stats counter animation
     function animateStats() {

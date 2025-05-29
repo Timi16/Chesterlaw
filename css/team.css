@@ -89,8 +89,17 @@
     display: none;
 }
 
-.team-detail-section.active {
+.team-detail-section.active,
+body.showing-member .team-detail-section {
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 100 !important;
+    position: relative !important;
+}
+
+body.showing-member .team-overview-section {
+    display: none !important;
 }
 
 .team-banner {
