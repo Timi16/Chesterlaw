@@ -53,8 +53,14 @@ class TeamManager {
     }
 
     loadTeamMember(memberId) {
+        console.log('Loading team member:', memberId);
         const member = teamMembers[memberId];
-        if (!member) return;
+        if (!member) {
+            console.error('Member not found:', memberId);
+            return;
+        }
+        
+        console.log('Member data:', member);
 
         // Update URL
         history.pushState({ memberId }, '', `?member=${memberId}`);
@@ -80,7 +86,11 @@ class TeamManager {
         const languagesHtml = member.languages.map(lang => `<span class="language-tag">${lang}</span>`).join('');
         document.getElementById('member-languages').innerHTML = languagesHtml;
 
-        // Show detail section
+        // Force display style directly
+        this.teamOverview.style.display = 'none';
+        this.teamDetail.style.display = 'block';
+        
+        // Also set classes for animation purposes
         this.teamOverview.classList.remove('active');
         this.teamDetail.classList.add('active');
 
@@ -89,6 +99,12 @@ class TeamManager {
     }
 
     showOverview() {
+        console.log('Showing overview');
+        // Force display style directly
+        this.teamDetail.style.display = 'none';
+        this.teamOverview.style.display = 'block';
+        
+        // Also set classes for animation purposes
         this.teamDetail.classList.remove('active');
         this.teamOverview.classList.add('active');
         history.pushState({}, '', window.location.pathname);

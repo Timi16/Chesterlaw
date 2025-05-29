@@ -85,12 +85,12 @@
 }
 
 .team-detail-section {
-    padding: 80px 0;
+    padding: 0;
     display: none;
 }
 
 .team-detail-section.active {
-    display: block;
+    display: block !important;
 }
 
 .team-banner {

@@ -285,40 +285,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 8000);
     }
     
-    heroDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showHeroSlide(index);
+    // Only add event listeners if elements exist
+    if (heroDots && heroDots.length > 0) {
+        heroDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showHeroSlide(index);
+            });
         });
-    });
+    }
     
-    heroPrev.addEventListener('click', () => {
-        currentHeroSlide = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
-        showHeroSlide(currentHeroSlide);
-    });
+    if (heroPrev) {
+        heroPrev.addEventListener('click', () => {
+            currentHeroSlide = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
+            showHeroSlide(currentHeroSlide);
+        });
+    }
     
-    heroNext.addEventListener('click', () => {
-        currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-        showHeroSlide(currentHeroSlide);
-    });
+    if (heroNext) {
+        heroNext.addEventListener('click', () => {
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            showHeroSlide(currentHeroSlide);
+        });
+    }
     
-    // Start auto-advance for hero slider
-    startHeroSlideInterval();
+    // Start auto-advance for hero slider only if elements exist
+    if (heroSlides && heroSlides.length > 0) {
+        startHeroSlideInterval();
+    }
     
     // Expertise tabs
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabPanes = document.querySelectorAll('.tab-pane');
     
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tabId = button.dataset.tab;
-            
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabPanes.forEach(pane => pane.classList.remove('active'));
-            
-            button.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+    if (tabButtons && tabButtons.length > 0) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
         });
-    });
+    }
     
     // Case studies slider
     const caseSlides = document.querySelectorAll('.case-slide');
@@ -328,6 +339,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentCaseSlide = 0;
     
     function showCaseSlide(index) {
+        if (!caseSlides || caseSlides.length === 0) return;
+        
         caseSlides.forEach(slide => slide.classList.remove('active'));
         caseDots.forEach(dot => dot.classList.remove('active'));
         
@@ -336,21 +349,31 @@ document.addEventListener('DOMContentLoaded', function() {
         currentCaseSlide = index;
     }
     
-    caseDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showCaseSlide(index);
+    if (caseDots && caseDots.length > 0) {
+        caseDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showCaseSlide(index);
+            });
         });
-    });
+    }
     
-    casePrev.addEventListener('click', () => {
-        currentCaseSlide = (currentCaseSlide - 1 + caseSlides.length) % caseSlides.length;
-        showCaseSlide(currentCaseSlide);
-    });
+    if (casePrev) {
+        casePrev.addEventListener('click', () => {
+            if (!caseSlides || caseSlides.length === 0) return;
+            currentCaseSlide = (currentCaseSlide - 1 + caseSlides.length) % caseSlides.length;
+            showCaseSlide(currentCaseSlide);
+        });
+    }
     
-    caseNext.addEventListener('click', () => {
-        currentCaseSlide = (currentCaseSlide + 1) % caseSlides.length;
-        showCaseSlide(currentCaseSlide);
-    });
+    if (caseNext) {
+        caseNext.addEventListener('click', () => {
+            if (!caseSlides || caseSlides.length === 0) return;
+            currentCaseSlide = (currentCaseSlide + 1) % caseSlides.length;
+            showCaseSlide(currentCaseSlide);
+        });
+    }
+    
+    // Note: Event listeners for prev/next buttons are already added above with null checks
     
     // Testimonials slider
     const testimonialSlides = document.querySelectorAll('.testimonial-slide');

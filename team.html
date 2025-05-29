@@ -564,14 +564,14 @@
                         </div>
                     </div>
                     
-                    <div class="team-card">
+                    <div class="team-card" data-member="david_chen">
                         <div class="team-image">
                             <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="David Chen">
                         </div>
                         <div class="team-info">
                             <h3>David Chen</h3>
                             <p class="team-position">Associate</p>
-                            <a href="#" data-member="david_chen" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0);" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -727,5 +727,64 @@
     <script src="js/team-members.js"></script>
     <script src="js/team.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Fix for team member profile display -->
+    <script>
+        // Direct fix for team member display
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we need to show a team member immediately from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const memberId = urlParams.get('member');
+            
+            // Make team cards directly clickable with manual DOM manipulation
+            const teamCards = document.querySelectorAll('.team-card');
+            const teamOverview = document.getElementById('team-overview');
+            const teamDetail = document.getElementById('team-detail');
+            
+            teamCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const memberId = this.getAttribute('data-member');
+                    const member = teamMembers[memberId];
+                    if (!member) return;
+                    
+                    console.log('Direct click handler - showing member:', memberId);
+                    
+                    // Update URL
+                    history.pushState({ memberId }, '', `?member=${memberId}`);
+                    
+                    // Update content elements
+                    document.getElementById('member-breadcrumb-name').textContent = member.name;
+                    document.getElementById('member-image').src = member.image;
+                    document.getElementById('member-image').alt = member.name;
+                    document.getElementById('member-name').textContent = member.name;
+                    document.getElementById('member-position').textContent = member.position;
+                    document.getElementById('member-content').innerHTML = member.content;
+                    document.getElementById('member-phone').innerHTML = `<i class="fas fa-phone"></i> ${member.phone}`;
+                    document.getElementById('member-email').innerHTML = `<i class="fas fa-envelope"></i> ${member.email}`;
+                    document.getElementById('member-linkedin').href = member.linkedin;
+                    
+                    // Update languages
+                    const languagesHtml = member.languages.map(lang => 
+                        `<span class="language-tag">${lang}</span>`).join('');
+                    document.getElementById('member-languages').innerHTML = languagesHtml;
+                    
+                    // Show team detail with explicit style
+                    teamOverview.style.display = 'none';
+                    teamDetail.style.display = 'block';
+                });
+            });
+            
+            // Back button functionality
+            const backButton = document.querySelector('.back-to-team');
+            if (backButton) {
+                backButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    teamDetail.style.display = 'none';
+                    teamOverview.style.display = 'block';
+                    history.pushState({}, '', window.location.pathname);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
