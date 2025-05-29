@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/team.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -464,12 +467,22 @@
     </style>
 </head>
 <body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <div class="loader"></div>
+    <div class="noise-overlay"></div>
+
     <header>
         <div class="container">
             <div class="logo">
                 <a href="index.html"><img src="images/Logo.jpeg.jpg" alt="Chester Law Logo"></a>
             </div>
             
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="desktop-nav">
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
@@ -479,6 +492,18 @@
                     <li><a href="index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+            
+            <div class="mobile-menu">
+                <nav>
+                    <ul class="mobile-nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#expertise">Expertise</a></li>
+                        <li><a href="team.html" class="active">Our Team</a></li>
+                        <li><a href="index.html#news">Blog</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
             
             <div class="language-selector">
                 <span class="current-language">EN</span>
@@ -506,36 +531,36 @@
         <section class="team-grid-section">
             <div class="container">
                 <div class="team-grid">
-                    <div class="team-card">
+                    <div class="team-card" data-member="victoria_reynolds">
                         <div class="team-image">
                             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Victoria Reynolds">
                         </div>
                         <div class="team-info">
                             <h3>Victoria Reynolds</h3>
                             <p class="team-position">Managing Partner</p>
-                            <a href="#" data-member="victoria_reynolds" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0);" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
-                    <div class="team-card">
+                    <div class="team-card" data-member="viktor_surnyk">
                         <div class="team-image">
                             <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Viktor Surnyk">
                         </div>
                         <div class="team-info">
                             <h3>Viktor Surnyk</h3>
                             <p class="team-position">Managing Partner</p>
-                            <a href="#" data-member="viktor_surnyk" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0);" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
-                    <div class="team-card">
+                    <div class="team-card" data-member="sarah_johnson">
                         <div class="team-image">
                             <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Sarah Johnson">
                         </div>
                         <div class="team-info">
                             <h3>Sarah Johnson</h3>
                             <p class="team-position">Senior Associate</p>
-                            <a href="#" data-member="sarah_johnson" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0);" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
@@ -699,7 +724,8 @@
             });
         });
     </script>
-    <script src="js/main.js"></script>
     <script src="js/team-members.js"></script>
+    <script src="js/team.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

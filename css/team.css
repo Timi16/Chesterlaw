@@ -1,4 +1,98 @@
 /* Team Page Styles */
+/* Enhanced Attorney Profile Styles */
+.attorney-profile h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    color: #1a3a4a;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+.attorney-profile p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.attorney-profile h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #1a3a4a;
+    margin: 1.5rem 0 1rem;
+    font-weight: 600;
+}
+
+.expertise-list, .experience-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.8rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.expertise-list li, .experience-list li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.expertise-list li i {
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    color: #c9a96e;
+}
+
+.experience-list li {
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.experience-list li:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #c9a96e;
+    font-size: 1.2rem;
+}
+
+.education-section ul, .memberships-section ul, .publications-section ul {
+    margin-bottom: 2rem;
+}
+
+.education-section li, .memberships-section li, .publications-section li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.education-section strong, .publications-section li {
+    color: #1a3a4a;
+}
+
+.publications-section li {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.team-overview-section {
+    padding: 80px 0;
+    display: none;
+}
+
+.team-overview-section.active {
+    display: block;
+}
+
+.team-detail-section {
+    padding: 80px 0;
+    display: none;
+}
+
+.team-detail-section.active {
+    display: block;
+}
+
 .team-banner {
     background-color: #1a3a4a;
     color: #fff;
