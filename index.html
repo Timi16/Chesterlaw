@@ -22,35 +22,38 @@
         </div>
     </div>
     
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="images/Logo.jpeg.jpg" alt="Chester Law Logo">
-            </div>
+    <header style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; background-color: rgba(255,255,255,0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; max-width: 1200px; margin: 0 auto;">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+                <div class="logo-text" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: #333; text-decoration: none;">Chester<span style="color: #c9a96e;">Law</span></div>
+            </a>
             
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="#hero" class="nav-link active">Home</a></li>
-                    <li><a href="#expertise" class="nav-link">Expertise</a></li>
-                    <li><a href="#team" class="nav-link">Our Team</a></li>
-                    <li><a href="#news" class="nav-link">Blog</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+            <nav class="desktop-nav" style="display: flex; justify-content: center;">
+                <ul class="nav-links" style="display: flex; gap: 30px; margin: 0; padding: 0; list-style: none;">
+                    <li><a href="#hero" class="nav-link active" style="text-decoration: none; color: #c9a96e; font-weight: 500; position: relative;">
+                        Home
+                        <span style="position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background-color: #c9a96e;"></span>
+                    </a></li>
+                    <li><a href="#expertise" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Expertise</a></li>
+                    <li><a href="team.html" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Our Team</a></li>
+                    <li><a href="#news" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Blog</a></li>
+                    <li><a href="#contact" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Contact</a></li>
                 </ul>
             </nav>
             
-            <div class="nav-right">
-                <div class="language-selector">
-                    <span class="current-language">EN</span>
-                    <div class="language-options">
-                        <a href="#" class="active">EN</a>
-                        <a href="#">FR</a>
-                        <a href="#">DE</a>
+            <div style="display: flex; align-items: center;">
+                <div class="language-selector" style="display: flex; align-items: center; margin-right: 20px;">
+                    <span class="current-language" style="cursor: pointer; font-weight: 500;">EN ▼</span>
+                    <div class="language-options" style="display: none; position: absolute; background: white; padding: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 4px; margin-top: 60px;">
+                        <a href="#" class="active" style="display: block; padding: 5px 10px; text-decoration: none; color: #c9a96e;">EN</a>
+                        <a href="#" style="display: block; padding: 5px 10px; text-decoration: none; color: #333;">FR</a>
+                        <a href="#" style="display: block; padding: 5px 10px; text-decoration: none; color: #333;">DE</a>
                     </div>
                 </div>
                 
-                <button class="menu-toggle" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
+                <button class="menu-toggle" aria-label="Toggle Menu" style="background: none; border: none; cursor: pointer; padding: 5px;">
+                    <span style="display: block; width: 25px; height: 2px; background-color: #333; margin: 5px 0;"></span>
+                    <span style="display: block; width: 25px; height: 2px; background-color: #333; margin: 5px 0;"></span>
                 </button>
             </div>
         </div>
@@ -84,15 +87,16 @@
     </div>
     
     <main>
+        <!-- Fixed Hero Section that doesn't break slider functionality -->
         <section id="hero" class="hero">
             <div class="hero-slider">
                 <div class="hero-slide active">
                     <div class="hero-image">
-                        <img src="https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80" alt="Modern law firm office">
+                        <img src="https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080&q=80" alt="Modern law firm office">
                     </div>
                     <div class="container">
                         <div class="hero-content">
-                            <h1 class="split-text">We protect your rights and secure your future.</h1>
+                            <h1 class="hero-title">We protect your rights and secure your future.</h1>
                             <p class="split-text">Sophisticated legal counsel for complex matters. Bringing clarity to challenging situations.</p>
                             <div class="hero-cta">
                                 <a href="#expertise" class="btn btn-primary">Our Expertise</a>
@@ -104,11 +108,11 @@
                 
                 <div class="hero-slide">
                     <div class="hero-image">
-                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&h=800&q=80" alt="Executive boardroom">
+                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080&q=80" alt="Executive boardroom">
                     </div>
                     <div class="container">
                         <div class="hero-content">
-                            <h1 class="split-text">Strategic legal counsel for industry leaders.</h1>
+                            <h1 class="hero-title">Strategic legal counsel for industry leaders.</h1>
                             <p class="split-text">Bringing decades of experience and insight to complex legal matters.</p>
                             <div class="hero-cta">
                                 <a href="#expertise" class="btn btn-primary">Our Expertise</a>
@@ -683,6 +687,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/split-type"></script>
+    
+    <!-- Hero Slider Script - Direct fix for slider functionality -->
+    <script>
+        // Immediate self-executing function to fix the slider
+        (function() {
+            // Get all hero slides, dots, and navigation buttons
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            const heroDots = document.querySelectorAll('.hero-dot');
+            const heroPrev = document.querySelector('.hero-prev');
+            const heroNext = document.querySelector('.hero-next');
+            let currentSlide = 0;
+            
+            // Show a specific slide
+            function showSlide(index) {
+                // Remove active class from all slides and dots
+                heroSlides.forEach(slide => slide.classList.remove('active'));
+                heroDots.forEach(dot => dot.classList.remove('active'));
+                
+                // Add active class to current slide and dot
+                heroSlides[index].classList.add('active');
+                heroDots[index].classList.add('active');
+                currentSlide = index;
+                
+                console.log('Showing slide:', index + 1);
+            }
+            
+            // Add click event listeners to dots
+            heroDots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    showSlide(index);
+                });
+            });
+            
+            // Add click event listeners to prev/next buttons
+            if (heroPrev) {
+                heroPrev.addEventListener('click', function() {
+                    let newIndex = currentSlide - 1;
+                    if (newIndex < 0) newIndex = heroSlides.length - 1;
+                    showSlide(newIndex);
+                });
+            }
+            
+            if (heroNext) {
+                heroNext.addEventListener('click', function() {
+                    let newIndex = currentSlide + 1;
+                    if (newIndex >= heroSlides.length) newIndex = 0;
+                    showSlide(newIndex);
+                });
+            }
+            
+            // Auto-rotate slides every 5 seconds
+            setInterval(function() {
+                let newIndex = currentSlide + 1;
+                if (newIndex >= heroSlides.length) newIndex = 0;
+                showSlide(newIndex);
+            }, 5000);
+        })();
+    </script>
+    
     <script src="js/main.js"></script>
 </body>
 </html>

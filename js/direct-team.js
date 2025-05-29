@@ -27,10 +27,18 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('overlay-member-image').alt = member.name;
             document.getElementById('overlay-member-name').textContent = member.name;
             document.getElementById('overlay-member-position').textContent = member.position;
-            document.getElementById('overlay-member-content').innerHTML = member.content;
+            // Content is now handled in the regex processing section above
             document.getElementById('overlay-member-phone').innerHTML = `<i class="fas fa-phone"></i> ${member.phone}`;
             document.getElementById('overlay-member-email').innerHTML = `<i class="fas fa-envelope"></i> ${member.email}`;
             document.getElementById('overlay-member-linkedin').href = member.linkedin;
+            
+            // Process content to add nowrap to all headings
+            let processedContent = member.content;
+            // Add white-space: nowrap to all h1, h2, h3 tags
+            processedContent = processedContent.replace(/<h([1-3])([^>]*)>(.*?)<\/h\1>/g, '<h$1$2 style="white-space: nowrap;">$3</h$1>');
+            
+            // Apply the processed content
+            document.getElementById('overlay-member-content').innerHTML = processedContent;
             
             // Update languages section
             const languagesHtml = member.languages.map(lang => 
