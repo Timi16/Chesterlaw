@@ -1,260 +1,240 @@
 // Team members data
 const teamMembers = {
+    victoria_reynolds: {
+        name: "Victoria Reynolds",
+        position: "Managing Partner",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
+        content: `
+            <div class="attorney-profile">
+                <h2>About Victoria</h2>
+                <p>Victoria Reynolds is a Managing Partner at Chester Law, specializing in corporate law and international business transactions. With over 15 years of experience, she has established herself as a trusted advisor to multinational corporations and emerging businesses alike.</p>
+                
+                <div class="expertise-areas">
+                    <h3>Areas of Expertise</h3>
+                    <ul>
+                        <li>Corporate Law</li>
+                        <li>Mergers & Acquisitions</li>
+                        <li>International Business Law</li>
+                        <li>Securities Regulation</li>
+                    </ul>
+                </div>
+
+                <div class="education-section">
+                    <h3>Education</h3>
+                    <ul>
+                        <li>J.D., Harvard Law School</li>
+                        <li>B.A., Yale University (magna cum laude)</li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> victoria.reynolds@chesterlaw.com</p>
+                </div>
+            </div>
+        `,
+        languages: ["English", "French", "Spanish"],
+        phone: "(555) 123-4567",
+        email: "victoria.reynolds@chesterlaw.com",
+        linkedin: "https://linkedin.com/in/victoria-reynolds"
+    },
     viktor_surnyk: {
         name: "Viktor Surnyk",
         position: "Managing Partner",
-        image: "images/team/viktor-surnyk.jpg",
-        specialization: "Corporate Law, International Business",
-        contact: {
-            phone: "+1 800 123 4567",
-            email: "viktor.surnyk@chesterlaw.com",
-            linkedin: "https://linkedin.com/in/viktor-surnyk"
-        },
-        languages: ["English", "Ukrainian"],
+        image: "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
         content: `
             <div class="attorney-profile">
-                <div class="specialization-section">
-                    <h2>SPECIALIZATION: CORPORATE LAW, INTERNATIONAL BUSINESS</h2>
-                    <p>Viktor specializes in complex corporate transactions and international business law, providing strategic counsel to multinational corporations and emerging companies.</p>
-                </div>
-
-                <div class="experience-section">
-                    <p>With extensive experience in corporate law, Viktor has successfully guided numerous clients through complex mergers, acquisitions, and international business transactions. His strategic approach and deep understanding of both local and international markets make him a trusted advisor for businesses seeking to expand globally.</p>
-                    
-                    <p>Viktor's practice focuses on delivering practical solutions to complex legal challenges, ensuring clients achieve their business objectives while maintaining regulatory compliance.</p>
-                </div>
-
-                <div class="memberships-section">
-                    <h3>MEMBERSHIP IN PROFESSIONAL ASSOCIATIONS</h3>
+                <h2>About Viktor</h2>
+                <p>Viktor Surnyk is a Managing Partner at Chester Law with extensive experience in litigation and dispute resolution. He has successfully represented clients in complex commercial disputes across multiple jurisdictions.</p>
+                
+                <div class="expertise-areas">
+                    <h3>Areas of Expertise</h3>
                     <ul>
-                        <li>American Bar Association - International Law Section</li>
-                        <li>International Bar Association</li>
-                        <li>Board Member, Corporate Law Alliance</li>
+                        <li>Commercial Litigation</li>
+                        <li>International Arbitration</li>
+                        <li>Dispute Resolution</li>
+                        <li>Corporate Law</li>
                     </ul>
                 </div>
 
                 <div class="education-section">
-                    <h3>EDUCATION & CERTIFICATIONS</h3>
+                    <h3>Education</h3>
                     <ul>
-                        <li>J.D., Harvard Law School</li>
-                        <li>MBA, Wharton School of Business</li>
-                        <li>Certified International Business Law Specialist</li>
+                        <li>J.D., Stanford Law School</li>
+                        <li>B.A., University of California, Berkeley</li>
                     </ul>
                 </div>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> (555) 123-4568</p>
+                    <p><i class="fas fa-envelope"></i> viktor.surnyk@chesterlaw.com</p>
+                </div>
             </div>
-        `
-    },
-    vitaliy_nestor: {
-        name: "Vitaliy Nestor",
-        position: "Managing Partner",
-        image: "images/team/vitaliy-nestor.jpg",
-        specialization: "Litigation, Dispute Resolution",
-        contact: {
-            phone: "+1 800 123 4568",
-            email: "vitaliy.nestor@chesterlaw.com",
-            linkedin: "https://linkedin.com/in/vitaliy-nestor"
-        },
+        `,
         languages: ["English", "Ukrainian", "Russian"],
-        content: `
-            <div class="attorney-profile">
-                <div class="specialization-section">
-                    <h2>SPECIALIZATION: LITIGATION & DISPUTE RESOLUTION</h2>
-                    <p>Vitaliy is a seasoned litigator with extensive experience in complex commercial disputes and international arbitration.</p>
-                </div>
-
-                <div class="experience-section">
-                    <p>As a leading litigation expert, Vitaliy has successfully represented clients in high-stakes disputes across multiple jurisdictions. His strategic approach to litigation and strong advocacy skills have resulted in numerous favorable outcomes for clients.</p>
-                    
-                    <p>Vitaliy's expertise extends to alternative dispute resolution, where he regularly represents clients in international arbitration proceedings and mediation.</p>
-                </div>
-
-                <div class="memberships-section">
-                    <h3>MEMBERSHIP IN PROFESSIONAL ASSOCIATIONS</h3>
-                    <ul>
-                        <li>American Arbitration Association</li>
-                        <li>International Council for Commercial Arbitration</li>
-                        <li>Chartered Institute of Arbitrators</li>
-                    </ul>
-                </div>
-
-                <div class="education-section">
-                    <h3>EDUCATION & CERTIFICATIONS</h3>
-                    <ul>
-                        <li>J.D., Yale Law School</li>
-                        <li>Fellow, Chartered Institute of Arbitrators</li>
-                        <li>Certified Mediator</li>
-                    </ul>
-                </div>
-            </div>
-        `
+        phone: "(555) 123-4568",
+        email: "viktor.surnyk@chesterlaw.com",
+        linkedin: "https://linkedin.com/in/viktor-surnyk"
     },
-    olga_golovacheva: {
-        name: "Olga Golovacheva",
-        position: "Senior Partner",
-        image: "images/team/olga-golovacheva.jpg",
-        specialization: "Real Estate, Property Law",
-        contact: {
-            phone: "+1 800 123 4569",
-            email: "olga.golovacheva@chesterlaw.com",
-            linkedin: "https://linkedin.com/in/olga-golovacheva"
-        },
-        languages: ["English", "Ukrainian", "German"],
+    sarah_johnson: {
+        name: "Sarah Johnson",
+        position: "Senior Associate",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
         content: `
             <div class="attorney-profile">
-                <div class="specialization-section">
-                    <h2>SPECIALIZATION: REAL ESTATE & PROPERTY LAW</h2>
-                    <p>Olga specializes in complex real estate transactions and property development projects, providing comprehensive legal guidance to developers, investors, and property owners.</p>
-                </div>
-
-                <div class="experience-section">
-                    <p>With over 15 years of experience in real estate law, Olga has handled numerous high-value property transactions and development projects. Her expertise covers all aspects of real estate law, from acquisition and development to leasing and property management.</p>
-                    
-                    <p>Olga is particularly known for her work in sustainable development and green building projects, helping clients navigate complex regulatory requirements while achieving their sustainability goals.</p>
-                </div>
-
-                <div class="memberships-section">
-                    <h3>MEMBERSHIP IN PROFESSIONAL ASSOCIATIONS</h3>
+                <h2>About Sarah</h2>
+                <p>Sarah Johnson is a Senior Associate at Chester Law, focusing on employment law and labor relations. She has helped numerous clients navigate complex employment issues and workplace disputes.</p>
+                
+                <div class="expertise-areas">
+                    <h3>Areas of Expertise</h3>
                     <ul>
-                        <li>American Real Estate Lawyers Association</li>
-                        <li>Urban Land Institute</li>
-                        <li>Green Building Council</li>
+                        <li>Employment Law</li>
+                        <li>Labor Relations</li>
+                        <li>Workplace Discrimination</li>
+                        <li>Employment Contracts</li>
                     </ul>
                 </div>
 
                 <div class="education-section">
-                    <h3>EDUCATION & CERTIFICATIONS</h3>
+                    <h3>Education</h3>
                     <ul>
                         <li>J.D., Columbia Law School</li>
-                        <li>Master's in Real Estate Development</li>
-                        <li>LEED Accredited Professional</li>
+                        <li>B.A., Brown University</li>
                     </ul>
                 </div>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> (555) 123-4569</p>
+                    <p><i class="fas fa-envelope"></i> sarah.johnson@chesterlaw.com</p>
+                </div>
             </div>
-        `
+        `,
+        languages: ["English", "Mandarin"],
+        phone: "(555) 123-4569",
+        email: "sarah.johnson@chesterlaw.com",
+        linkedin: "https://linkedin.com/in/sarah-johnson"
     },
-    pavlo_holovko: {
-        name: "Pavlo Holovko",
-        position: "Solicitor",
-        image: "images/team/pavlo-holovko.jpg",
-        specialization: "Criminal Law and Process, Business Protection, White Collar Crime",
-        contact: {
-            phone: "+380 20 22 52 19",
-            email: "pavlo.holovko@chesterlaw.com",
-            linkedin: "https://linkedin.com/in/pavlo-holovko"
-        },
-        languages: ["Ukrainian", "English"],
+    david_chen: {
+        name: "David Chen",
+        position: "Associate",
+        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80",
         content: `
             <div class="attorney-profile">
-                <div class="specialization-section">
-                    <h2>SPECIALIZATION: CRIMINAL LAW AND PROCESS, BUSINESS PROTECTION, WHITE COLLAR CRIME</h2>
-                    <p>As a lawyer with many years of experience in the positions of investigator and prosecutor, Pavlo focuses on providing high-quality legal protection to clients in the field of criminal law and process, successfully resolving the most complex and high-profile cases, ensuring justice and protecting their rights in difficult situations.</p>
-                </div>
-
-                <div class="experience-section">
-                    <p>Pavlo has extensive experience in criminal proceedings, in particular, related to corruption, office crimes, business protection and anti-raider activities. This allows him to quickly assess the consequences of affairs and effectively defend the interests of clients in the most difficult cases.</p>
-                    
-                    <p>Understanding how important it is for clients to have reliable support in the face of legal processes. Thanks to an individual approach, developing strategies that meet their specific needs. His experience at all stages of criminal proceedings allows him to accurately assess the situation and protect the interests of clients at the highest level.</p>
-                </div>
-
-                <div class="memberships-section">
-                    <h3>MEMBERSHIP IN PROFESSIONAL ASSOCIATIONS</h3>
+                <h2>About David</h2>
+                <p>David Chen is an Associate at Chester Law specializing in intellectual property and technology law. He brings a unique combination of technical knowledge and legal expertise to help clients protect their innovations.</p>
+                
+                <div class="expertise-areas">
+                    <h3>Areas of Expertise</h3>
                     <ul>
-                        <li>Member of the National Association of Lawyers of Ukraine</li>
-                        <li>Participant of all-Ukrainian and international conferences on family and labor law</li>
+                        <li>Intellectual Property</li>
+                        <li>Technology Law</li>
+                        <li>Patent Litigation</li>
+                        <li>Licensing</li>
                     </ul>
                 </div>
 
-                <div class="professional-certificates">
-                    <h3>PROFESSIONAL CERTIFICATES</h3>
+                <div class="education-section">
+                    <h3>Education</h3>
                     <ul>
-                        <li>Certificate in Criminal Law Practice</li>
-                        <li>Advanced Business Protection Certification</li>
-                        <li>White Collar Crime Investigation Specialist</li>
+                        <li>J.D., UC Berkeley School of Law</li>
+                        <li>B.S., MIT (Computer Science)</li>
                     </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> (555) 123-4570</p>
+                    <p><i class="fas fa-envelope"></i> david.chen@chesterlaw.com</p>
                 </div>
             </div>
-        `
+        `,
+        languages: ["English", "Mandarin", "Cantonese"],
+        phone: "(555) 123-4570",
+        email: "david.chen@chesterlaw.com",
+        linkedin: "https://linkedin.com/in/david-chen"
     }
 };
 
 // Initialize team member functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const teamLinks = document.querySelectorAll('.team-member-link');
-    const overviewSection = document.getElementById('team-overview');
-    const detailSection = document.getElementById('team-detail');
-    const memberHero = document.getElementById('member-hero');
-    const memberName = document.getElementById('member-name');
-    const memberPosition = document.getElementById('member-position');
-    const memberContent = document.getElementById('member-content');
-    const memberBreadcrumb = document.getElementById('member-breadcrumb');
+    const memberLinks = document.querySelectorAll('.team-view-profile');
+    const teamOverview = document.getElementById('team-overview');
+    const teamDetail = document.getElementById('team-detail');
+    const backToTeam = document.querySelector('.back-to-team');
 
     // Check URL parameters for direct access to team member
-    const urlParams = new URLSearchParams(window.location.search);
-    const memberParam = urlParams.get('member');
-    if (memberParam && teamMembers[memberParam]) {
-        loadTeamMember(memberParam);
+    function checkURLParameters() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const memberId = urlParams.get('member');
+        if (memberId && teamMembers[memberId]) {
+            loadTeamMember(memberId);
+        }
     }
 
-    // Add click event listeners to team member links
-    teamLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Load team member profile
+    function loadTeamMember(memberId) {
+        const member = teamMembers[memberId];
+        if (!member) return;
+
+        // Update URL
+        const newUrl = window.location.pathname + '?member=' + memberId;
+        window.history.pushState({ memberId }, '', newUrl);
+
+        // Update breadcrumb
+        document.getElementById('member-breadcrumb-name').textContent = member.name;
+
+        // Update hero section
+        document.getElementById('member-image').src = member.image;
+        document.getElementById('member-image').alt = member.name;
+        document.getElementById('member-name').textContent = member.name;
+        document.getElementById('member-position').textContent = member.position;
+
+        // Update main content
+        document.getElementById('member-content').innerHTML = member.content;
+
+        // Update contact info
+        document.getElementById('member-phone').innerHTML = `<i class="fas fa-phone"></i> ${member.phone}`;
+        document.getElementById('member-email').innerHTML = `<i class="fas fa-envelope"></i> ${member.email}`;
+        document.getElementById('member-linkedin').href = member.linkedin;
+
+        // Update languages
+        const languagesHtml = member.languages.map(lang => `<span class="language-tag">${lang}</span>`).join('');
+        document.getElementById('member-languages').innerHTML = languagesHtml;
+
+        // Show detail section
+        teamOverview.classList.remove('active');
+        teamDetail.classList.add('active');
+    }
+
+    // Event listeners
+    memberLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
-            const member = link.getAttribute('data-member');
-            loadTeamMember(member);
-            // Update URL without refreshing the page
-            window.history.pushState({}, '', `?member=${member}`);
+            const memberId = this.getAttribute('data-member');
+            loadTeamMember(memberId);
         });
     });
 
-    function loadTeamMember(memberKey) {
-        const member = teamMembers[memberKey];
-        if (!member) return;
+    backToTeam.addEventListener('click', function(e) {
+        e.preventDefault();
+        teamDetail.classList.remove('active');
+        teamOverview.classList.add('active');
+        window.history.pushState({}, '', window.location.pathname);
+    });
 
-        // Update hero section
-        memberName.textContent = member.name;
-        memberPosition.textContent = member.position;
-        memberBreadcrumb.textContent = member.name;
-        
-        // Update profile image
-        const heroImage = document.querySelector('.member-hero-image img');
-        if (heroImage) {
-            heroImage.src = member.image;
-            heroImage.alt = member.name;
+    // Handle browser back/forward
+    window.addEventListener('popstate', function(e) {
+        if (e.state && e.state.memberId) {
+            loadTeamMember(e.state.memberId);
+        } else {
+            teamDetail.classList.remove('active');
+            teamOverview.classList.add('active');
         }
+    });
 
-        // Update contact information
-        const contactSection = document.querySelector('.member-contact');
-        if (contactSection) {
-            contactSection.innerHTML = `
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> ${member.contact.phone}</p>
-                    <p><i class="fas fa-envelope"></i> ${member.contact.email}</p>
-                    <a href="${member.contact.linkedin}" class="linkedin-link" target="_blank">
-                        <i class="fab fa-linkedin"></i> LinkedIn Profile
-                    </a>
-                </div>
-                <div class="languages">
-                    <h4>Languages</h4>
-                    <p>${member.languages.join(', ')}</p>
-                </div>
-            `;
-        }
-
-        // Update content
-        memberContent.innerHTML = member.content;
-
-        // Show detail section, hide overview
-        overviewSection.classList.remove('active');
-        detailSection.classList.add('active');
-
-        // Trigger animations
-        triggerDetailAnimations();
-    }
-
-    function triggerDetailAnimations() {
-        const animatedElements = document.querySelectorAll('.fade-in, .slide-in');
-        animatedElements.forEach(element => {
-            element.classList.add('active');
-        });
-    }
+    // Check URL parameters on load
+    checkURLParameters();
 });

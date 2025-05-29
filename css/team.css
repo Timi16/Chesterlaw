@@ -117,14 +117,14 @@
 }
 
 .team-grid-section {
-    padding: 80px 0;
-    background-color: #f9f9f9;
+    padding: 60px 0;
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    margin-top: 40px;
 }
 
 .team-card {
@@ -174,6 +174,7 @@
     font-size: 16px;
     color: #c9a96e;
     margin-bottom: 15px;
+    text-decoration: none;
 }
 
 .team-view-profile {
@@ -184,6 +185,8 @@
     color: #1a3a4a;
     text-decoration: none;
     transition: color 0.3s ease;
+    border: none;
+    outline: none;
 }
 
 .team-view-profile i {
@@ -197,6 +200,223 @@
 
 .team-view-profile:hover i {
     transform: translateX(3px);
+}
+
+/* Team Overview and Detail Sections */
+.team-overview-section,
+.team-detail-section {
+    display: none;
+}
+
+.team-overview-section.active,
+.team-detail-section.active {
+    display: block;
+}
+
+/* Team Member Detail */
+.member-hero {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.member-hero-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.member-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.member-info h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #1a3a4a;
+}
+
+.member-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: #c9a96e;
+}
+
+.member-profile {
+    padding: 60px 0;
+}
+
+.member-profile-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.member-main-content {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.member-main-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #1a3a4a;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.member-main-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #c9a96e;
+    margin: 30px 0 15px;
+    font-size: 1.4rem;
+}
+
+.member-main-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.member-main-content ul li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.member-main-content ul li:before {
+    content: '•';
+    color: #c9a96e;
+    position: absolute;
+    left: 0;
+}
+
+.member-sidebar {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.member-contact {
+    margin-bottom: 30px;
+}
+
+.member-contact h4 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #1a3a4a;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.member-contact p {
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.member-contact i {
+    color: #c9a96e;
+    width: 20px;
+}
+
+.linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #1a3a4a;
+    text-decoration: none;
+    margin-top: 15px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+.linkedin-link:hover {
+    color: #c9a96e;
+}
+
+.languages p {
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+.fade-in.active,
+.slide-in.active {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .member-hero-content,
+    .member-profile-content {
+        grid-template-columns: 1fr;
+    }
+
+    .member-image {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .member-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .member-hero {
+        padding: 40px 0;
+    }
+
+    .member-profile {
+        padding: 40px 0;
+    }
+
+    .member-info h1 {
+        font-size: 2rem;
+    }
+
+    .member-main-content h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-hero-content {
+        gap: 20px;
+    }
+
+    .member-profile-content {
+        gap: 30px;
+    }
+
+    .member-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .member-main-content {
+        font-size: 1rem;
+    }
 }
 
 .cta-section {

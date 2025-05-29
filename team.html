@@ -492,14 +492,16 @@
     </header>
     
     <main>
-        <section class="team-banner">
-            <div class="container">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a> / <span>Our Team</span>
+        <!-- Team Overview Section -->
+        <section id="team-overview" class="team-overview-section active">
+            <section class="team-banner">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a> / <span>Our Team</span>
+                    </div>
+                    <h1 class="page-title">Our Experts</h1>
                 </div>
-                <h1 class="page-title">Our Experts</h1>
-            </div>
-        </section>
+            </section>
         
         <section class="team-grid-section">
             <div class="container">
@@ -511,40 +513,18 @@
                         <div class="team-info">
                             <h3>Victoria Reynolds</h3>
                             <p class="team-position">Managing Partner</p>
-                            <a href="attorney-profile.html?id=victoria-reynolds" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" data-member="victoria_reynolds" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
                     <div class="team-card">
                         <div class="team-image">
-                            <img src="https://images.unsplash.com/photo-1662104935883-e9dd0619eaba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jessica Yun">
+                            <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Viktor Surnyk">
                         </div>
                         <div class="team-info">
-                            <h3>Jessica Yun</h3>
-                            <p class="team-position">Senior Partner</p>
-                            <a href="attorney-profile.html?id=jessica-yun" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="team-card">
-                        <div class="team-image">
-                            <img src="https://images.unsplash.com/photo-1662104935762-707db0439ecd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Muhammed Abdul">
-                        </div>
-                        <div class="team-info">
-                            <h3>Muhammed Abdul</h3>
-                            <p class="team-position">Partner</p>
-                            <a href="attorney-profile.html?id=muhammed-abdul" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="team-card">
-                        <div class="team-image">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="James Washington">
-                        </div>
-                        <div class="team-info">
-                            <h3>James Washington</h3>
-                            <p class="team-position">Partner</p>
-                            <a href="attorney-profile.html?id=james-washington" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <h3>Viktor Surnyk</h3>
+                            <p class="team-position">Managing Partner</p>
+                            <a href="#" data-member="viktor_surnyk" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
@@ -555,7 +535,7 @@
                         <div class="team-info">
                             <h3>Sarah Johnson</h3>
                             <p class="team-position">Senior Associate</p>
-                            <a href="attorney-profile.html?id=sarah-johnson" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" data-member="sarah_johnson" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     
@@ -566,11 +546,59 @@
                         <div class="team-info">
                             <h3>David Chen</h3>
                             <p class="team-position">Associate</p>
-                            <a href="attorney-profile.html?id=david-chen" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" data-member="david_chen" class="team-view-profile">View Profile <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Team Member Detail Section -->
+        <section id="team-detail" class="team-detail-section">
+            <section class="member-hero">
+                <div class="container">
+                    <div class="breadcrumb" id="member-breadcrumb">
+                        <a href="index.html">Home</a> / <a href="#" class="back-to-team">Our Team</a> / <span id="member-breadcrumb-name"></span>
+                    </div>
+                    <div class="member-hero-content">
+                        <div class="member-image">
+                            <img id="member-image" src="" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h1 id="member-name"></h1>
+                            <p id="member-position"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="member-profile">
+                <div class="container">
+                    <div class="member-profile-content">
+                        <div class="member-main-content" id="member-content">
+                            <!-- Content will be loaded dynamically -->
+                        </div>
+                        
+                        <div class="member-sidebar">
+                            <div class="member-contact">
+                                <div class="contact-info">
+                                    <h4>Contact Information</h4>
+                                    <p id="member-phone"><i class="fas fa-phone"></i></p>
+                                    <p id="member-email"><i class="fas fa-envelope"></i></p>
+                                    <a id="member-linkedin" href="#" class="linkedin-link" target="_blank">
+                                        <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                                    </a>
+                                </div>
+                                
+                                <div class="languages">
+                                    <h4>Languages</h4>
+                                    <div id="member-languages"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
     </main>
     
@@ -671,5 +699,7 @@
             });
         });
     </script>
+    <script src="js/main.js"></script>
+    <script src="js/team-members.js"></script>
 </body>
 </html>
