@@ -22,39 +22,24 @@
         </div>
     </div>
     
-    <!-- Navigation only appears when scrolling past hero -->
-    <header id="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; background-color: transparent; transform: translateY(-100%); transition: transform 0.3s ease, background-color 0.3s ease;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; max-width: 1200px; margin: 0 auto;">
+    <!-- Navigation directly on the hero section like Allarius image -->
+    <header id="main-header" style="position: absolute; width: 100%; top: 0; left: 0; z-index: 1000; background-color: transparent; padding: 20px 0;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
             <a href="index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
-                <img src="images/Logo.jpeg.jpg" alt="Law Firm Logo" style="height: 35px; width: auto;">
+                <img src="images/Logo.jpeg.jpg" alt="Law Firm Logo" style="height: 50px; width: auto;">
             </a>
             
             <nav class="desktop-nav">
                 <ul class="nav-links" style="display: flex; gap: 30px; margin: 0; padding: 0; list-style: none;">
-                    <li><a href="#hero" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Home</a></li>
-                    <li><a href="#expertise" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Expertise</a></li>
-                    <li><a href="team.html" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Our Team</a></li>
-                    <li><a href="#news" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Blog</a></li>
-                    <li><a href="#contact" class="nav-link" style="text-decoration: none; color: #333; font-weight: 500;">Contact</a></li>
+                    <li><a href="#hero" class="nav-link" style="text-decoration: none; color: #fff; font-weight: 400; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Home</a></li>
+                    <li><a href="#expertise" class="nav-link" style="text-decoration: none; color: #fff; font-weight: 400; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Expertise</a></li>
+                    <li><a href="team.html" class="nav-link" style="text-decoration: none; color: #fff; font-weight: 400; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Our Team</a></li>
+                    <li><a href="#news" class="nav-link" style="text-decoration: none; color: #fff; font-weight: 400; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Blog</a></li>
+                    <li><a href="#contact" class="nav-link" style="text-decoration: none; color: #fff; font-weight: 400; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Contact</a></li>
                 </ul>
             </nav>
-            
-            <div style="display: flex; align-items: center;">
-                <button class="menu-toggle" aria-label="Toggle Menu" style="background: none; border: none; cursor: pointer; padding: 5px;">
-                    <span style="display: block; width: 25px; height: 2px; background-color: #333; margin: 5px 0;"></span>
-                    <span style="display: block; width: 25px; height: 2px; background-color: #333; margin: 5px 0;"></span>
-                    <span style="display: block; width: 25px; height: 2px; background-color: #333; margin: 5px 0;"></span>
-                </button>
-            </div>
         </div>
     </header>
-    
-    <!-- Actual logo image in hero section positioned like in reference image -->
-    <div class="hero-logo" style="position: absolute; top: 30px; left: 50px; z-index: 100;">
-        <a href="index.html" style="text-decoration: none;">
-            <img src="images/Logo.jpeg.jpg" alt="Law Firm Logo" style="height: 60px; width: auto;">
-        </a>
-    </div>
     
     <div class="mobile-menu">
         <div class="container">
@@ -89,16 +74,13 @@
             <div class="hero-slider">
                 <div class="hero-slide active">
                     <div class="hero-image" style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080&q=80" alt="Modern glass skyscraper" style="width: 100%; height: 100vh; object-fit: cover;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #0e2a47; display: flex; align-items: center;">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080&q=80" alt="Looking up at modern skyscrapers" style="width: 100%; height: 100vh; object-fit: cover;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #092946; display: flex; align-items: center;">
                             <div class="container">
-                                <div class="hero-content" style="max-width: 650px; padding: 0 0 0 40px;">
-                                    <h1 class="hero-title" style="font-size: 3.5rem; line-height: 1.2; color: #fff; margin-bottom: 1rem;">LEGAL EXCELLENCE<br>IN A CHANGING WORLD</h1>
-                                    <p style="font-size: 1.25rem; margin: 2rem 0; color: rgba(255,255,255,0.9);">Sophisticated legal counsel bringing clarity to complex matters.</p>
-                                    <div class="hero-cta" style="margin-top: 2rem;">
-                                        <a href="#expertise" class="btn btn-primary" style="display: inline-block; background-color: #0d3256; color: white; padding: 12px 30px; text-decoration: none; margin-right: 15px; border: 2px solid #0d3256; transition: all 0.3s ease;">Our Expertise</a>
-                                        <a href="#contact" class="btn btn-outline" style="display: inline-block; border: 2px solid white; color: white; padding: 12px 30px; text-decoration: none; transition: all 0.3s ease;">Get in Touch</a>
-                                    </div>
+                                <div style="max-width: 350px; margin-left: 10%; margin-top: 5%;">
+                                    <h2 style="font-size: 1rem; font-weight: 400; color: #fff; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1.5px;">STRATEGIC COUNSEL</h2>
+                                    <h1 style="font-size: 2.8rem; line-height: 1.1; color: #fff; margin-bottom: 10px; text-transform: uppercase; font-weight: 400;">FOR YOUR BUSINESS</h1>
+                                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">We Protect Your Business Interests</p>
                                 </div>
                             </div>
                         </div>
@@ -107,16 +89,13 @@
                 
                 <div class="hero-slide">
                     <div class="hero-image" style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080&q=80" alt="Modern architecture" style="width: 100%; height: 100vh; object-fit: cover;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #0e2a47; display: flex; align-items: center;">
+                        <img src="https://images.unsplash.com/photo-1462396240927-52f3fb28a27d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080&q=80" alt="Looking up at skyscrapers" style="width: 100%; height: 100vh; object-fit: cover;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #092946; display: flex; align-items: center;">
                             <div class="container">
-                                <div class="hero-content" style="max-width: 650px; padding: 0 0 0 40px;">
-                                    <h1 class="hero-title" style="font-size: 3.5rem; line-height: 1.2; color: #fff; margin-bottom: 1rem;">STRATEGIC COUNSEL<br>FOR INDUSTRY LEADERS</h1>
-                                    <p style="font-size: 1.25rem; margin: 2rem 0; color: rgba(255,255,255,0.9);">Bringing decades of experience and insight to your most important legal matters.</p>
-                                    <div class="hero-cta" style="margin-top: 2rem;">
-                                        <a href="#expertise" class="btn btn-primary" style="display: inline-block; background-color: #0d3256; color: white; padding: 12px 30px; text-decoration: none; margin-right: 15px; border: 2px solid #0d3256; transition: all 0.3s ease;">Our Expertise</a>
-                                        <a href="team.html" class="btn btn-outline" style="display: inline-block; border: 2px solid white; color: white; padding: 12px 30px; text-decoration: none; transition: all 0.3s ease;">Meet Our Team</a>
-                                    </div>
+                                <div style="max-width: 350px; margin-left: 10%; margin-top: 5%;">
+                                    <h2 style="font-size: 1rem; font-weight: 400; color: #fff; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1.5px;">LEGAL EXCELLENCE</h2>
+                                    <h1 style="font-size: 2.8rem; line-height: 1.1; color: #fff; margin-bottom: 10px; text-transform: uppercase; font-weight: 400;">IN A CHANGING WORLD</h1>
+                                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">We Protect Your Rights</p>
                                 </div>
                             </div>
                         </div>
@@ -246,7 +225,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="stats-section">
             <div class="parallax-bg"></div>
             <div class="container">
@@ -255,17 +234,17 @@
                         <div class="stat-number" data-count="25">0</div>
                         <div class="stat-label">Years of Excellence</div>
                     </div>
-                    
+
                     <div class="stat-item animate-on-scroll">
                         <div class="stat-number" data-count="500">0</div>
                         <div class="stat-label">Cases Won</div>
                     </div>
-                    
+
                     <div class="stat-item animate-on-scroll">
                         <div class="stat-number" data-count="45">0</div>
                         <div class="stat-label">Expert Attorneys</div>
                     </div>
-                    
+
                     <div class="stat-item animate-on-scroll">
                         <div class="stat-number" data-count="94">0</div>
                         <div class="stat-label">Success Rate (%)</div>
@@ -273,7 +252,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="team" class="team-section">
             <div class="container">
                 <div class="section-header">
@@ -281,370 +260,13 @@
                     <h2 class="split-text animate-on-scroll">Meet our exceptional attorneys</h2>
                     <a href="team.html" class="view-all animate-on-scroll">View All Team <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
+
                 <div class="team-grid">
                     <div class="team-card animate-on-scroll">
-                        <div class="team-image">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Victoria Reynolds">
-                        </div>
-                        <div class="team-overlay">
-                            <div class="team-details">
-                                <h3>Victoria Reynolds</h3>
-                                <p class="team-position">Managing Partner</p>
-                                <p class="team-specialty">Corporate Law</p>
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fas fa-envelope"></i></a>
-                                </div>
-                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-card animate-on-scroll">
-                        <div class="team-image">
-                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Jessica Yun">
-                        </div>
-                        <div class="team-overlay">
-                            <div class="team-details">
-                                <h3>Jessica Yun</h3>
-                                <p class="team-position">Senior Partner</p>
-                                <p class="team-specialty">Litigation</p>
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fas fa-envelope"></i></a>
-                                </div>
-                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-card animate-on-scroll">
-                        <div class="team-image">
-                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="Muhammed Abdul">
-                        </div>
-                        <div class="team-overlay">
-                            <div class="team-details">
-                                <h3>Muhammed Abdul</h3>
-                                <p class="team-position">Partner</p>
-                                <p class="team-specialty">Bankruptcy & Restructuring</p>
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fas fa-envelope"></i></a>
-                                </div>
-                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-card animate-on-scroll">
-                        <div class="team-image">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=500&q=80" alt="James Washington">
-                        </div>
-                        <div class="team-overlay">
-                            <div class="team-details">
-                                <h3>James Washington</h3>
-                                <p class="team-position">Partner</p>
-                                <p class="team-specialty">Intellectual Property</p>
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fas fa-envelope"></i></a>
-                                </div>
-                                <a href="#" class="btn-text">View Profile <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="case-studies" class="case-studies">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag animate-on-scroll">Recent Work</span>
-                    <h2 class="split-text animate-on-scroll">Featured case studies</h2>
-                </div>
-                
-                <div class="case-slider">
-                    <div class="case-slide active animate-on-scroll">
-                        <div class="case-image">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Major acquisition case">
-                        </div>
-                        <div class="case-content">
-                            <div class="case-tag">Corporate</div>
-                            <h3 class="reveal-text">$2.5B Cross-Border Acquisition</h3>
-                            <p>We advised a leading technology company in its acquisition of a European software provider, navigating complex regulatory requirements across multiple jurisdictions.</p>
-                            <a href="#" class="btn-text">Read Case Study <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="case-slide">
-                        <div class="case-image">
-                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Patent litigation case">
-                        </div>
-                        <div class="case-content">
-                            <div class="case-tag">Intellectual Property</div>
-                            <h3 class="reveal-text">Landmark Patent Litigation Victory</h3>
-                            <p>Successfully represented a pharmaceutical company in high-stakes patent litigation, protecting valuable intellectual property rights worth over $1 billion in market value.</p>
-                            <a href="#" class="btn-text">Read Case Study <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="case-controls">
-                    <button class="case-prev" aria-label="Previous case"><i class="fas fa-arrow-left"></i></button>
-                    <div class="case-dots">
-                        <button class="case-dot active" aria-label="Case 1"></button>
-                        <button class="case-dot" aria-label="Case 2"></button>
-                    </div>
-                    <button class="case-next" aria-label="Next case"><i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-        </section>
-        
-        <section id="testimonials" class="testimonials-section">
-            <div class="container">
-                <div class="testimonials-header">
-                    <span class="section-tag animate-on-scroll">Testimonials</span>
-                    <h2 class="split-text animate-on-scroll">What our clients say</h2>
-                </div>
-                
-                <div class="testimonials-slider animate-on-scroll">
-                    <div class="testimonial-slide active">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                            <blockquote>
-                                <p>Prestige Law provided exceptional guidance during our complex merger. Their strategic insight and attention to detail were invaluable in navigating regulatory hurdles and ensuring a smooth transaction.</p>
-                            </blockquote>
-                            <div class="testimonial-author">
-                                <div class="author-image">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" alt="Client portrait">
-                                </div>
-                                <div class="author-info">
-                                    <h4>Robert Anderson</h4>
-                                    <p>CEO, Global Innovations Inc.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                            <blockquote>
-                                <p>The intellectual property team at Prestige Law is second to none. Their deep knowledge of patent law and strategic approach to protecting our innovations has been critical to our company's growth and success.</p>
-                            </blockquote>
-                            <div class="testimonial-author">
-                                <div class="author-image">
-                                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" alt="Client portrait">
-                                </div>
-                                <div class="author-info">
-                                    <h4>Sarah Johnson</h4>
-                                    <p>CTO, MedTech Solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonials-controls">
-                    <button class="testimonial-prev" aria-label="Previous testimonial"><i class="fas fa-arrow-left"></i></button>
-                    <div class="testimonial-dots">
-                        <button class="testimonial-dot active" aria-label="Testimonial 1"></button>
-                        <button class="testimonial-dot" aria-label="Testimonial 2"></button>
-                    </div>
-                    <button class="testimonial-next" aria-label="Next testimonial"><i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-        </section>
-        
-        <section id="recognitions" class="recognitions-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag animate-on-scroll">Recognitions</span>
-                    <h2 class="split-text animate-on-scroll">Awards and accreditations</h2>
-                </div>
-                
-                <div class="recognitions-grid animate-on-scroll">
-                    <div class="recognition-item">
-                        <img src="https://media.istockphoto.com/id/154959476/photo/lawyer-office.jpg?s=1024x1024&w=is&k=20&c=ujMlcDnd9-QsmZULrati2YlkNN9YOCXvOrmggtIkUso=" alt="Legal 500 Award">
-                        <div class="award-name">Legal 500 Elite</div>
-                    </div>
-                    <div class="recognition-item">
-                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80" alt="Chambers and Partners">
-                        <div class="award-name">Chambers Excellence</div>
-                    </div>
-                    <div class="recognition-item">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80" alt="Best Lawyers">
-                        <div class="award-name">Best Lawyers 2024</div>
-                    </div>
-                    <div class="recognition-item">
-                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80" alt="IFLR1000">
-                        <div class="award-name">IFLR1000 Leading Firm</div>
-                    </div>
-                    <div class="recognition-item">
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&q=80" alt="Global Law Experts">
-                        <div class="award-name">Global Law Experts</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="newsletter" class="newsletter-section">
-            <div class="container">
-                <div class="newsletter-container">
-                    <div class="newsletter-content">
-                        <h2>Subscribe to Our Newsletter</h2>
-                        <p>Stay informed about legal developments and firm news.</p>
-                        <form class="newsletter-form">
-                            <div class="form-group">
-                                <input type="email" placeholder="Your email address" required>
-                                <button type="submit" class="btn btn-primary">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <div class="contact-flex">
-                    <div class="contact-info animate-on-scroll">
-                        <span class="section-tag">Contact Us</span>
-                        <h2 class="split-text">Let's discuss your legal needs</h2>
-                        <p>Get in touch with our team of experts to discuss how we can assist with your legal matters. We're committed to providing exceptional service and strategic solutions.</p>
-                        
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Visit Our Office</h4>
-                                    <p>One Prestige Plaza, 1200 Financial District<br>New York, NY 10001</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Call Us</h4>
-                                    <p>+1 (800) 123-4567<br>+1 (212) 555-6789</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Email Us</h4>
-                                    <p>info@chesterlaw.com<br>inquiries@chesterlaw.com</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-form animate-on-scroll">
-                        <form id="contactForm">
-                            <div class="form-header">
-                                <h3>Send Us a Message</h3>
-                                <p>Complete the form below and we'll get back to you shortly.</p>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="name">Full Name*</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">Email Address*</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="company">Company</label>
-                                <input type="text" id="company" name="company">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="practice">Practice Area*</label>
-                                <select id="practice" name="practice" required>
-                                    <option value="" disabled selected>Select a practice area</option>
-                                    <option value="corporate">Corporate Law</option>
-                                    <option value="litigation">Litigation</option>
-                                    <option value="bankruptcy">Bankruptcy & Restructuring</option>
-                                    <option value="intellectual">Intellectual Property</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Message*</label>
-                                <textarea id="message" name="message" rows="4" required></textarea>
-                            </div>
-                            
-                            <div class="form-group form-checkbox">
-                                <input type="checkbox" id="privacy" name="privacy" required>
-                                <label for="privacy">I have read and agree to the <a href="#">Privacy Policy</a></label>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary btn-block">Submit Inquiry</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-logo">
-                    <a href="#" class="logo-text">Chester<span>Law</span></a>
-                    <p>Exceptional legal counsel for complex matters.</p>
-                </div>
-                
-                <div class="footer-nav">
-                    <div class="footer-nav-column">
-                        <h4>Navigation</h4>
-                        <ul>
-                            <li><a href="#hero">Home</a></li>
-                            <li><a href="#expertise">Expertise</a></li>
-                            <li><a href="#team">Our Team</a></li>
-                            <li><a href="#news">Blog</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-nav-column">
-                        <h4>Practice Areas</h4>
-                        <ul>
-                            <li><a href="#">Corporate Law</a></li>
-                            <li><a href="#">Litigation</a></li>
-                            <li><a href="#">Bankruptcy & Restructuring</a></li>
-                            <li><a href="#">Intellectual Property</a></li>
                             <li><a href="#">View All Practices</a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="footer-nav-column">
                         <h4>Resources</h4>
                         <ul>
@@ -745,36 +367,7 @@
                 showSlide(newIndex);
             }, 5000);
             
-            // Navigation scroll behavior - only show nav when scrolling past hero
-            const header = document.getElementById('main-header');
-            const heroSection = document.getElementById('hero');
-            
-            // Function to check if we're past the hero section
-            function checkScroll() {
-                const heroHeight = heroSection.offsetHeight;
-                const scrollPosition = window.scrollY;
-                
-                if (scrollPosition > heroHeight - 50) {
-                    // Past hero - show the header with white background
-                    header.style.transform = 'translateY(0)';
-                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                } else {
-                    // On hero - completely hide the header
-                    header.style.transform = 'translateY(-100%)';
-                    header.style.backgroundColor = 'transparent';
-                    header.style.boxShadow = 'none';
-                }
-            }
-            
-            // Check scroll position on page load
-            checkScroll();
-            
-            // Initial check
-            checkScroll();
-            
-            // Add scroll event listener
-            window.addEventListener('scroll', checkScroll);
+            // Simple slider functionality only - no nav scroll behavior needed anymore
         })();
     </script>
     
